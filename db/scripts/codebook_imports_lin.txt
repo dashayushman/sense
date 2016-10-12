@@ -1,0 +1,43 @@
+mongoimport -d <db_name> -c <collection name> --type tsv --file "<path to file>/<file_name>" --headerline
+
+CAMEO.Countries
+
+mongoimport -d db_sense -c cameo_countries --type tsv --file "/home/ayushman/projects/sense/GDELT2.0/codebooks/CAMEO.country.txt" --headerline
+
+CAMEO.ethnic
+
+mongoimport -d db_sense -c cameo_ethnic --type tsv --file "/home/ayushman/projects/sense/GDELT2.0/codebooks/CAMEO.ethnic.txt" --headerline
+
+CAMEO.eventcodes
+
+mongoimport -d db_sense -c cameo_eventcodes --type tsv --file "/home/ayushman/projects/sense/GDELT2.0/codebooks/CAMEO.eventcodes.txt" --headerline
+
+CAMEO.goldsteinscale
+
+mongoimport -d db_sense -c cameo_goldsteinscale --type tsv --file "/home/ayushman/projects/sense/GDELT2.0/codebooks/CAMEO.goldsteinscale.txt" --headerline
+
+CAMEO.knowngroup
+
+
+mongoimport -d db_sense -c cameo_knowngroup --type tsv --file "/home/ayushman/projects/sense/GDELT2.0/codebooks/CAMEO.knowngroup.txt" --headerline
+
+CAMEO.religion
+
+mongoimport -d db_sense -c cameo_religion --type tsv --file "/home/ayushman/projects/sense/GDELT2.0/codebooks/CAMEO.religion.txt" --headerline
+
+CAMEO.type
+
+mongoimport -d db_sense -c cameo_type --type tsv --file "/home/ayushman/projects/sense/GDELT2.0/codebooks/CAMEO.type.txt" --headerline
+
+FIPS.country
+
+mongoimport -d db_sense -c fips_country --type tsv --file "/home/ayushman/projects/sense/GDELT2.0/codebooks/FIPS.country.txt" --headerline
+
+CAMEO.events
+
+mongoimport -d DBNAME -c cameo_events --type tsv --file "FILEPATH" --fieldFile "HEADERPATH"
+
+
+CAMEO.mentions
+
+mongoimport -d db_sense -c cameo_mentions --type tsv --file "C:\Users\Ayushman\Google Drive\TU KAISERSLAUTERN\Work\DFKI\MADM\DATA\GDELT_2.0\mentions\20161004134500.mentions.csv" --fieldFile "C:\Users\Ayushman\Google Drive\TU KAISERSLAUTERN\Work\DFKI\MADM\DATA\gdelt2HeaderRows-master\schema_csvs\mentions_headers.txt"

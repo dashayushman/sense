@@ -1842,7 +1842,7 @@ AmCharts.ready(function() {
 	map["export"] = {
   		"enabled": true
 	};
-	map.addTitle("Impact of events on the world", 14);
+	map.addTitle("", 14);
 	map.areasSettings = {
 		unlistedAreasColor: "#FFFFFF",
 		unlistedAreasAlpha: 0.1

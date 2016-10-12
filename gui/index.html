@@ -364,8 +364,10 @@
 	  </div>
 	 <!-- END TOP NAVIGATION MENU -->
 	 <!-- BEGIN CHAT TOGGLER -->
-      <div class="pull-right"> 
-		
+      <div class="pull-right">
+          <ul class="nav quick-section ">
+            <h4><span class="bold">Last updated on:</span> 12th October 2016, 13:45</h4>
+          </ul>
 		 <ul class="nav quick-section ">
 			<li class="quicklinks"> 
 				<a data-toggle="dropdown" class="dropdown-toggle  pull-right " href="#" id="user-options">						
@@ -383,6 +385,7 @@
                </ul>
 			</li>
 		</ul>
+
       </div>
 	   <!-- END CHAT TOGGLER -->
       </div> 
@@ -423,7 +426,20 @@
     <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
     <div class="content" style="background-color: white;"> 
       	<div class="row" >
-      		<div id="mapdiv" style="width: 100%; height: 600px;"></div>	
+            <div class="col-md-12">
+                <div class="grid simple">
+                    <div class="grid-title no-border">
+                        <h1>Impact of events <span class="semi-bold">on the World</span></h1>
+                        <div class="tools"> <a href="javascript:;" class="collapse"></a>  <a href="javascript:;" class="reload"></a> </div>
+                        <span>The size of the bubbles reflects the amount of impact and the colour of the bubble shows how positive (Green) or negative (Red) the imapct is.</span>
+                    </div>
+                    <div class="grid-body no-border">
+                        <div class="row">
+      		                <div id="mapdiv" style="width: 100%; height: 600px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
       	</div>
       	</div>
       	<div class="content" style="padding-top: 20px;">
@@ -790,7 +806,7 @@
                             </div>
                             <div class="grid-body no-border">
                                    <h3>Trend  <span class="semi-bold">on a Timeline</span></h3>
-                                    <p>The trend of how much global events are being mentioned in articles in different sources.
+                                    <p>The trend of how much global events are being mentioned in articles from different sources.
 									</p>
                                     <br>
                                     	<div id="trendchartdiv" style="width:100%; height:400px;"></div>
