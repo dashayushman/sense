@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<meta charset="utf-8" />
+<title>MOM | Event Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta content="" name="description" />
+<meta content="" name="author" />
+
+
+<link rel="shortcut icon" href="assets/img/madm_fav_ico.png" />
+
+<link href="assets/plugins/pace/pace-theme-flash.css" rel="stylesheet" type="text/css" media="screen"/>
+<!-- BEGIN CORE CSS FRAMEWORK -->
+<link href="assets/plugins/boostrapv3/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+<link href="assets/plugins/boostrapv3/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
+<link href="assets/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="assets/css/animate.min.css" rel="stylesheet" type="text/css"/>
+<link href="assets/plugins/jquery-scrollbar/jquery.scrollbar.css" rel="stylesheet" type="text/css"/>
+<!-- END CORE CSS FRAMEWORK -->
+
+<!-- BEGIN CSS TEMPLATE -->
+<link href="assets/css/themes/simple/style.css" rel="stylesheet" type="text/css"/>
+<link href="assets/css/themes/simple/responsive.css" rel="stylesheet" type="text/css"/>
+<link href="assets/css/custom-icon-set.css" rel="stylesheet" type="text/css"/>
+<!-- END CSS TEMPLATE -->
+<link rel="stylesheet" href="assets/plugins/ammap/ammap.css" type="text/css">
+<link rel="stylesheet" href="assets/plugins/ammap/plugins/export/export.css" type="text/css">
+<script src="assets/plugins/ammap/ammap.js" type="text/javascript"></script>
+<!-- map file should be included after ammap.js -->
+<script src="assets/plugins/ammap/maps/js/worldLow.js" type="text/javascript"></script>
+<script src="assets/plugins/ammap/themes/dark.js" type="text/javascript"></script>
+<script src="assets/js/event_dashboard_maps.js" type="text/javascript"></script>
+
+<script src="assets/plugins/ammap/plugins/export/export.js" type="text/javascript"></script>
+
+<script src="assets/plugins/amcharts/amcharts.js" type="text/javascript"></script>
+<script src="assets/plugins/amcharts/pie.js" type="text/javascript"></script>
+<script src="assets/plugins/amcharts/serial.js" type="text/javascript"></script>
+
+<script type="text/javascript" src="assets/plugins/vis/vis.js"></script>
+<link type="text/css" rel="stylesheet" href="assets/plugins/vis/vis.css">
+<style type="text/css">
+    #mynetwork {
+      width: 100%;
+      height: 600px;
+    }
+  </style>
+
+<script src="assets/plugins/vis/datasources/WorldCup2014.js"></script>
+<script>
+   AmCharts.makeChart("chartdiv", {
+        "type": "pie",
+        "color":"black",
+        "export": {
+		    "enabled": true
+		  },
+        "dataProvider": [{
+            "source": "Web",
+                "n_mentions": 100456
+        }, {
+            "source": "Citatio only",
+                "n_mentions": 99434
+        }, {
+            "source": "Core",
+                "n_mentions": 26439
+        }, {
+            "source": "DTIC",
+                "n_mentions": 18399
+        }, {
+            "source": "JSTOR",
+                "n_mentions": 2346
+        }, {
+            "source": "Non Textual Source",
+                "n_mentions": 93763
+        }],
+        "titleField": "source",
+        "valueField": "n_mentions",
+        "balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
+        "legend": {
+            "align": "center",
+            "markerType": "circle",
+            "color":"black"
+        }
+
+    });
+</script>
+
+<script>
+
+            // this chart is exactly the same as in areaStacked.html, only made using JSON except JavaScript API
+
+            var trendchartData = [{
+               "year": 2000,
+                   "Web": 1587,
+                   "citationonly": 650,
+                   "core": 121,
+                   "dtic": 1587,
+                   "jstor": 650,
+                   "nts": 121
+           }, {
+               "year": 1995,
+                   "Web": 15845,
+                   "citationonly": 6503,
+                   "core": 1212,
+                   "dtic": 1523,
+                   "jstor": 124,
+                   "nts": 4244
+           }, {
+               "year": 1996,
+                   "Web": 1587234,
+                   "citationonly": 6512340,
+                   "core": 122131,
+                   "dtic": 1581347,
+                   "jstor": 651340,
+                   "nts": 11421
+           }, {
+               "year": 1997,
+                   "Web": 1241587,
+                   "citationonly": 324650,
+                   "core": 113421,
+                   "dtic": 41671587,
+                   "jstor": 65450,
+                   "nts": 135621
+           }, {
+               "year": 1998,
+                   "Web": 338087,
+                   "citationonly": 655850,
+                   "core": 18158158,
+                   "dtic": 15711,
+                   "jstor": 540,
+                   "nts": 121
+           }, {
+               "year": 1999,
+                   "Web": 15187,
+                   "citationonly": 5650,
+                   "core": 7121,
+                   "dtic": 51587,
+                   "jstor": 7650,
+                   "nts": 8121
+           }, {
+               "year": 2000,
+                   "Web": 221587,
+                   "citationonly": 257650,
+                   "core": 257121,
+                   "dtic": 172587,
+                   "jstor": 824650,
+                   "nts": 82581
+           }, {
+               "year": 2001,
+                   "Web": 542257787,
+                   "citationonly": 2575270,
+                   "core": 427572,
+                   "dtic": 427527,
+                   "jstor": 245757,
+                   "nts": 1758983
+           }, {
+               "year": 2002,
+                   "Web": 82571158,
+                   "citationonly": 754455,
+                   "core": 5465411,
+                   "dtic": 6217872,
+                   "jstor": 547517,
+                   "nts": 157541
+           }, {
+               "year": 2003,
+                   "Web": 15717715,
+                   "citationonly": 14756157,
+                   "core": 1571571,
+                   "dtic": 1575177,
+                   "jstor": 14717,
+                   "nts": 754171
+           }, {
+               "year": 2004,
+                   "Web": 1587256,
+                   "citationonly": 246550,
+                   "core": 14614,
+                   "dtic": 1346461,
+                   "jstor": 6156145,
+                   "nts": 423616
+           }, {
+               "year": 2005,
+                   "Web": 1587325,
+                   "citationonly": 6502353,
+                   "core": 123421,
+                   "dtic": 1583247,
+                   "jstor": 653240,
+                   "nts": 124321
+           }, {
+               "year": 2006,
+                   "Web": 695679,
+                   "citationonly": 65685,
+                   "core": 26582581,
+                   "dtic": 57637,
+                   "jstor": 365838,
+                   "nts": 468993
+           }, {
+               "year": 2007,
+                   "Web": 879936,
+                   "citationonly": 625888,
+                   "core": 8562828,
+                   "dtic": 86265,
+                   "jstor": 86652,
+                   "nts": 5896925
+           }, {
+               "year": 2008,
+                   "Web": 88925712,
+                   "citationonly": 47172,
+                   "core": 14578815,
+                   "dtic": 8181512,
+                   "jstor": 27817171,
+                   "nts": 27181828
+           }, {
+               "year": 2009,
+                   "Web": 826582,
+                   "citationonly": 825672,
+                   "core": 8652257,
+                   "dtic": 36827722,
+                   "jstor": 2872527,
+                   "nts": 86526256
+           }, {
+               "year": 2010,
+                   "Web": 256272561,
+                   "citationonly": 275625,
+                   "core": 2587625,
+                   "dtic": 7256576,
+                   "jstor": 1756512,
+                   "nts": 2561456
+           }, {
+               "year": 2011,
+                   "Web": 25745771,
+                   "citationonly": 257257,
+                   "core": 2757171,
+                   "dtic": 2571571,
+                   "jstor": 527215,
+                   "nts": 26586826
+           }, {
+               "year": 2012,
+                   "Web": 725725,
+                   "citationonly": 257772,
+                   "core": 257727,
+                   "dtic": 25725,
+                   "jstor": 57517272,
+                   "nts": 121
+           }];
+
+           AmCharts.makeChart("trendchartdiv", {
+               type: "serial",
+               color:"black",
+               export: {
+			    	"enabled": true
+			   },
+               dataProvider: trendchartData,
+               marginTop: 10,
+               categoryField: "year",
+               categoryAxis: {
+                   gridAlpha: 0.07,
+                   axisColor: "#DADADA",
+                   startOnAxis: true,
+                   guides: []
+               },
+               valueAxes: [{
+                   stackType: "regular",
+                   gridAlpha: 0.07,
+                   title: "Articles from different channels"
+               }],
+
+               graphs: [{
+                   type: "line",
+                   title: "Web",
+                   valueField: "Web",
+                   lineAlpha: 0,
+                   fillAlphas: 0.6,
+                   balloonText: "<span style='font-size:14px; color:#F05D5E;'>Web <b>[[value]]</b></span>"
+               }, {
+                   type: "line",
+                  title: "Citation Only",
+                   valueField: "citationonly",
+                   lineAlpha: 0,
+                   fillAlphas: 0.6,
+                   balloonText: "<span style='font-size:14px; color:#0F7173;'>Citation Only <b>[[value]]</b></span>"
+               }, {
+                   type: "line",
+                   title: "Core",
+                   valueField: "core",
+                   lineAlpha: 0,
+                   fillAlphas: 0.6,
+                   balloonText: "<span style='font-size:14px; color:#0000;'>Core <b>[[value]]</b></span>"
+               }, {
+                   type: "line",
+                   title: "DTIC",
+                   valueField: "dtic",
+                   lineAlpha: 0,
+                   fillAlphas: 0.6,
+                   balloonText: "<span style='font-size:14px; color:#272932;'>DTIC <b>[[value]]</b></span>"
+               }, {
+                   type: "line",
+                   title: "JSTOR",
+                   valueField: "jstor",
+                   lineAlpha: 0,
+                   fillAlphas: 0.6,
+                   balloonText: "<span style='font-size:14px; color:#D8A47F;'>JSTOR <b>[[value]]</b></span>"
+               }, {
+                   type: "line",
+                   title: "Non Textual Sources",
+                   valueField: "nts",
+                   lineAlpha: 0,
+                   fillAlphas: 0.6,
+                   balloonText: "<span style='font-size:14px; color:#72E1D1;'>Non Textual Sources <b>[[value]]</b></span>"
+               }],
+               legend: {
+                   position: "bottom",
+                   color:"black",
+                   valueText: "[[value]]",
+                   valueWidth: 100,
+                   valueAlign: "left",
+                   equalWidths: false,
+                   periodValueText: "total: [[value.sum]]"
+               },
+               chartCursor: {
+                   cursorAlpha: 0
+               },
+               chartScrollbar: {
+                   color: "FFFFFF"
+               }
+
+           });
+
+        </script>
+  <script>
+            var histchart;
+
+            var histchartData = [
+                {
+                    "range": "-100 to -80",
+                    "tone": 9,
+                    "color": "#FF0F00"
+                },
+                {
+                    "range": "-80 to -60",
+                    "tone": 43,
+                    "color": "#FF6600"
+                },
+                {
+                    "range": "-60 to -40",
+                    "tone": 134,
+                    "color": "#FF9E01"
+                },
+                {
+                    "range": "-40 to -20",
+                    "tone": 18,
+                    "color": "#FCD202"
+                },
+                {
+                    "range": "-20 to 0",
+                    "tone": 23,
+                    "color": "#F8FF01"
+                },
+                {
+                    "range": "0 to 20",
+                    "tone": 56,
+                    "color": "#B0DE09"
+                },
+                {
+                    "range": "20 to 40",
+                    "tone": 78,
+                    "color": "#04D215"
+                },
+                {
+                    "range": "40 to 60",
+                    "tone": 2,
+                    "color": "#0D8ECF"
+                },
+                {
+                    "range": "60 to 80",
+                    "tone": 7,
+                    "color": "#0D52D1"
+                },
+                {
+                    "range": "80 to 100",
+                    "tone": 1,
+                    "color": "#2A0CD0"
+                }
+            ];
+
+
+            AmCharts.ready(function () {
+                // SERIAL CHART
+                histchart = new AmCharts.AmSerialChart();
+                histchart.dataProvider = histchartData;
+                histchart.categoryField = "range";
+                histchart.startDuration = 1;
+                histchart.color = "black"
+                histchart.export = {
+                                      "enabled": true
+                                   };
+                // AXES
+                // category
+                var categoryAxis = histchart.categoryAxis;
+                categoryAxis.labelRotation = 45; // this line makes category values to be rotated
+                categoryAxis.gridAlpha = 0;
+                categoryAxis.fillAlpha = 1;
+                categoryAxis.fillColor = "#FAFAFA";
+                categoryAxis.gridPosition = "start";
+
+                // value
+                var valueAxis = new AmCharts.ValueAxis();
+                valueAxis.dashLength = 5;
+                valueAxis.title = "Tone Histogram";
+                valueAxis.axisAlpha = 0;
+                histchart.addValueAxis(valueAxis);
+
+                // GRAPH
+                var graph = new AmCharts.AmGraph();
+                graph.valueField = "tone";
+                graph.colorField = "color";
+                graph.balloonText = "<b>[[category]]: [[value]]</b>";
+                graph.type = "column";
+                graph.lineAlpha = 0;
+                graph.fillAlphas = 1;
+                histchart.addGraph(graph);
+
+                // CURSOR
+                var chartCursor = new AmCharts.ChartCursor();
+                chartCursor.cursorAlpha = 0;
+                chartCursor.zoomable = false;
+                chartCursor.categoryBalloonEnabled = false;
+                histchart.addChartCursor(chartCursor);
+
+                histchart.creditsPosition = "top-right";
+
+                // WRITE
+                histchart.write("histchartdiv");
+            });
+        </script>
+</head>
+<!-- END HEAD -->
+
+<!-- BEGIN BODY -->
+<body class="">
+<!-- BEGIN HEADER -->
+<div class="header navbar navbar-inverse "> 
+  <!-- BEGIN TOP NAVIGATION BAR -->
+  <div class="navbar-inner">
+	<div class="header-seperation"> 
+		<ul class="nav pull-left notifcation-center" id="main-menu-toggle-wrapper" style="display:none">	
+		 <li class="dropdown"> <a id="main-menu-toggle" href="#main-menu"  class="" > <div class="iconset top-menu-toggle-white"></div> </a> </li>		 
+		</ul>
+      <!-- BEGIN LOGO -->	
+      <a href="index.html"><img src="assets/img/logo_dark_footer.png" class="logo" alt=""  data-src="assets/img/logo_dark_footer.png" data-src-retina="assets/img/logo_dark_footer.png" width="180" height="50"/ style="margin: 5px 5px;"></a>
+      <!-- END LOGO --> 
+      
+      </div>
+      <!-- END RESPONSIVE MENU TOGGLER --> 
+      <div class="header-quick-nav" > 
+      <!-- BEGIN TOP NAVIGATION MENU -->
+	  <div class="pull-left"> 
+        <ul class="nav quick-section">
+          <li class="quicklinks"> <a href="#" class="" id="layout-condensed-toggle" >
+            <div class="iconset top-menu-toggle-dark"></div>
+            </a> </li>
+        </ul>
+        <ul class="nav quick-section">
+			<li class="m-r-10 input-prepend inside search-form no-boarder">
+				<span class="add-on"> <span class="iconset top-search"></span></span>
+				 <input name="" type="text"  class="no-boarder " placeholder="Search Dashboard" style="width:250px;">
+			</li>
+		  </ul>
+	  </div>
+	 <!-- END TOP NAVIGATION MENU -->
+	 <!-- BEGIN CHAT TOGGLER -->
+      <div class="pull-right"> 
+		
+		 <ul class="nav quick-section ">
+			<li class="quicklinks"> 
+				<a data-toggle="dropdown" class="dropdown-toggle  pull-right " href="#" id="user-options">						
+					<div class="iconset top-settings-dark "></div> 	
+				</a>
+				<ul class="dropdown-menu  pull-right" role="menu" aria-labelledby="user-options">
+                  <li><a href="#"> Crawler Settings</a>
+                  </li>
+                  <li><a href="#"> Documentation</a>
+                  </li>
+                  <li><a href="#"> Data Status Check</a>
+                  </li>
+                  <li class="divider"></li>                
+                  <li><a href="#"><i class="fa fa-power-off"></i>&nbsp;&nbsp;Log Out</a></li>
+               </ul>
+			</li>
+		</ul>
+      </div>
+	   <!-- END CHAT TOGGLER -->
+      </div> 
+      <!-- END TOP NAVIGATION MENU --> 
+   
+  </div>
+  <!-- END TOP NAVIGATION BAR --> 
+</div>
+<!-- END HEADER -->
+<!-- BEGIN CONTAINER -->
+<div class="page-container row-fluid">
+  <!-- BEGIN SIDEBAR -->
+  <div class="page-sidebar" id="main-menu"> 
+  <!-- BEGIN MINI-PROFILE -->
+   <div class="page-sidebar-wrapper scrollbar-dynamic" id="main-menu-wrapper"> 
+   
+  <!-- END MINI-PROFILE -->
+   
+   <!-- BEGIN SIDEBAR MENU -->	
+    <ul>	
+      <li class="start active " style="padding-top: 10px;"> <a href="#"> <i class="fa fa-home"></i> <span class="title">Global Dashboard</span> <span class="selected"></span></a> </li>  
+      <li class="" > <a href="#"> <i class="fa fa-flag"></i> <span class="title">Event Dashboard</span> <span class="selected"></span></a> </li> 
+      <li class=""> <a href="#"> <i class="fa fa-map-marker"></i> <span class="title">Geo Dashboard</span> <span class="selected"></span></a> </li> 
+       
+	  <li class=""> <a href="#"> <i class="fa fa-bolt"></i>  <span class="title">Events</span></a></li>      
+	  <li class=""> <a href="#"> <i class="fa fa-globe"></i>  <span class="title">Globe</span></a></li>     
+	  <li class=""> <a href="#"> <i class="fa fa-clock-o"></i>  <span class="title">Timeline</span></a></li>   
+       
+    </ul>
+    <!-- END SIDEBAR MENU --> 
+  </div>
+  </div>
+  <a href="#" class="scrollup">Scroll</a>
+  
+  <!-- END SIDEBAR --> 
+  <!-- BEGIN PAGE CONTAINER-->
+  <div class="page-content"> 
+    <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+    <div class="content" > 
+    <div class="page-title"> <i class="icon-custom-left"></i>
+      <h3>Event <span class="semi-bold">Dashboard</span></h3>
+    </div>
+      	<div class="row" >
+        <div class="col-md-4">
+          <div class="grid simple">
+            <div class="grid-title">
+              <h4>Event <span class="semi-bold">Overview</span></h4>
+              <div class="tools">
+                <a href="javascript:;" class="collapse"></a>
+                <a href="javascript:;" class="reload"></a>
+              </div>
+            </div>
+            <div class="grid-body">
+            <div class="row">
+                <div class="col-md-12">
+                  
+                  <p>Details about the event and various attributes.</p>
+                  <br>
+                  <table class="table table-hover no-more-tables">
+                          <thead>
+                              <tr>
+                                  <th class="bold">Attributes</th>
+                                  <th></th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr>
+                                  <td class="bold">ID</td>
+                                  <td class="bold text-success">EVENT03881</td>
+                              </tr>
+                              <tr>
+                                  <td class="bold">Date-Time</td>
+                                  <td class="bold text-success">9/09/2016-13:45</td>
+                              </tr>
+                              <tr>
+                                  <td class="bold">Event Type</td>
+                                  <td class="bold text-success">Appeal for judicial cooperation</td>
+                              </tr>
+                              <tr>
+                                  <td class="bold">Event Class</td>
+                                  <td class="bold text-success">Verbal Cooperation</td>
+                              </tr>
+                              <tr>
+                                  <td class="bold">Number of Articles</td>
+                                  <td class="bold text-success">3245</td>
+                              </tr>
+                               <tr>
+                                  <td class="bold">Average Tone</td>
+                                  <td class="bold text-success">35.45</td>
+                              </tr>
+                              <tr>
+                                  <td class="bold">Source URL</td>
+                                  <td class="bold text-success">www.bbcnews.com</td>
+                              </tr>
+                              
+                          </tbody>
+                      </table>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+          <div class="col-md-5">
+          <div class="grid simple">
+            <div class="grid-title">
+              <h4>Actors <span class="semi-bold">Involved</span></h4>
+              <div class="tools">
+                <a href="javascript:;" class="collapse"></a>
+                <a href="javascript:;" class="reload"></a>
+              </div>
+            </div>
+            <div class="grid-body">
+            <div class="row">
+                <div class="col-md-6">
+                  <h3>Actor <span class="semi-bold">1</span></h3>
+                  <p>Details about the first person involved in the event.</p>
+                  <br>
+                  <table class="table table-hover no-more-tables">
+                          <thead>
+                              <tr>
+                                  <th class="bold">Attributes</th>
+                                  <th></th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr>
+                                  <td class="bold">Name</td>
+                                  <td class="bold text-success">Mark Jacob</td>
+                              </tr>
+                              <tr>
+                                  <td class="bold">Geography Type</td>
+                                  <td class="bold text-success">Country</td>
+                              </tr>
+                              <tr>
+                                  <td class="bold">Geography Name</td>
+                                  <td class="bold text-success">Germany</td>
+                              </tr>
+                              <tr>
+                                  <td class="bold">Known Group</td>
+                                  <td class="bold text-success">Amal Militia</td>
+                              </tr>
+                              <tr>
+                                  <td class="bold">Ethenicity</td>
+                                  <td class="bold text-success">Acholi</td>
+                              </tr>
+                              <tr>
+                                  <td class="bold">Relegion</td>
+                                  <td class="bold text-success">Confucianism</td>
+                              </tr>
+                               <tr>
+                                  <td class="bold">Type/Role</td>
+                                  <td class="bold text-success">Health</td>
+                              </tr>
+                          </tbody>
+                      </table>
+                </div>
+                <div class="col-md-6">
+                  <h3>Actor <span class="semi-bold">2</span></h3>
+                  <p>Details about the second person involved in the event.</p>
+                  <br>
+                  <table class="table table-hover no-more-tables">
+                          <thead>
+                              <tr>
+                                  <th class="bold">Attributes</th>
+                                  <th></th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr>
+                                  <td class="bold">Name</td>
+                                  <td class="bold text-success">Mark Jacob</td>
+                              </tr>
+                             <tr>
+                                  <td class="bold">Geography Type</td>
+                                  <td class="bold text-success">Country</td>
+                              </tr>
+                              <tr>
+                                  <td class="bold">Geography Name</td>
+                                  <td class="bold text-success">Germany</td>
+                              </tr>
+                              <tr>
+                                  <td class="bold">Known Group</td>
+                                  <td class="bold text-success">Amal Militia</td>
+                              </tr>
+                              <tr>
+                                  <td class="bold">Ethenicity</td>
+                                  <td class="bold text-success">Acholi</td>
+                              </tr>
+                              <tr>
+                                  <td class="bold">Relegion</td>
+                                  <td class="bold text-success">Confucianism</td>
+                              </tr>
+                               <tr>
+                                  <td class="bold">Type/Role</td>
+                                  <td class="bold text-success">Health</td>
+                              </tr>
+                          </tbody>
+                      </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+        <div class="grid simple">
+          <div class="grid-title">
+              <h4>Event - Actor <span class="semi-bold">Localtion</span></h4>
+              <div class="tools">
+                <a href="javascript:;" class="collapse"></a>
+                <a href="javascript:;" class="reload"></a>
+              </div>
+            </div>
+            <div class="grid-body">
+      	      <!--<div id="mapdiv" style="width: 100%; height: 300px;"></div>	-->
+              <div id="mapdiv2" style="width: 100%; background-color:#eeeeee; height: 200px;"></div>
+            </div>
+        </div>
+        </div>
+      	</div>
+      	</div>
+      	
+		<div class="row">
+        <div class="col-md-4">
+          <div class="grid simple">
+            <div class="grid-title no-border">
+              <h4>Event  <span class="semi-bold">Overview</span></h4>
+              <div class="tools"> <a href="javascript:;" class="collapse"></a>  <a href="javascript:;" class="reload"></a> </div>
+            </div>
+            <div class="grid-body no-border">
+              <div class="row">
+                <div class="col-md-12 col-vlg-3 col-sm-6">
+                <h3>Mentions <span class="semi-bold"> Stats</span></h3>
+                  <br>
+                  <div class="tiles green m-b-10">
+                          <div class="tiles-body">
+                    <div class="controller"> <a href="javascript:;" class="reload"></a> <a href="javascript:;" class="remove"></a> </div>
+
+                            <div class="tiles-title text-black">OVERALL MENTIONS </div>
+                           <div class="widget-stats">
+                                  <div class="wrapper transparent"> 
+                        <span class="item-title">Total Mentions</span> <span class="item-count animate-number semi-bold" data-value="2415" data-animation-duration="700">0</span>
+                        </div>
+                                </div>
+                                <div class="widget-stats">
+                                  <div class="wrapper transparent">
+                        <span class="item-title">Today</span> <span class="item-count animate-number semi-bold" data-value="751" data-animation-duration="700">0</span> 
+                        </div>
+                                </div>
+                                <div class="widget-stats ">
+                                  <div class="wrapper last"> 
+                        <span class="item-title">This Month</span> <span class="item-count animate-number semi-bold" data-value="1547" data-animation-duration="700">0</span> 
+                       </div>
+                                </div>
+                                <div class="progress transparent progress-small no-radius m-t-20" style="width:90%">
+                                  <div class="progress-bar progress-bar-white animate-progress-bar" data-percentage="10.0%" ></div>
+                                </div>
+                                <div class="description"> <span class="text-white mini-description ">10% higher <span class="blend">than last month</span><button type="button" class="btn btn-white btn-xs btn-mini" style="margin-left: 20px;">View All</button></span></div>
+                    </div>      
+                  </div>  
+  
+
+              </div>
+
+              
+              
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="grid simple">
+          <div class="grid-title no-border">
+              <h4>Event  Impact <span class="semi-bold">Overview</span></h4>
+              <div class="tools"> <a href="javascript:;" class="collapse"></a>  <a href="javascript:;" class="reload"></a> </div>
+            </div>
+            <div class="grid-body no-border">
+            <div class="col-md-12 m-b-10 ">
+              <h3><span class="semi-bold">Impact</span> and <span class="semi-bold">Tone</span></h3>
+                <div class="col-md-8">
+                <div class="row tiles-container">
+                  <div class="col-md-6 col-sm-6 tiles red" style="height:200px">
+                    <div class="overlayer top-right">
+                      <div class="p-r-15 p-t-15"><h3 class="bold text-white">Goldstein's Scale</h3></div>
+                    </div>
+                    <div class="overlayer bottom-left">
+                      <div class="p-l-15 p-b-15">
+                        <h2 class="text-white">-9.2</h2>
+                        <span class="text-white">Value ranges from -10 to 10 and</span>
+                        <span class="text-white mini-description ">Color ranges from Red to Green</span> </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-sm-6 tiles" style="height:200px;background-color:#007704">
+                    <div class="overlayer top-right">
+                      <div class="p-r-15 p-t-15"> <h3 class="bold text-white">Average Tone</h3></div>
+                    </div>
+                    <div class="overlayer bottom-left">
+                      <div class="p-l-15 p-b-15">
+                        <h2 class="text-white">98</h2>
+                        <span class="text-white">Value ranges from -100 to 100 and</span>
+                        <span class="text-white mini-description ">Color ranges from Red to Green</span> </div>
+                    </div>
+                  </div>
+                </div>
+                
+                </div>
+                <div class="col-md-2 m-b-10 ">
+                <div class="col-md-6">
+                <img src="assets/img/col_scale.png" alt="" class="image-responsive-width xs-image-responsive-width" style="height: 210px;width: 210px;">
+                
+                </div>
+              </div>
+              </div>
+              </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="grid simple ">
+            <div class="grid-title no-border">
+              <h4>Top 10 Mentions <span class="semi-bold">By Confidence</span></h4>
+              <div class="tools"> <a href="javascript:;" class="collapse"></a>  <a href="javascript:;" class="reload"></a>  </div>
+            </div>
+            <div class="grid-body no-border">
+              <div class="row">
+                <div class="col-md-12 col-vlg-6 m-b-10 ">
+            <div class="tiles white">
+              <div class="row">
+                
+                <h3>Top 10 <span class="semi-bold">High Confidence</span> Mentions</h3>
+                    <p style="margin-right: 20px;">This is a list of top 10 high confidence mentions in the selected duration</p>
+                    <br>
+                <div class="clearfix"></div>
+              </div>
+              <table class="table no-more-tables m-t-20 m-l-20 m-b-30" style="margin-left: 0px;margin-top: 0px;">
+                <thead >
+                  <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Date-Time</th>
+                    <th>Confidence (%)</th>
+                    <th>Tone</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="v-align-middle bold text-success">BBC</td>
+                    <td class="v-align-middle"><span class="bold">Web</span> </td>
+                    <td><span class="muted bold text-success">9/08/2016-12:36</span> </td>
+                    <td class="v-align-middle bold text-error">79</td>
+                    <td class="v-align-middle bold">-67</td>
+                  </tr>
+                  <tr>
+                    <td class="v-align-middle bold text-success">BBC</td>
+                    <td class="v-align-middle"><span class="bold">Web</span> </td>
+                    <td><span class="muted bold text-success">9/08/2016-12:36</span> </td>
+                    <td class="v-align-middle bold text-error">79</td>
+                    <td class="v-align-middle bold">-67</td>
+                  </tr>
+                  <tr>
+                    <td class="v-align-middle bold text-success">BBC</td>
+                    <td class="v-align-middle"><span class="bold">Web</span> </td>
+                    <td><span class="muted bold text-success">9/08/2016-12:36</span> </td>
+                    <td class="v-align-middle bold text-error">79</td>
+                    <td class="v-align-middle bold">-67</td>
+                  </tr>
+                  <tr>
+                    <td class="v-align-middle bold text-success">BBC</td>
+                    <td class="v-align-middle"><span class="bold">Web</span> </td>
+                    <td><span class="muted bold text-success">9/08/2016-12:36</span> </td>
+                    <td class="v-align-middle bold text-error">79</td>
+                    <td class="v-align-middle bold">-67</td>
+                  </tr>
+                  <tr>
+                    <td class="v-align-middle bold text-success">BBC</td>
+                    <td class="v-align-middle"><span class="bold">Web</span> </td>
+                    <td><span class="muted bold text-success">9/08/2016-12:36</span> </td>
+                    <td class="v-align-middle bold text-error">79</td>
+                    <td class="v-align-middle bold">-67</td>
+                  </tr>
+                  <tr>
+                    <td class="v-align-middle bold text-success">BBC</td>
+                    <td class="v-align-middle"><span class="bold">Web</span> </td>
+                    <td><span class="muted bold text-success">9/08/2016-12:36</span> </td>
+                    <td class="v-align-middle bold text-error">79</td>
+                    <td class="v-align-middle bold">-67</td>
+                  </tr>
+                  <tr>
+                    <td class="v-align-middle bold text-success">BBC</td>
+                    <td class="v-align-middle"><span class="bold">Web</span> </td>
+                    <td><span class="muted bold text-success">9/08/2016-12:36</span> </td>
+                    <td class="v-align-middle bold text-error">79</td>
+                    <td class="v-align-middle bold">-67</td>
+                  </tr>
+                  <tr>
+                    <td class="v-align-middle bold text-success">BBC</td>
+                    <td class="v-align-middle"><span class="bold">Web</span> </td>
+                    <td><span class="muted bold text-success">9/08/2016-12:36</span> </td>
+                    <td class="v-align-middle bold text-error">79</td>
+                    <td class="v-align-middle bold">-67</td>
+                  </tr>
+                  <tr>
+                   <td class="v-align-middle bold text-success">BBC</td>
+                    <td class="v-align-middle"><span class="bold">Web</span> </td>
+                    <td><span class="muted bold text-success">9/08/2016-12:36</span> </td>
+                    <td class="v-align-middle bold text-error">79</td>
+                    <td class="v-align-middle bold">-67</td>
+                  </tr>
+                  <tr>
+                   <td class="v-align-middle bold text-success">BBC</td>
+                    <td class="v-align-middle"><span class="bold">Web</span> </td>
+                    <td><span class="muted bold text-success">9/08/2016-12:36</span> </td>
+                    <td class="v-align-middle bold text-error">79</td>
+                    <td class="v-align-middle bold">-67</td>
+                  </tr>
+                </tbody>
+              </table>
+              <button type="button" class="btn btn-primary btn-sm btn-small">15 minutes</button>
+              <button type="button" class="btn btn-primary btn-sm btn-small">Today</button>
+              <button type="button" class="btn btn-primary btn-sm btn-small">Month</button>
+              <button type="button" class="btn btn-primary btn-sm btn-small">View All</button>
+            </div>
+        </div>
+               
+                
+              </div>
+
+              <div class="row">
+                <div class="col-md-12 col-vlg-6 m-b-10 " style="margin-top: 10px;">
+            <div class="tiles white">
+              <div class="row">
+                
+                <h3><span class="semi-bold">Articles mentioned</span> per category</h3>
+                    <p style="margin-right: 20px;">Distribution of articles mentioned in different source categories as mentioned <span class="semi-bold">since 2011.</span></p>
+
+                    <br>
+                <div class="clearfix"></div>
+              </div>
+               <div id="chartdiv" style="width: 100%; height: 400px;" class="text-success"></div>
+            </div>
+        </div>
+               
+                
+              </div>
+            </div>
+          </div>
+        </div>
+
+         <div class="col-md-6">
+          <div class="grid simple ">
+            <div class="grid-title no-border">
+              <h4>Top Insights - <span class="semi-bold">Events</span></h4>
+              <div class="tools"> <a href="javascript:;" class="collapse"></a>  <a href="javascript:;" class="reload"></a>  </div>
+            </div>
+            <div class="grid-body no-border">
+              <div class="row">
+              
+               <div class="col-md-12">
+                  <div class="tiles white">
+              <div class="row">
+                
+                <h3>Top 10 <span class="semi-bold">Similar Events</span> </h3>
+                    <p style="margin-right: 20px;">This is a list of top 10 similar events in the selected duration.</p>
+                    <br>
+                <div class="clearfix"></div>
+              </div>
+              <table class="table no-more-tables m-t-20 m-l-20 m-b-30" style="margin-left: 0px;margin-top: 0px;">
+                <thead >
+                  <tr>
+                    <th style="width:9%">Event Type</th>
+                    <th style="width:5%">Actor1</th>
+                    <th style="width:10%">Actor1 Geo</th>
+                    <th style="width:6%">Actor2</th>
+                    <th style="width:15%">Actor2 Geo</th>
+                    <th style="width:1%"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="v-align-middle bold text-success">MAKE PUBLIC STATEMENT</td>
+                    <td class="v-align-middle"><span class="muted bold text-info">Police forces</span> </td>
+                    <td><span class="bold text-info">Baghdad</span> </td>
+                    <td class="v-align-middle"><span class="bold">Judiciary</span> </td>
+                    <td><span class="bold">Central Africa</span> </td>
+                    <td class="v-align-middle"><button type="button" class="btn btn-primary btn-sm btn-small">view</button></td>
+                  </tr>
+                  <tr>
+                    <td class="v-align-middle bold text-success">Appeal for judicial cooperation</td>
+                    <td class="v-align-middle"><span class="muted bold text-info">Political Opposition</span> </td>
+                    <td><span class="bold text-info">Eastern Africa</span> </td>
+                    <td class="v-align-middle"><span class="bold">Human Rights</span> </td>
+                    <td><span class="bold">North Africa</span> </td>
+                     <td class="v-align-middle"><button type="button" class="btn btn-primary btn-sm btn-small">view</button></td>
+                  </tr>
+                  <tr>
+                    <td class="v-align-middle bold text-success">Appeal to others to engage in or accept mediation</td>
+                    <td class="v-align-middle"><span class="muted bold text-info">Radical</span> </td>
+                    <td><span class="bold text-info">Middle East</span> </td>
+                    <td class="v-align-middle"><span class="bold">Unidentified State Actor</span> </td>
+                    <td><span class="bold">Middle East</span> </td>
+                    <td class="v-align-middle"><button type="button" class="btn btn-primary btn-sm btn-small">view</button></td>
+                  </tr>
+                  <tr>
+                    <td class="v-align-middle bold text-success">MAKE PUBLIC STATEMENT</td>
+                    <td class="v-align-middle"><span class="muted bold text-info">Police forces</span> </td>
+                    <td><span class="bold text-info">Baghdad</span> </td>
+                    <td class="v-align-middle"><span class="bold">Judiciary</span> </td>
+                    <td><span class="bold">Central Africa</span> </td>
+                    <td class="v-align-middle"><button type="button" class="btn btn-primary btn-sm btn-small">view</button></td>
+                  </tr>
+                  <tr>
+                    <td class="v-align-middle bold text-success">Appeal for judicial cooperation</td>
+                    <td class="v-align-middle"><span class="muted bold text-info">Political Opposition</span> </td>
+                    <td><span class="bold text-info">Eastern Africa</span> </td>
+                    <td class="v-align-middle"><span class="bold">Human Rights</span> </td>
+                    <td><span class="bold">North Africa</span> </td>
+                    <td class="v-align-middle"><button type="button" class="btn btn-primary btn-sm btn-small">view</button></td>
+                  </tr>
+                  <tr>
+                    <td class="v-align-middle bold text-success">Appeal to others to engage in or accept mediation</td>
+                    <td class="v-align-middle"><span class="muted bold text-info">Radical</span> </td>
+                    <td><span class="bold text-info">Middle East</span> </td>
+                    <td class="v-align-middle"><span class="bold">Unidentified State Actor</span> </td>
+                    <td><span class="bold">Middle East</span> </td>
+                    <td class="v-align-middle"><button type="button" class="btn btn-primary btn-sm btn-small">view</button></td>
+                  </tr>
+                  <tr>
+                    <td class="v-align-middle bold text-success">MAKE PUBLIC STATEMENT</td>
+                    <td class="v-align-middle"><span class="muted bold text-info">Police forces</span> </td>
+                    <td><span class="bold text-info">Baghdad</span> </td>
+                    <td class="v-align-middle"><span class="bold">Judiciary</span> </td>
+                    <td><span class="bold">Central Africa</span> </td>
+                    <td class="v-align-middle"><button type="button" class="btn btn-primary btn-sm btn-small">view</button></td>
+                  </tr>
+                  <tr>
+                    <td class="v-align-middle bold text-success">Appeal for judicial cooperation</td>
+                    <td class="v-align-middle"><span class="muted bold text-info">Political Opposition</span> </td>
+                    <td><span class="bold text-info">Eastern Africa</span> </td>
+                    <td class="v-align-middle"><span class="bold">Human Rights</span> </td>
+                    <td><span class="bold">North Africa</span> </td>
+                    <td class="v-align-middle"><button type="button" class="btn btn-primary btn-sm btn-small">view</button></td>
+                  </tr>
+                  <tr>
+                    <td class="v-align-middle bold text-success">Appeal to others to engage in or accept mediation</td>
+                    <td class="v-align-middle"><span class="muted bold text-info">Radical</span> </td>
+                    <td><span class="bold text-info">Middle East</span> </td>
+                    <td class="v-align-middle"><span class="bold">Unidentified State Actor</span> </td>
+                    <td><span class="bold">Middle East</span> </td>
+                    <td class="v-align-middle"><button type="button" class="btn btn-primary btn-sm btn-small">view</button></td>
+                  </tr>
+                  <tr>
+                    <td class="v-align-middle bold text-success">Appeal to others to engage in or accept mediation</td>
+                    <td class="v-align-middle"><span class="muted bold text-info">Radical</span> </td>
+                    <td><span class="bold text-info">Middle East</span> </td>
+                    <td class="v-align-middle"><span class="bold">Unidentified State Actor</span> </td>
+                    <td><span class="bold">Middle East</span> </td>
+                    <td class="v-align-middle"><button type="button" class="btn btn-primary btn-sm btn-small">view</button></td>
+                  </tr>
+                </tbody>
+              </table>
+              <button type="button" class="btn btn-primary btn-sm btn-small">15 minutes</button>
+              <button type="button" class="btn btn-primary btn-sm btn-small">Today</button>
+              <button type="button" class="btn btn-primary btn-sm btn-small">Month</button>
+              <button type="button" class="btn btn-primary btn-sm btn-small">View All</button>
+            </div>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+	<div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="grid simple ">
+                            <div class="grid-title no-border">
+                                	<h4>Mentions <span class="semi-bold"></span></h4>
+                                <div class="tools">	<a href="javascript:;" class="collapse"></a>
+									<a href="javascript:;" class="reload"></a>
+                                </div>
+                            </div>
+                            <div class="grid-body no-border">
+                                   <h3>Trend  <span class="semi-bold">on a Timeline</span></h3>
+                                    <p>The trend of how much this events is being mentioned in articles in different sources.
+									</p>
+                                    <br>
+                                    	<div id="trendchartdiv" style="width:100%; height:400px;"></div>
+                                    <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">					
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="grid simple ">
+                            <div class="grid-title no-border">
+                                	<h4><span class="semi-bold">Tone</span></h4>
+                                <div class="tools">	<a href="javascript:;" class="collapse"></a>
+									<a href="javascript:;" class="reload"></a>
+                                </div>
+                            </div>
+                            <div class="grid-body no-border">
+									 <h3><span class="semi-bold">Tone </span> Histogram</h3>
+									 <p>
+									 A histogram of articles with different tones.
+									 <br>
+									 <div id="histchartdiv" style="width: 100%; height: 400px;"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+        </div>
+    </div>
+  </div>
+
+ </div>
+<!-- END CONTAINER --> 
+<!-- BEGIN CORE JS FRAMEWORK--> 
+<script src="assets/plugins/jquery-1.8.3.min.js" type="text/javascript"></script> 
+<script src="assets/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script> 
+<script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script> 
+<script src="assets/plugins/breakpoints.js" type="text/javascript"></script> 
+<script src="assets/plugins/jquery-unveil/jquery.unveil.min.js" type="text/javascript"></script> 
+<script src="assets/plugins/jquery-block-ui/jqueryblockui.js" type="text/javascript"></script> 
+<!-- END CORE JS FRAMEWORK --> 
+<!-- BEGIN PAGE LEVEL JS --> 	
+<script src="assets/plugins/jquery-scrollbar/jquery.scrollbar.min.js" type="text/javascript"></script>
+<script src="assets/plugins/pace/pace.min.js" type="text/javascript"></script>  
+<script src="assets/plugins/jquery-numberAnimate/jquery.animateNumbers.js" type="text/javascript"></script>
+<!-- END PAGE LEVEL PLUGINS --> 	
+
+<!-- BEGIN CORE TEMPLATE JS --> 
+<script src="assets/js/core.js" type="text/javascript"></script> 
+<script src="assets/js/chat.js" type="text/javascript"></script> 
+<script src="assets/js/demo.js" type="text/javascript"></script> 
+<script>
+if ($('#main-menu').hasClass('mini')) {
+    $('body').removeClass('grey');
+    $('body').removeClass('condense-menu');
+    $('#main-menu').removeClass('mini');
+    $('.page-content').removeClass('condensed');
+    $('.scrollup').removeClass('to-edge');
+    $('.header-seperation').show();
+    //Bug fix - In high resolution screen it leaves a white margin
+    $('.header-seperation').css('height', '61px');
+    $('.footer-widget').show();
+} else {
+    $('body').addClass('grey');
+    $('#main-menu').addClass('mini');
+    $('.page-content').addClass('condensed');
+    $('.scrollup').addClass('to-edge');
+    $('.header-seperation').hide();
+    $('.footer-widget').hide();
+    $('.main-menu-wrapper').scrollbar('destroy');
+}
+</script>
+
+<!-- END CORE TEMPLATE JS -->
+</body>
+</html>
