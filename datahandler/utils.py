@@ -9,6 +9,9 @@ from urllib2 import urlopen, URLError, HTTPError
 import zipfile
 import subprocess
 from difflib import unified_diff
+from datetime import datetime
+import time
+import datetime as dt
 
 class Utility:
   '''
@@ -264,7 +267,7 @@ class Utility:
 
     # Check if there are no pending files
     if pending_files.count() is 0:
-      return 0 #there are no pending files in db
+      return 0,0 #there are no pending files in db
 
     # set counter to check the number of inserts later
     insert_count = 0
@@ -394,9 +397,88 @@ class Utility:
         continue
     #check if all the pending files were imported successfully and return a status accordingly
     if insert_count == download_limit:
-      return 1 #all files were successfully downloaded and inserted
+      return 1,insert_count #all files were successfully downloaded and inserted
     else:
-      return 2 #Not all files were downloaded and inserted successfully
+      return 2,insert_count #Not all files were downloaded and inserted successfully
+
+  def update_metadate(self,db_name):
+    '''
+    Method to update meta information about the entire database and new updates
+    :param db_name: name of the database
+    :return: update status
+    '''
+    update_status = self.dal.update_metadata(db_name)
+    return update_status
+
+  def update_global_dashboard(self,db_name):
+    '''
+    Method to update the data for the global impact map in the global dashboard
+    :param db_name: name of the db
+    :return: status of update
+    '''
+    last_update_date_gdelt = self.dal.get_last_update_date(db_name)
+    if last_update_date_gdelt is None:
+      last_update_date_gdelt = self.get_present_date_time()
+
+    end_date = self.gdelt_date_to_datetime(last_update_date_gdelt)
+    start_date = self.datetime_to_gdelt_date(end_date - dt.timedelta(days=1))
+
+    map_update_status = self.dal.update_impact_map(db_name,start_date,last_update_date_gdelt)
+
+
+
+
+  def get_present_date_time(self,type="gdelt",d_type="int",timezone="utc"):
+    '''
+    Method to return present date and time in different formats
+    :param type: type of date (format) ["gdelt" , "default"]
+    :param d_type: data type of date to return ["int" , "string" , "timestamp"]
+    :param timezone: which timezone to consider ["utc" , "local"]
+    :return: datetime in the selected format and data type
+    '''
+    dt_now = None
+    if timezone == "utc":
+      dt_now = datetime.utcnow()
+    elif timezone == "local":
+      dt_now = datetime.now()
+    else:
+      dt_now = datetime.now()
+
+    if type == "gdelt":
+      if d_type == "string":
+        return  dt_now.strftime("%Y%m%d%H%M%S")
+      elif d_type == "int":
+        return int(dt_now.strftime("%Y%m%d%H%M%S"))
+      elif d_type == "tuple":
+        return dt_now
+      else:
+        return  dt_now.strftime("%Y%m%d%H%M%S")
+    elif type == "default":
+      if d_type == "string":
+        return dt_now.strftime("%Y-%m-%d %H:%M:%S")
+      elif d_type == "timestamp":
+        return time.mktime(time.strptime(dt_now.strftime("%Y%m%d%H%M%S"),"%Y%m%d%H%M%S"))
+      else:
+        return dt_now.strftime("%Y-%m-%d %H:%M:%S")
+    else:
+      return dt_now.strftime("%Y-%m-%d %H:%M:%S")
+
+
+  def gdelt_date_to_datetime(self,gdelt_date):
+    '''
+    Method to convert date in GDELT format to python datetime object
+    :param gdelt_date: date in gdelt format in integer
+    :return: corresponding datetime
+    '''
+    return datetime.strptime(str(gdelt_date), "%Y%m%d%H%M%S")
+
+  def datetime_to_gdelt_date(self,datetime):
+    '''
+    convert python datetime object to GDELT date
+    :param datetime: datetime object
+    :return: GDELT date in int
+    '''
+    return int(datetime.strftime("%Y%m%d%H%M%S"))
 
   def delete_files(self,files):
     '''

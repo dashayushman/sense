@@ -2,6 +2,9 @@ from pymongo import MongoClient
 import pymongo
 import logging
 import os
+import sys, traceback
+from datetime import datetime
+
 class Dal:
   '''
   Data access layer class for all db related operations in the application
@@ -161,6 +164,125 @@ class Dal:
     except Exception as e:
       self.log_error("DB update Error {0}".format(e.message))
       self.log_error("Exception occured while updating status of file in db")
+      return False
+
+  def update_impact_map(self,db_name,start_date,end_date):
+    '''
+    Method to update global impact map
+    :param db_name:
+    :param start_date:
+    :param end_date:
+    :return:
+    '''
+
+  def get_last_update_date(self,db_name):
+    '''
+    Method to get the last update date
+    :param db_name: db name
+    :return: last update date
+    '''
+    metadata = self.get_metadata(db_name)
+    if metadata is None:
+      self.log_error("Metadata could not be loaded. Look into the database for more details. " +
+                     "Will use default datetime as now.")
+      return None
+    return metadata["last_update_date"]
+
+  def get_metadata(self,db_name):
+    '''
+    Method to get metadata object from the metadata collection
+    :param db_name: name of the db
+    :return: metadata object
+    '''
+    self.log_info("Getting metadata object from db : " + db_name)
+    try:
+      db = self.client[db_name]
+      col_metadata = db["coll_metadata"]
+      return col_metadata.find_one()
+    except:
+      self.log_error("Exception occurred while getting metadata object from db\n"+
+            "Exception stacktrace: \n"+
+            traceback.format_exc())
+      return None
+
+  def update_metadata(self,db_name):
+    '''
+    Method to update the metadata collecton
+    :param db_name: name of the database
+    :return: update status
+    '''
+    self.log_info("Updating metadata after inserting new files into db")
+    try:
+      db = self.client[db_name]
+      col_metadata = db["coll_metadata"]
+      col_files = db["coll_file_urls"]
+      col_cameo_events = db["cameo_events"]
+      col_cameo_mentions = db["cameo_mentions"]
+      metadata = col_metadata.find_one()
+
+      if metadata is None:
+        self.log_info("Some unexpected error. There should always be a metadata object." +
+                      "Please check the metadata collection in the db.")
+        return False
+
+      latest_added_file = col_files.find().sort('timestamp', pymongo.DESCENDING).limit(1)
+
+      # updating the last update date in GDELT format
+      if latest_added_file is None:
+        metadata["last_update_date"] = self.util.get_present_date_time()
+      else:
+        metadata["last_update_date"] = latest_added_file["timestamp"]
+
+      # updating the number of old files
+      metadata["n_old_files"] = metadata["n_new_files"]
+
+      # updating the number of new files
+      col_files.find().count()
+      metadata["n_new_files"] = col_files.find().count()
+
+      # updating number of files inserted
+      metadata["n_files_inserted"] = metadata["n_new_files"] - metadata["n_old_files"]
+
+      # updating number of pending files
+      query = {"$or":[{"mentions.status":0},{"event.status":0}]}
+      metadata["n_pending_files"] = col_files.find(query).count()
+
+      # updating number of old events
+      metadata["n_old_events"] = metadata["n_new_events"]
+
+      # updating number of new events
+      metadata["n_new_events"] = col_cameo_events.find().count()
+
+      # updating number of events inserted
+      metadata["n_events_inserted"] = metadata["n_new_events"] - metadata["n_old_events"]
+
+      # updating number of old mentions
+      metadata["n_old_mentions"] = metadata["n_new_mentions"]
+
+      # updating number of new mentions
+      metadata["n_new_mentions"] = col_cameo_mentions.find().count()
+
+      # updating number of mentions inserted
+      metadata["n_mentions_inserted"] = metadata["n_new_mentions"] - metadata["n_old_mentions"]
+
+      #update metadata object
+      update_status = col_metadata.update({
+        '_id': metadata['_id']
+      },{
+        '$set': metadata
+      }, upsert=True)
+
+      if update_status["nModified"] == 1:
+        self.log_info("Successfully updated metadata after inserting new documents")
+        return True
+      else:
+        self.log_info("There was no change in metadata.")
+        return True
+
+    except:
+      print("Exception occurred while updating metadata after inserting new files\n"+
+            "Exception stacktrace: \n"+
+            traceback.format_exc())
       return False
 
   def log_info(self,msg):

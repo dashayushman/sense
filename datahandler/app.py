@@ -11,14 +11,7 @@ const = Constants()
 #application logger
 logger = None
 
-def main(argv):
-  print("parsing command line arguments")
-  const = Constants()
-  const = util.parse_cmdline_args(argv,const)
-
-  print("loading property file")
-  const = util.load_properties(const)
-
+def initialize(const):
   print("initializing logger")
   #util.initialize_logger(const.log_dir)
 
@@ -31,6 +24,7 @@ def main(argv):
     print("Could not initialize data access layer. Aborting!!!")
     sys.exit()
 
+def download_insert_new_files(const):
   #fetch current list of files
   print("getting current files from url")
   cache_file_path = os.path.join(const.working_dir,const.cache_file)
@@ -51,7 +45,7 @@ def main(argv):
 
   #download pending files with status 0
   print("downloading pending files with status 0 and inserting them into the database")
-  insert_status = util.download_and_insert_pending_files(const.db_name,
+  insert_status, n_files_inserted = util.download_and_insert_pending_files(const.db_name,
                                                          const.working_dir,
                                                          const.event_import_command,
                                                          const.mentions_import_command,
@@ -65,8 +59,32 @@ def main(argv):
     print("Not all files were downloaded and inserted successfully. Few files are still pending."+
           "please check logs for ")
 
+def update_metadata(const):
   # Update metadata after downloading new files
   print("Updating metadata after adding new files")
+  update_status = util.update_metadate(const.db_name)
+  if update_status is False:
+    print("Unable to update metadata due to exceptions. Look into it in the log files.")
+
+def update_global_dashboard(const):
+  # Update world impact map for the last 1 day since the last update
+  impact_map_update_status = util.update_global_impact_map(const.db_name)
+
+def main(argv):
+  print("parsing command line arguments")
+  const = Constants()
+  const = util.parse_cmdline_args(argv,const)
+
+  print("loading property file")
+  const = util.load_properties(const)
+
+  initialize(const)
+  download_insert_new_files(const)
+  update_metadata(const)
+  update_global_dashboard(const)
+
+
+
 
 def log_info(self,msg,logger=None):
   '''
