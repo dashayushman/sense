@@ -69,6 +69,8 @@ def update_metadata(const):
 def update_global_dashboard(const):
   # Update world impact map for the last 1 day since the last update
   impact_map_update_status = util.update_global_impact_map(const.db_name)
+  if impact_map_update_status is True:
+    print("Successfully updated global impact map data.")
 
 def main(argv):
   print("parsing command line arguments")
@@ -79,8 +81,8 @@ def main(argv):
   const = util.load_properties(const)
 
   initialize(const)
-  download_insert_new_files(const)
-  update_metadata(const)
+  #download_insert_new_files(const)
+  #update_metadata(const)
   update_global_dashboard(const)
 
 

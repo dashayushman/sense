@@ -410,7 +410,7 @@ class Utility:
     update_status = self.dal.update_metadata(db_name)
     return update_status
 
-  def update_global_dashboard(self,db_name):
+  def update_global_impact_map(self,db_name):
     '''
     Method to update the data for the global impact map in the global dashboard
     :param db_name: name of the db
@@ -424,9 +424,40 @@ class Utility:
     start_date = self.datetime_to_gdelt_date(end_date - dt.timedelta(days=1))
 
     map_update_status = self.dal.update_impact_map(db_name,start_date,last_update_date_gdelt)
+    if map_update_status == 4 or map_update_status == 1 or map_update_status == 2:
+      return True
+    else:
+      return False
 
 
 
+  def convert_goldstein_to_hex_color(self,g_score):
+
+    a1 = 16711680.0
+    b1 = 16776960.0
+
+    a2 = 65280.0
+    b2 = 16776960.0
+
+    if g_score == 0.0:
+      return ("#"+ str(hex(16776960)).replace("0x",""))
+    elif g_score < 0.0:
+      val = (((b1-a1)*((g_score+0.2)-(-10.0)))/(0.0-(-10.0))) + a1
+      hex_str = str(hex(int(val))).replace("0x","")
+      if len(hex_str) < 6:
+        while len(hex_str) == 6:
+          hex_str = "0" + hex_str
+      hex_str = "#" + hex_str
+      return hex_str
+    elif g_score > 0.0:
+      g_score = -1 * g_score
+      val = (((b2-a2)*((g_score+0.2)-(-10.0)))/(0.0-(-10.0))) + a2
+      hex_str = str(hex(int(val))).replace("0x","")
+      if len(hex_str) < 6:
+        while len(hex_str) == 6:
+          hex_str = "0" + hex_str
+      hex_str = "#" + hex_str
+      return hex_str
 
   def get_present_date_time(self,type="gdelt",d_type="int",timezone="utc"):
     '''
@@ -601,7 +632,7 @@ class Utility:
     :return:
     '''
     if self.logger:self.logger.info(msg)
-    else:print(msg)
+    else:print("[INFO]: " + msg)
 
   def log_error(self,msg):
     '''
@@ -611,7 +642,7 @@ class Utility:
     :return:
     '''
     if self.logger:self.logger.error(msg)
-    else:print(msg)
+    else:print("[ERROR]: " + msg)
 
   def log_debug(self,msg):
     '''
@@ -621,4 +652,4 @@ class Utility:
     :return:
     '''
     if self.logger:self.logger.debug(msg)
-    else:print(msg)
+    else:print( "[DEBUG]: " + msg)

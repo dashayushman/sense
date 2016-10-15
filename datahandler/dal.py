@@ -4,6 +4,7 @@ import logging
 import os
 import sys, traceback
 from datetime import datetime
+import copy
 
 class Dal:
   '''
@@ -168,12 +169,114 @@ class Dal:
 
   def update_impact_map(self,db_name,start_date,end_date):
     '''
-    Method to update global impact map
-    :param db_name:
-    :param start_date:
-    :param end_date:
-    :return:
+    Method to update global impact map data
+    :param db_name: name of the db
+    :param start_date: start date for considering goldstein's impact
+    :param end_date: start date for considering goldstein's impact
+    :return: Status of update
     '''
+    latlong = {}
+    mapData = []
+    self.log_info("Updating global impact map dat into db")
+    try:
+      db = self.client[db_name]
+      col_cameo_events = db["cameo_events"]
+      col_fips_country = db["fips_country"]
+
+      #queries
+      get_events_in_range_query = {"$and":[{"DATEADDED": {"$gt": start_date}},{"DATEADDED": {"$lt": end_date}}]}
+      get_country_name_from_code = {"CountryCode" : "code"}
+
+      last_day_events = col_cameo_events.find(get_events_in_range_query)
+      if last_day_events.count() == 0:
+        self.log_info("there have been no events in the last day of last update")
+        return 1 # there have been no events in the last day of last update
+
+      last_day_distinct_country_codes = last_day_events.distinct("ActionGeo_CountryCode")
+
+      if len(last_day_distinct_country_codes) == 0:
+        self.log_info("there are no distinct countries in the last one day of last update")
+        return 2 # there are no distinct countries in the last one day of last update
+
+      for n_c,country in enumerate(last_day_distinct_country_codes):
+        if n_c%50:
+          self.log_info("Calculating impact for " + str(n_c) + " out of " + str(len(last_day_distinct_country_codes)) + " countries")
+        new_query = copy.deepcopy(get_events_in_range_query)
+        new_query["$and"].append({"ActionGeo_CountryCode":country})
+        country_events = col_cameo_events.find(new_query)
+        #country_events = last_day_events.where("this.ActionGeo_CountryCode == \""+ country + "\"")
+        # FIPS Country Name
+        get_country_name_from_code["CountryCode"] = country
+        country_name = col_fips_country.find_one(get_country_name_from_code)
+        if country_name is None:
+          self.log_error("Invalid Country Code : " + country)
+          continue
+        country_name = country_name["CountryName"]
+        # Lat Long
+        lat, long = country_events.__getitem__(0)["ActionGeo_Lat"],country_events.__getitem__(0)["ActionGeo_Long"]
+
+        #Avg Goldstein's score
+        score = 0
+        n_c_events = country_events.count()
+        for i,events in enumerate(country_events):
+          #print events["GoldsteinScale"]
+          if i%1000 == 0:
+            self.log_info(str(i) + " of " + str(n_c_events) + " events for " + country_name)
+            self.log_info("Total Score : " + str(score) + "\nG Score: " + str(events["GoldsteinScale"]))
+          score = score + events["GoldsteinScale"]
+        avg_score = score/n_c_events
+
+        #hex colour
+        hex_color = self.util.convert_goldstein_to_hex_color(avg_score)
+
+        #circle_value
+        value = abs(avg_score)
+        if n_c%50:
+          self.log_info("Country : " + country_name +
+                        "\nCountry Code: " + str(len(last_day_distinct_country_codes)) +
+                        "\nlatitude: " + str(lat)+
+                        "\nlongitude: "+ str(long)+
+                      "\naverage goldstein's score: " + str(avg_score)+
+                      "\nhex color code: " + hex_color)
+
+        latlong[country] = {
+          "latitude":lat,
+          "longitude":long
+        }
+
+        map_data_obj = {
+          "code":country,
+          "name":country_name,
+          "value":value,
+          "color":hex_color,
+          "avg":avg_score
+        }
+
+        mapData.append(map_data_obj)
+
+      result = db["coll_impact_map"].delete_many({})
+
+      ins_result = db["coll_impact_map"].insert_one({
+        "latlong":latlong,
+        "mapData":mapData
+      })
+
+      if ins_result is None:
+        self.log_error("Couldnot insert new/updated data into coll_impact_map.")
+        return 3 #could not insert new data
+      else:
+        self.log_info("Successfully updated global impact map.")
+        return 4 #successfully inserted new data
+    except:
+      self.log_error("Exception occurred while updating impact map data in db\n"+
+            "Exception stacktrace: \n"+
+            traceback.format_exc())
+      return 5 #exception occurred while updating impact map data
+
+
+
+
+
 
   def get_last_update_date(self,db_name):
     '''
@@ -225,7 +328,7 @@ class Dal:
                       "Please check the metadata collection in the db.")
         return False
 
-      latest_added_file = col_files.find().sort('timestamp', pymongo.DESCENDING).limit(1)
+      latest_added_file = col_files.find().sort('timestamp', pymongo.DESCENDING).limit(1).__getitem__(0)
 
       # updating the last update date in GDELT format
       if latest_added_file is None:
@@ -293,7 +396,7 @@ class Dal:
     :return:
     '''
     if self.logger:self.logger.info(msg)
-    else:print(msg)
+    else:print("[INFO]: " + msg)
 
   def log_error(self,msg):
     '''
@@ -303,7 +406,7 @@ class Dal:
     :return:
     '''
     if self.logger:self.logger.error(msg)
-    else:print(msg)
+    else:print("[ERROR]: " + msg)
 
   def log_debug(self,msg):
     '''
@@ -313,4 +416,4 @@ class Dal:
     :return:
     '''
     if self.logger:self.logger.debug(msg)
-    else:print(msg)
+    else:print( "[DEBUG]: " + msg)
