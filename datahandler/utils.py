@@ -12,6 +12,7 @@ from difflib import unified_diff
 from datetime import datetime
 import time
 import datetime as dt
+from calendar import monthrange
 
 class Utility:
   '''
@@ -42,6 +43,8 @@ class Utility:
 
       if p.__contains__("url"):
         c.url = p["url"].data
+      if p.__contains__("url2"):
+        c.mongo_pool_size = p["url2"].data
       if p.__contains__("working_dir"):
         c.working_dir = p["working_dir"].data
       if p.__contains__("download_limit"):
@@ -58,6 +61,7 @@ class Utility:
         c.db_name = p["db_name"].data
       if p.__contains__("mongo_pool_size"):
         c.mongo_pool_size = int(p["mongo_pool_size"].data)
+
       return c
 
     except IOError as e:
@@ -170,7 +174,7 @@ class Utility:
       return new_content
 
 
-  def get_file_urls(self,url,cache_file_path):
+  def get_file_urls(self,url):
     '''
     Method that makes an HTTP GET request to the given url and extracts all the current file names from GDELT2.0
     master file list and converts it into a dictionary
@@ -429,10 +433,210 @@ class Utility:
     else:
       return False
 
+  def update_linked_locations(self,db_name,svg):
+    '''
+    Method to update all linked locations in the last one day
+    :param db_name:name of the db
+    :param svg: image for the map in svg string
+    :return: update status
+    '''
+    last_update_date_gdelt = self.dal.get_last_update_date(db_name)
+    if last_update_date_gdelt is None:
+      last_update_date_gdelt = self.get_present_date_time()
 
+    end_date = self.gdelt_date_to_datetime(last_update_date_gdelt)
+    start_date = self.datetime_to_gdelt_date(end_date - dt.timedelta(days=1))
+
+    linked_locations = self.dal.get_linked_locations(db_name,last_update_date_gdelt,svg,start_date=start_date)
+  def update_overall_stats(self,db_name):
+    '''
+    Method to update overall events, mentions and countries statistics
+    :param db_name: name of the db
+    :return: status of update
+    '''
+    dt_now = self.dal.get_last_update_date(db_name)
+    dt_obj_now = self.gdelt_date_to_datetime(dt_now)
+    last_month,last_year = self.get_last_month_year(dt_obj_now)
+    days_in_last_month = monthrange(last_year, last_month)[1]
+    dt_last_month = self.datetime_to_gdelt_date(datetime(*(last_year,last_month,days_in_last_month,0,0,0)))
+    dt_today_start = self.datetime_to_gdelt_date(datetime(*(dt_obj_now.year,dt_obj_now.month,dt_obj_now.day,0,0,0)))
+
+    self.log_info("last update date : " + str(dt_obj_now) +
+                  "\nlast month : " + str(last_month) +
+                  "\nLast year  : " + str(last_year) +
+                  "\ndate last month : " + str(dt_last_month)+
+                  "\ndays in last month : " + str(days_in_last_month)+
+                  "\ndate today start : " + str(dt_today_start))
+
+    n_events_now,n_events_today,\
+    n_events_this_month,e_percent_higher_last_month = self.get_overall_events_stats(db_name,dt_now,dt_last_month,dt_today_start)
+    if n_events_now is None or n_events_today is None or n_events_this_month is None or e_percent_higher_last_month is None:
+      self.log_error("Failed to get overall statistics for events so aborting.")
+      return False
+
+    n_mentions_now,n_mentions_today,\
+    n_mentions_this_month,m_percent_higher_last_month = self.get_overall_mentions_stats(db_name,dt_now,dt_last_month,dt_today_start)
+    if n_mentions_now is None or\
+        n_mentions_today is None or\
+        n_mentions_this_month is None or\
+        m_percent_higher_last_month is None:
+      self.log_error("Failed to get overall statistics for mentions so aborting.")
+      return False
+
+    n_countries_now,n_countries_today,\
+    n_countries_this_month,c_percent_higher_last_month = self.get_overall_countries_stats(db_name,dt_now,dt_last_month,dt_today_start)
+    if n_countries_now is None or\
+        n_countries_today is None or\
+        n_countries_this_month is None or\
+        c_percent_higher_last_month is None:
+      self.log_error("Failed to get overall statistics for countries so aborting.")
+      return False
+
+    update_status = self.dal.update_overall_stats(db_name,
+                                                  n_events_now,
+                                                  n_events_today,
+                                                  n_events_this_month,
+                                                  e_percent_higher_last_month,
+                                                  n_mentions_now,
+                                                  n_mentions_today,
+                                                  n_mentions_this_month,
+                                                  m_percent_higher_last_month,
+                                                  n_countries_now,
+                                                  n_countries_today,
+                                                  n_countries_this_month,
+                                                  c_percent_higher_last_month
+                                                  )
+    return update_status
+
+  def get_overall_countries_stats(self,db_name,dt_now,dt_last_month,dt_today_start):
+    '''
+    Method to get overal countries statistics
+    :param db_name: name of the db
+    :return: (total_countries_now, total_countries_today, total_countries_last_month,percentage_higher)
+    '''
+    #Get Total Events
+
+
+    n_countries_now = self.dal.get_total_countries(db_name,dt_now)
+    if n_countries_now == -1:return None,None,None,None
+
+    n_countries_till_last_month = self.dal.get_total_countries(db_name,dt_last_month)
+    if n_countries_till_last_month == -1:return None,None,None,None
+
+    n_countries_this_month = n_countries_now - n_countries_till_last_month
+
+    n_countries_today = self.dal.get_total_countries(db_name,dt_now,start_date=dt_today_start)
+    if n_countries_today == -1:return None,None,None,None
+
+    percent_higher_last_month = 0.0
+
+    if n_countries_till_last_month == 0:
+      percent_higher_last_month = 100.0
+    else:
+      percent_higher_last_month = (float(n_countries_this_month) * 100.0)/n_countries_till_last_month
+
+    self.log_info("countries till last update : " + str(n_countries_now) +
+                  "\ncountries til last month : " + str(n_countries_till_last_month) +
+                  "\ncountries this month  : " + str(n_countries_this_month) +
+                  "\ncountries today : " + str(n_countries_today)+
+                  "\nIncrease percentage : " + str(percent_higher_last_month)+ "%")
+    return n_countries_now,n_countries_today,n_countries_this_month,percent_higher_last_month
+
+  def get_overall_mentions_stats(self,db_name,dt_now,dt_last_month,dt_today_start):
+    '''
+    Method to get overal mentions statistics
+    :param db_name: name of the db
+    :return: (total_mentions_now, total_mentions_today, total_mentions_last_month,percentage_higher)
+    '''
+    #Get Total Events
+
+
+    n_mentions_now = self.dal.get_total_mentions(db_name,dt_now)
+    if n_mentions_now == -1:return None,None,None,None
+
+    n_mentions_till_last_month = self.dal.get_total_mentions(db_name,dt_last_month)
+    if n_mentions_till_last_month == -1:return None,None,None,None
+
+    n_mentions_this_month = n_mentions_now - n_mentions_till_last_month
+
+    n_mentions_today = self.dal.get_total_mentions(db_name,dt_now,start_date=dt_today_start)
+    if n_mentions_today == -1:return None,None,None,None
+
+    percent_higher_last_month = 0.0
+
+    if n_mentions_till_last_month == 0:
+      percent_higher_last_month = 100.0
+    else:
+      percent_higher_last_month = (float(n_mentions_this_month) * 100.0)/n_mentions_till_last_month
+
+    self.log_info("mentions till last update : " + str(n_mentions_now) +
+                  "\nmentions til last month : " + str(n_mentions_till_last_month) +
+                  "\nmentions this month  : " + str(n_mentions_this_month) +
+                  "\nmentions today : " + str(n_mentions_today)+
+                  "\nIncrease percentage : " + str(percent_higher_last_month)+ "%")
+    return n_mentions_now,n_mentions_today,n_mentions_this_month,percent_higher_last_month
+
+  def get_overall_events_stats(self,db_name,dt_now,dt_last_month,dt_today_start):
+    '''
+    Method to get overal events statistics
+    :param db_name: name of the db
+    :return: (total_events_now, total_events_last_month, total_events_today,percentage_higher)
+    '''
+    #Get Total Events
+
+    n_events_now = self.dal.get_total_events(db_name,dt_now)
+    if n_events_now == -1:return None,None,None,None
+
+    n_events_till_last_month = self.dal.get_total_events(db_name,dt_last_month)
+    if n_events_till_last_month == -1:return None,None,None,None
+
+    n_events_this_month = n_events_now - n_events_till_last_month
+
+    n_events_today = self.dal.get_total_events(db_name,dt_now,start_date=dt_today_start)
+    if n_events_today == -1:return None,None,None,None
+
+    percent_higher_last_month = 0.0
+
+    if n_events_till_last_month == 0:
+      percent_higher_last_month = 100.0
+    else:
+      percent_higher_last_month = (float(n_events_this_month) * 100.0)/n_events_till_last_month
+
+    self.log_info("Events till last update : " + str(n_events_now) +
+                  "\nEvents til last month : " + str(n_events_till_last_month) +
+                  "\nEvents this month  : " + str(n_events_this_month) +
+                  "\nEvents today : " + str(n_events_today)+
+                  "\nIncrease percentage : " + str(percent_higher_last_month)+ "%")
+    return n_events_now,n_events_today,n_events_this_month,percent_higher_last_month
+
+  def update_indexes(self,db_name):
+    '''
+    Method to update indexes for easier access and sorting
+    :param db_name: name of the db
+    :return: update status
+    '''
+    update_status = self.dal.update_indexes(db_name)
+    return update_status
+
+  def get_last_month_year(self,dt_now):
+    '''
+    Method to get the last month and year
+    :param dt_now: present datetimeobj
+    :return: (last_month, last_year)
+    '''
+    last_month = dt_now.month-1
+    last_year = dt_now.year
+    if last_month == 0:
+      last_month = 12
+      last_year = last_year - 1
+    return last_month,last_year
 
   def convert_goldstein_to_hex_color(self,g_score):
-
+    '''
+    Method to get a corrsponding color for goldstein's score
+    :param g_score:
+    :return:
+    '''
     a1 = 16711680.0
     b1 = 16776960.0
 

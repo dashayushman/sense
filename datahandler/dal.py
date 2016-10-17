@@ -80,7 +80,7 @@ class Dal:
       inserted = 0
       for n,fileobj in enumerate(current_file_url_list):
 
-        if n%500 == 0:
+        if n%1000 == 0:
           self.log_info("Checking file " + str(n+1) + " of " + str(len(current_file_url_list)) + " file urls")
         '''
         del fileobj["mentions"]["status"]
@@ -199,7 +199,7 @@ class Dal:
         return 2 # there are no distinct countries in the last one day of last update
 
       for n_c,country in enumerate(last_day_distinct_country_codes):
-        if n_c%50:
+        if n_c%500:
           self.log_info("Calculating impact for " + str(n_c) + " out of " + str(len(last_day_distinct_country_codes)) + " countries")
         new_query = copy.deepcopy(get_events_in_range_query)
         new_query["$and"].append({"ActionGeo_CountryCode":country})
@@ -254,14 +254,39 @@ class Dal:
 
         mapData.append(map_data_obj)
 
-      result = db["coll_impact_map"].delete_many({})
+      result_old = db["coll_impact_map"].find_one({"name":"old"})
+      result_new = db["coll_impact_map"].find_one({"name":"new"})
+      success = False
+      impact_map_dict = {
+          "timestamp":self.util.get_present_date_time(),
+          "latlong":latlong,
+          "mapData":mapData,
+          "startDate":start_date,
+          "endDate":end_date,
+          "name":"new"
+        }
+      if result_old is None and result_new is None:
+        impact_map_dict["name"] = "old"
+        ins_result = db["coll_impact_map"].insert_one(impact_map_dict)
 
-      ins_result = db["coll_impact_map"].insert_one({
-        "latlong":latlong,
-        "mapData":mapData
-      })
+        del impact_map_dict["_id"]
+        impact_map_dict["name"] = "new"
+        ins_result = db["coll_impact_map"].insert_one(impact_map_dict)
+        success = True
+      else:
+        #delete the old record
+        del result_new["_id"]
+        result_new["name"] = "old"
+        del_status = db["coll_impact_map"].remove({"name":"old"})
+        del_status = db["coll_impact_map"].insert_one(result_new)
 
-      if ins_result is None:
+        impact_map_dict["name"] = "new"
+        del_status = db["coll_impact_map"].remove({"name":"new"})
+        del_status = db["coll_impact_map"].insert_one(impact_map_dict)
+        success = True
+
+
+      if success is False:
         self.log_error("Couldnot insert new/updated data into coll_impact_map.")
         return 3 #could not insert new data
       else:
@@ -271,12 +296,307 @@ class Dal:
       self.log_error("Exception occurred while updating impact map data in db\n"+
             "Exception stacktrace: \n"+
             traceback.format_exc())
+      self.client[db_name]["coll_impact_map"].delete_many({})
       return 5 #exception occurred while updating impact map data
 
+  def get_total_mentions(self,db_name,end_date,start_date=0):
+    '''
+    Method to return the number of mentions in a given duration of time
+    :param db_name: name of the db
+    :param end_date: end date of the duration
+    :param start_date: start date of the duration
+    :return: number of events
+    '''
+    self.log_info("Getting number of mentions from " + str(start_date) +
+                  " till " + str(end_date))
+    try:
+      results = self.get_mentions(db_name,end_date,start_date)
+      if results is None:
+        return -1
+      n_events = results.count()
+      return n_events
+    except:
+      self.log_error("Exception occurred while getting total number of mentions till a given date from db\n"+
+            "Exception stacktrace: \n"+
+            traceback.format_exc())
+      return -1
+
+  def get_total_events(self,db_name,end_date,start_date=0):
+    '''
+    Method to return the number of events in a given duration of time
+    :param db_name: name of the db
+    :param end_date: end date of the duration
+    :param start_date: start date of the duration
+    :return: number of events
+    '''
+    self.log_info("Getting number of events from " + str(start_date) +
+                  " till " + str(end_date))
+    try:
+      results = self.get_events(db_name,end_date,start_date)
+      if results is None:
+        return -1
+      n_events = results.count()
+      return n_events
+    except:
+      self.log_error("Exception occurred while total number of events till a given date from db\n"+
+            "Exception stacktrace: \n"+
+            traceback.format_exc())
+      return -1
+
+  def get_total_countries(self,db_name,end_date,start_date=0):
+    '''
+    Method to return the number of events in a given duration of time
+    :param db_name: name of the db
+    :param end_date: end date of the duration
+    :param start_date: start date of the duration
+    :return: number of events
+    '''
+    self.log_info("Getting number of Countries since " + str(start_date) +
+                  " till " + str(end_date))
+    try:
+      results = self.get_events(db_name,end_date,start_date)
+      if results is None:
+        return -1
+      n_actor_1_geo = results.distinct("Actor1CountryCode")
+      n_actor_2_geo = results.distinct("Actor2CountryCode")
+      n_actor_1_geo_1 = results.distinct("Actor1Geo_CountryCode")
+      n_actor_2_geo_1 = results.distinct("Actor2Geo_CountryCode")
+      n_action_geo = results.distinct("ActionGeo_CountryCode")
+      unique = list(set(n_actor_1_geo+
+                        n_actor_2_geo+
+                        n_actor_1_geo_1+
+                        n_actor_2_geo_1+
+                        n_action_geo
+                        ))
+      n_countries = len(unique)
+      return n_countries
+    except:
+      self.log_error("Exception occurred while getting total number of countries involved till a given date from db\n"+
+            "Exception stacktrace: \n"+
+            traceback.format_exc())
+      return -1
+
+  def get_events(self,db_name,end_date,start_date=0):
+    '''
+    Method to return events in a given date range
+    :param db_name:db name
+    :param end_date: end date
+    :param start_date: start date
+    :return: events cursor
+    '''
+    try:
+      db = self.client[db_name]
+      col_cameo_events = db["cameo_events"]
+      query = {"$and":[{"DATEADDED":{"$lte":end_date}}]}
+      if start_date != 0:
+        query["$and"].append({"DATEADDED":{"$gt":start_date}})
+      results = col_cameo_events.find(query)
+      return results
+    except:
+      self.log_error("Exception occurred while getting events from the DB\n"+
+            "Exception stacktrace: \n"+
+            traceback.format_exc())
+      return None
+
+  def get_mentions(self,db_name,end_date,start_date=0):
+    '''
+    Method to return mentions in a given date range
+    :param db_name:db name
+    :param end_date: end date
+    :param start_date: start date
+    :return: events cursor
+    '''
+    try:
+      db = self.client[db_name]
+      col_cameo_mentions = db["cameo_mentions"]
+      query = {"$and":[{"MentionTimeDate":{"$lte":end_date}}]}
+      if start_date != 0:
+        query["$and"].append({"MentionTimeDate":{"$gt":start_date}})
+      results = col_cameo_mentions.find(query)
+      return results
+    except:
+      self.log_error("Exception occurred while getting mentions from the DB\n"+
+            "Exception stacktrace: \n"+
+            traceback.format_exc())
+      return None
+
+  def get_linked_locations(self,db_name,end_date,svg,start_date=0):
+    '''
+    Method to get all the linked locaions in the given date range
+    :param db_name:name of the db
+    :param end_date: end date for retrieving events
+    :param svg: svg image for the map
+    :param start_date: start date for retrieval
+    :return: map ditionary
+    '''
+    try:
+      lines = []
+      images = []
+      results = self.get_events(db_name,end_date,start_date)
+      actor_1_geos = results.distinct("Actor1Geo_CountryCode")
+      if len(actor_1_geos) is 0:
+        return {
+          "lines":lines,
+          "images":images,
+          "status":0,
+          "message": "No 1st actors could be found in the selected time duration"
+        }
+      for actor_geo in actor_1_geos:
+        a1_geo_name = self.get_country_from_fips_code(db_name,actor_geo)
+        a1_lat,a1_long = self.get_lat_long(db_name,actor_geo)
+        if a1_lat is None or a1_long is None or a1_geo_name is None:
+          continue
+        linked_events = self.get_linked_countries(db_name,start_date,end_date,actor_geo)
+        if linked_events is None:
+          continue
+        if linked_events.count() == 0:
+          continue
+        for e in linked_events:
+          a2_geo_code = e["Actor2Geo_CountryCode"]
+          if a2_geo_code is "":
+            continue
+          a2_geo_name = self.get_country_from_fips_code(db_name,a2_geo_code)
+          a2_lat,a2_long = self.get_lat_long(db_name,a2_geo_code)
 
 
 
+    except:
+      self.log_error("Exception occurred getting linked locations from the DB\n"+
+            "Exception stacktrace: \n"+
+            traceback.format_exc())
+      return None
 
+  def get_linked_countries(self,db_name,start_date,end_date,fips_code):
+    '''
+
+    :param db_name:
+    :param fips_code:
+    :return:
+    '''
+    self.log_info("Getting all linked locations with : " + fips_code)
+    try:
+      db = self.client[db_name]
+      coll_events = db["cameo_events"]
+      query = {"$and":[{"Actor1Geo_CountryCode" : fips_code},{"DATEADDED":{"$lte":end_date}}]}
+      if start_date == 0:
+        query["$and"].append({"DATEADDED":{"$gt":start_date}})
+      events = coll_events.find(query)
+      self.log_info("Retrieved linked locations : " + fips_code)
+      return events
+    except:
+      self.log_error("Exception occurred getting linked locations from the DB\n"+
+            "Exception stacktrace: \n"+
+            traceback.format_exc())
+      return None
+
+  def get_country_from_fips_code(self,db_name,fips_code):
+    '''
+
+    :param db_name:
+    :param fips_code:
+    :return:
+    '''
+    try:
+      self.log_info("Getting country name from FIPS country code")
+      db = self.client[db_name]
+      col_fips_country = db["fips_country"]
+      query = {"CountryCode" : fips_code}
+      country_name = col_fips_country.find_one(query)
+      if country_name is None:
+        self.log_error("Invalid Country Code : " + fips_code)
+        return None
+      country_name = country_name["CountryName"]
+      return country_name
+    except:
+      self.log_error("Exception occurred getting country name from FIPS country code\n"+
+            "Exception stacktrace: \n"+
+            traceback.format_exc())
+      return None
+
+  def get_lat_long(self,db_name,c_code):
+    '''
+
+    :param db_name:
+    :param c_code:
+    :return:
+    '''
+    try:
+      self.log_info("Getting latitude and longitude for FIPS CODE: " + c_code)
+      query = {"Actor1Geo_CountryCode":c_code}
+      query1 = {"Actor2Geo_CountryCode":c_code}
+      db = self.client[db_name]
+      col_cameo_events = db["cameo_events"]
+      country_event = col_cameo_events.find_one(query)
+      if country_event is None:
+        c_e_2 = col_cameo_events.find_one(query1)
+        if c_e_2 is None:
+          self.log_error("Could not find lat and long for the given location.")
+          return None,None
+        lat, long = c_e_2["Actor2Geo_Lat"],c_e_2["Actor2Geo_Long"]
+        return lat,long
+      lat, long = country_event["Actor1Geo_Lat"],country_event["Actor1Geo_Long"]
+      return lat,long
+      self.log_info("Successfully retrieved lattitude and longitude for : " + c_code)
+    except:
+      self.log_error("Exception occurred getting Latitude Longitude\n"+
+            "Exception stacktrace: \n"+
+            traceback.format_exc())
+      return None,None
+
+  def update_overall_stats(self,db_name,n_events_now,n_events_today,n_events_this_month,
+                           e_percent_higher_last_month,n_mentions_now,n_mentions_today,
+                           n_mentions_this_month,m_percent_higher_last_month,n_countries_now,
+                           n_countries_today,n_countries_this_month,c_percent_higher_last_month):
+    '''
+    Method to update overall statistics for events countries and mentions
+    :param db_name:
+    :param n_events_now:
+    :param n_events_today:
+    :param n_events_this_month:
+    :param e_percent_higher_last_month:
+    :param n_mentions_now:
+    :param n_mentions_today:
+    :param n_mentions_this_month:
+    :param m_percent_higher_last_month:
+    :param n_countries_now:
+    :param n_countries_today:
+    :param n_countries_this_month:
+    :param c_percent_higher_last_month:
+    :return:
+    '''
+
+    try:
+      db = self.client[db_name]
+      col_cameo_events = db["coll_overall_stats"]
+      timestamp = self.util.get_present_date_time()
+      obj = {
+        "n_events_now" :n_events_now,
+        "n_events_today" :n_events_today,
+        "n_events_this_month" :n_events_this_month,
+        "e_percent_higher_last_month" :e_percent_higher_last_month,
+        "n_mentions_now" :n_mentions_now,
+        "n_mentions_today" :n_mentions_today,
+        "n_mentions_this_month" :n_mentions_this_month,
+        "m_percent_higher_last_month":m_percent_higher_last_month,
+        "n_countries_now":n_countries_now,
+        "n_countries_today":n_countries_today,
+        "n_countries_this_month" :n_countries_this_month,
+        "c_percent_higher_last_month":c_percent_higher_last_month,
+        "timestamp":timestamp
+      }
+      insert_status = col_cameo_events.insert_one(obj)
+      if insert_status is None:
+        self.log_error("Couldnot insert overall stats into db")
+        return False
+      else:
+        self.log_info("Successfully inserted overall stats into db")
+        return True
+
+    except:
+      self.log_error("Exception occurred while updating the overall stats.\n"+
+            "Exception stacktrace: \n"+
+            traceback.format_exc())
+      return -1
 
   def get_last_update_date(self,db_name):
     '''
@@ -290,6 +610,26 @@ class Dal:
                      "Will use default datetime as now.")
       return None
     return metadata["last_update_date"]
+
+  def update_indexes(self,db_name):
+    '''
+    Method to update indexes for easier access and sorting
+    :param db_name: name of the db
+    :return: update status
+    '''
+    self.log_info("Updating indexes for date field in events and mentions collections.")
+    try:
+      db = self.client[db_name]
+      events_index_status = db["cameo_events"].create_index([('DATEADDED', pymongo.ASCENDING),('DATEADDED', pymongo.DESCENDING)],unique=True)
+      mentions_index_status = db["cameo_mentions"].create_index([('EventTimeDate', pymongo.ASCENDING),('EventTimeDate', pymongo.DESCENDING)],unique=True)
+      if events_index_status is None or mentions_index_status is None:
+        self.log_error("Could not update indexes for events or mentions. Check db for further details")
+        return False
+    except:
+      self.log_error("Exception occurred while total number of events till a given date from db\n"+
+            "Exception stacktrace: \n"+
+            traceback.format_exc())
+      return False
 
   def get_metadata(self,db_name):
     '''
@@ -324,9 +664,23 @@ class Dal:
       metadata = col_metadata.find_one()
 
       if metadata is None:
-        self.log_info("Some unexpected error. There should always be a metadata object." +
-                      "Please check the metadata collection in the db.")
-        return False
+        self.log_info("No Metadata object found. Creating a new metadata object and updating it.")
+        metadata = {
+            "last_update_date" : 0,
+            "n_old_files" : 0,
+            "n_new_files" : 0,
+            "n_files_inserted" : 0,
+            "n_pending_files" : -1,
+            "n_old_events" : 0,
+            "n_new_events" : 0,
+            "n_events_inserted" : 0,
+            "n_old_mentions" : 0,
+            "n_new_mentions" : 0,
+            "n_mentions_inserted" : 0
+        }
+        col_metadata.insert_one(metadata)
+        if metadata is None:
+          return False
 
       latest_added_file = col_files.find().sort('timestamp', pymongo.DESCENDING).limit(1).__getitem__(0)
 
