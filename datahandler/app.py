@@ -82,7 +82,7 @@ def update_indexes(db_name):
   if update_status is True:
     print("Successfully updated indexes for events and mentions")
 
-def update_involved_locations(db_name,svg):
+def update_linked_locations(db_name,svg):
   update_status = util.update_linked_locations(db_name,svg)
   if update_status is True:
     print("Successfully updated linked locations")
@@ -112,12 +112,12 @@ def main(argv):
                             const.mentions_import_command,
                             const.download_limit,
                             const.download_sort)
-  '''
-  #update_metadata(const.db_name)
 
+  update_metadata(const.db_name)
+  '''
   #update_indexes(const.db_name)
   #update_global_dashboard(const.db_name)
-  update_overall_stats(const.db_name)
+  #update_overall_stats(const.db_name)
   update_linked_locations(const.db_name,const.svg)
   end = datetime.datetime.now()
   print("total time taken: " + str(end-start))

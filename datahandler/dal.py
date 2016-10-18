@@ -436,13 +436,19 @@ class Dal:
       actor_1_geos = results.distinct("Actor1Geo_CountryCode")
       if len(actor_1_geos) is 0:
         return {
+          "timestamp":self.util.get_present_date_time(),
           "lines":lines,
           "images":images,
           "status":0,
           "message": "No 1st actors could be found in the selected time duration"
         }
+      already_added = []
       for actor_geo in actor_1_geos:
+        if len(actor_geo) == 0:
+          continue
         a1_geo_name = self.get_country_from_fips_code(db_name,actor_geo)
+        if a1_geo_name is None:
+            continue
         a1_lat,a1_long = self.get_lat_long(db_name,actor_geo)
         if a1_lat is None or a1_long is None or a1_geo_name is None:
           continue
@@ -451,15 +457,55 @@ class Dal:
           continue
         if linked_events.count() == 0:
           continue
+
+        if actor_geo in already_added:
+          images[already_added.index(actor_geo)]["scale"] = 1.5
+        else:
+          images.append({
+            "id":actor_geo,
+            "svgPath": svg,
+            "title": a1_geo_name,
+            "latitude": a1_lat,
+            "longitude": a1_long,
+            "scale": 1.5
+          })
+          already_added.append(actor_geo)
         for e in linked_events:
           a2_geo_code = e["Actor2Geo_CountryCode"]
-          if a2_geo_code is "":
+          if len(a2_geo_code) is 0:
+            continue
+          if actor_geo == a2_geo_code:
             continue
           a2_geo_name = self.get_country_from_fips_code(db_name,a2_geo_code)
+          if a2_geo_name is None:
+            continue
           a2_lat,a2_long = self.get_lat_long(db_name,a2_geo_code)
+          if a2_lat is None or a2_long is None:
+            continue
 
+          lines.append({
+            "latitudes":[a1_lat,a2_lat],
+            "longitudes":[a1_long,a2_long]
+          })
 
+          if a2_geo_code not in already_added:
+            images.append({
+              "id":a2_geo_code,
+              "svgPath": svg,
+              "title": a2_geo_name,
+              "latitude": a2_lat,
+              "longitude": a2_long,
+              "scale": 0.5
+            })
+            already_added.append(a2_geo_code)
 
+      return {
+          "timestamp":self.util.get_present_date_time(),
+          "lines":lines,
+          "images":images,
+          "status":1,
+          "message": "Successfully generated linked locations."
+        }
     except:
       self.log_error("Exception occurred getting linked locations from the DB\n"+
             "Exception stacktrace: \n"+
@@ -478,7 +524,7 @@ class Dal:
       db = self.client[db_name]
       coll_events = db["cameo_events"]
       query = {"$and":[{"Actor1Geo_CountryCode" : fips_code},{"DATEADDED":{"$lte":end_date}}]}
-      if start_date == 0:
+      if start_date != 0:
         query["$and"].append({"DATEADDED":{"$gt":start_date}})
       events = coll_events.find(query)
       self.log_info("Retrieved linked locations : " + fips_code)
@@ -543,6 +589,30 @@ class Dal:
             traceback.format_exc())
       return None,None
 
+  def update_linked_locations(self,db_name,linked_locations):
+    '''
+    Method to update the linked locations
+    :param db_name: name of the db
+    :param linked_locations: Linked location object
+    :return: update status
+    '''
+    try:
+      self.log_info("Inserting linked locations to db.")
+      db = self.client[db_name]
+      col_linked_locations = db["coll_linked_locations"]
+      insert_status = col_linked_locations.insert_one(linked_locations)
+      if insert_status is None:
+        self.log_error("Could not insert linked locations into db")
+        return False
+      else:
+        self.log_info("Successfully inserted linked locations into db")
+        return True
+    except:
+      self.log_error("Exception occurred while updating linked locations.\n"+
+                      "Exception stacktrace: \n" +
+                      traceback.format_exc())
+      return -1
+
   def update_overall_stats(self,db_name,n_events_now,n_events_today,n_events_this_month,
                            e_percent_higher_last_month,n_mentions_now,n_mentions_today,
                            n_mentions_this_month,m_percent_higher_last_month,n_countries_now,
@@ -566,8 +636,9 @@ class Dal:
     '''
 
     try:
+      self.log_info("Inserting overall stats to db")
       db = self.client[db_name]
-      col_cameo_events = db["coll_overall_stats"]
+      col_overall_stats = db["coll_overall_stats"]
       timestamp = self.util.get_present_date_time()
       obj = {
         "n_events_now" :n_events_now,
@@ -584,7 +655,7 @@ class Dal:
         "c_percent_higher_last_month":c_percent_higher_last_month,
         "timestamp":timestamp
       }
-      insert_status = col_cameo_events.insert_one(obj)
+      insert_status = col_overall_stats.insert_one(obj)
       if insert_status is None:
         self.log_error("Couldnot insert overall stats into db")
         return False

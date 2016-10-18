@@ -448,6 +448,12 @@ class Utility:
     start_date = self.datetime_to_gdelt_date(end_date - dt.timedelta(days=1))
 
     linked_locations = self.dal.get_linked_locations(db_name,last_update_date_gdelt,svg,start_date=start_date)
+    if linked_locations is None:
+      return False
+    update_status = self.dal.update_linked_locations(db_name,linked_locations)
+    return update_status
+
+
   def update_overall_stats(self,db_name):
     '''
     Method to update overall events, mentions and countries statistics
