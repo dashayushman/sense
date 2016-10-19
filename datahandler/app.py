@@ -87,6 +87,31 @@ def update_linked_locations(db_name,svg):
   if update_status is True:
     print("Successfully updated linked locations")
 
+def update_high_impact_regions(db_name):
+  update_status = util.update_high_impact_regions(db_name,limit=10)
+  if update_status is True:
+    print("Successfully updated high impact regions")
+
+def update_high_impact_events(db_name):
+  update_status = util.update_high_impact_events(db_name,limit=10)
+  if update_status is True:
+    print("Successfully updated high impactevents")
+
+def update_articles_per_category(db_name):
+  update_status = util.update_articles_per_category(db_name)
+  if update_status is True:
+    print("Successfully updated articles per category")
+
+def update_mentions_timeline(db_name):
+  update_status = util.update_mentions_timeline(db_name,n_years=10)
+  if update_status is True:
+    print("Successfully updated articles per category")
+
+def update_actor_network(db_name):
+  update_status = util.update_actor_network(db_name,n_days=1)
+  if update_status is True:
+    print("Successfully updated actor network")
+
 def main(argv):
   start = datetime.datetime.now()
   print("parsing command line arguments")
@@ -116,9 +141,14 @@ def main(argv):
   update_metadata(const.db_name)
   '''
   #update_indexes(const.db_name)
-  #update_global_dashboard(const.db_name)
+  update_global_dashboard(const.db_name)
   #update_overall_stats(const.db_name)
-  update_linked_locations(const.db_name,const.svg)
+  #update_linked_locations(const.db_name,const.svg)
+  #update_high_impact_regions(const.db_name)
+  #update_high_impact_events(const.db_name)
+  #update_articles_per_category(const.db_name)
+  #update_mentions_timeline(const.db_name)
+  #update_actor_network(const.db_name)
   end = datetime.datetime.now()
   print("total time taken: " + str(end-start))
 

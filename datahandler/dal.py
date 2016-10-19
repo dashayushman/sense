@@ -184,7 +184,7 @@ class Dal:
       col_fips_country = db["fips_country"]
 
       #queries
-      get_events_in_range_query = {"$and":[{"DATEADDED": {"$gt": start_date}},{"DATEADDED": {"$lt": end_date}}]}
+      get_events_in_range_query = {"$and":[{"DATEADDED": {"$gt": start_date}},{"DATEADDED": {"$lte": end_date}}]}
       get_country_name_from_code = {"CountryCode" : "code"}
 
       last_day_events = col_cameo_events.find(get_events_in_range_query)
@@ -420,6 +420,233 @@ class Dal:
             traceback.format_exc())
       return None
 
+  def get_articles_per_category(self,db_name,end_date,start_date=0):
+    '''
+
+    :param db_name:
+    :param end_date:
+    :param start_date:
+    :return:
+    '''
+    try:
+      db = self.client[db_name]
+      coll_mentions = db["cameo_mentions"]
+      agg_pipeline = [{"$match":{"$and":[{"MentionTimeDate":{"$lte":end_date}}]}},{"$group":{"_id":"$MentionType","n_mentions":{"$sum":1}}}]
+      if start_date != 0:
+        agg_pipeline[0]["$match"]["$and"].append({"MentionTimeDate":{"$gt":start_date}})
+      results = list(coll_mentions.aggregate(agg_pipeline))
+      if len(results) == 0:
+        return {
+          "timestamp":self.util.get_present_date_time(),
+          "data":[],
+          "status":0,
+          "message":"No mentions were found in the given duration."
+        }
+      else:
+        for i,e in enumerate(results):
+          m_code = e["_id"]
+          m_name = self.get_mention_type_from_code(db_name,m_code)
+          results[i]["source"] = m_name
+        return {
+          "timestamp":self.util.get_present_date_time(),
+          "data":results,
+          "status":1,
+          "message":"Successfully retrieved number of mentions in the given duration."
+        }
+
+    except:
+      self.log_error("Exception occurred getting linked locations from the DB\n"+
+            "Exception stacktrace: \n"+
+            traceback.format_exc())
+      return None
+
+  def get_high_impact_events(self,db_name,end_date,start_date=0,limit=10):
+    '''
+    Method to get High impact events in the given range and limit
+    :param end_date:
+    :param start_date:
+    :param limit:
+    :return:
+    '''
+    try:
+      db = self.client[db_name]
+      coll_events = db["cameo_events"]
+      agg_pipeline = [{"$match":{"$and":[{"DATEADDED":{"$lte":end_date}},{"ActionGeo_CountryCode":{"$ne":""}},{"Actor1Geo_CountryCode":{"$ne":""}},{"Actor2Geo_CountryCode":{"$ne":""}},{"Actor2Geo_CountryCode":{"$ne":""}}]}},{"$project":{"GLOBALEVENTID":1,"EventCode":1,"GoldsteinScale":1,"NumMentions":1,"NumSources":1,"NumArticles":1,"AvgTone":1,"Actor1Geo_FullName":1,"Actor1Geo_CountryCode":1,"Actor2Geo_FullName":1,"Actor2Geo_CountryCode":1,"ActionGeo_FullName":1,"ActionGeo_CountryCode":1,"score":{"$avg":[{"$abs":"$GoldsteinScale"},"$NumMentions","$NumSources","$NumArticles",{"$abs":"$AvgTone"}]}}},{"$sort":{"score":-1}},{"$limit":10}]
+      if start_date != 0:
+        agg_pipeline[0]["$match"]["$and"].append({"DATEADDED":{"$gt":start_date}})
+      results = list(coll_events.aggregate(agg_pipeline))
+      if len(results) == 0:
+        return {
+          "data":[],
+          "status":0,
+          "message":"No events were found in the given duration."
+        }
+      else:
+        for i,e in enumerate(results):
+          geo_code = e["ActionGeo_CountryCode"]
+          geo_name = self.get_country_from_fips_code(db_name,geo_code)
+          results[i]["FIPS_Country_Name"] = geo_name
+        return {
+          "data":results,
+          "status":1,
+          "message":"Successfully retrieved High Imapct regions."
+        }
+
+    except:
+      self.log_error("Exception occurred getting linked locations from the DB\n"+
+            "Exception stacktrace: \n"+
+            traceback.format_exc())
+      return None
+
+  def get_high_impact_regions(self,db_name,end_date,start_date=0,limit=10):
+    '''
+    Method to get High impact regions in the given range and limit
+    :param end_date:
+    :param start_date:
+    :param limit:
+    :return:
+    '''
+    try:
+      db = self.client[db_name]
+      coll_events = db["cameo_events"]
+      agg_pipeline = [{"$match":{"$and":[{"DATEADDED":{"$lte":end_date}},{"ActionGeo_CountryCode":{"$ne":""}}]}},{"$project":{"GLOBALEVENTID":1,"GoldsteinScale":1,"ActionGeo_FullName":1,"ActionGeo_CountryCode":1,"score":{"$avg":[{"$abs":"$GoldsteinScale"},{"$abs":"$AvgTone"}]}}},{"$sort":{"score":-1}},{"$limit":limit}]
+      if start_date != 0:
+        agg_pipeline[0]["$match"]["$and"].append({"DATEADDED":{"$gt":start_date}})
+      results = list(coll_events.aggregate(agg_pipeline))
+      if len(results) == 0:
+        return {
+          "data":[],
+          "status":0,
+          "message":"No events were found in the given duration."
+        }
+      else:
+        for i,e in enumerate(results):
+          geo_code = e["ActionGeo_CountryCode"]
+          geo_name = self.get_country_from_fips_code(db_name,geo_code)
+          results[i]["FIPS_Country_Name"] = geo_name
+        return {
+          "data":results,
+          "status":1,
+          "message":"Successfully retrieved High Imapct regions."
+        }
+
+    except:
+      self.log_error("Exception occurred getting linked locations from the DB\n"+
+            "Exception stacktrace: \n"+
+            traceback.format_exc())
+      return None
+
+  def get_actor_network(self,db_name,end_date,start_date=0):
+    try:
+      nodes = []
+      edges = []
+      db = self.client[db_name]
+      coll_events = db["cameo_events"]
+      query = {"$and":[{"DATEADDED":{"$lte":end_date}},{"Actor1CountryCode":{"$ne":""}},{"Actor2CountryCode":{"$ne":""}},{"Actor1Name":{"$ne":""}},{"Actor2Name":{"$ne":""}}]}
+      agg_pipeline = [{"$match":{"$and":[{"DATEADDED":{"$lte":end_date}},{"Actor1CountryCode":{"$ne":""}},{"Actor2CountryCode":{"$ne":""}},{"Actor1Name":{"$ne":""}},{"Actor2Name":{"$ne":""}}]}},{"$project":{"GLOBALEVENTID":1,"DATEADDED":1,"Actor1CountryCode":1,"Actor2CountryCode":1,"Actor1Name":1,"Actor2Name":1}},{"$group":{"_id":{"Actor1CountryCode":"$Actor1CountryCode","Actor2CountryCode":"$Actor2CountryCode","Actor1Name":"$Actor1Name","Actor2Name":"$Actor2Name"},"count":{"$sum":1}}},{"$project":{"Actor1CountryCode":"$_id.Actor1CountryCode","Actor2CountryCode":"$_id.Actor2CountryCode","Actor1Name":"$_id.Actor1Name","Actor2Name":"$_id.Actor2Name","Count":"$count","Actor1Id":{"$concat":["$_id.Actor1Name","_","$_id.Actor1CountryCode"]},"Actor2Id":{"$concat":["$_id.Actor2Name","_","$_id.Actor2CountryCode"]}}}]
+      #actor_ids_agg = [{"$project":{"Actor1Id":{"$concat":["$Actor1Name","_","$Actor1CountryCode"]},"Actor2Id":{"$concat":["$Actor2Name","_","$Actor2CountryCode"]}}}]
+      if start_date != 0:
+        agg_pipeline[0]["$match"]["$and"].append({"DATEADDED":{"$gt":start_date}})
+        query["$and"].append({"DATEADDED":{"$gt":start_date}})
+      r_cur = coll_events.aggregate(agg_pipeline)
+
+      events = coll_events.find(query)
+      a1_geos = events.distinct("Actor1CountryCode")
+      a2_geos = events.distinct("Actor2CountryCode")
+
+      #a1 = events.distinct("Actor1Id")
+      #a2 = events.distinct("Actor2Id")
+
+      geo_codebook = list(set(a1_geos+a2_geos))
+      actor_codebook = ["_SKIP"]
+      actor_scale = {}
+
+      for node_pair in r_cur:
+        a1_name = node_pair["Actor1Name"]
+        a2_name = node_pair["Actor2Name"]
+
+        a1_id = node_pair["Actor1Id"]
+        a2_id = node_pair["Actor2Id"]
+
+        edge_count = node_pair["Count"]
+
+        a1_update = False
+        a2_update = False
+        if a1_id not in actor_codebook:
+          actor_codebook.append(a1_id)
+          actor_scale[a1_id] = 1
+          a1_update = True
+        else:
+          actor_scale[a1_id] = actor_scale[a1_id] + 1
+
+        if a2_id not in actor_codebook:
+          actor_codebook.append(a2_id)
+          actor_scale[a2_id] = 1
+          a2_update = True
+        else:
+          actor_scale[a2_id] = actor_scale[a2_id] + 1
+
+        a1_geo_code = node_pair["Actor1CountryCode"]
+        a2_geo_code = node_pair["Actor2CountryCode"]
+
+        a1_geo_name = self.get_country_from_cameo_code(db_name,a1_geo_code)
+        a2_geo_name = self.get_country_from_cameo_code(db_name,a2_geo_code)
+
+        if a1_geo_name is None or a2_geo_name is None:
+          continue
+
+        a1_codebook_id = actor_codebook.index(a1_id)
+        a2_codebook_id = actor_codebook.index(a2_id)
+
+        a1_geo_codebook_id = geo_codebook.index(a1_geo_code)
+        a2_geo_codebook_id = geo_codebook.index(a2_geo_code)
+
+        a1_node = {
+          "group": a1_geo_codebook_id,
+          "id":a1_codebook_id,
+          "actor_id":a1_id,
+          "label":a1_name,
+          "title":"Country: " + a1_geo_name+  "<br>Actor: "+ a1_name,
+          "value":a1_codebook_id
+        }
+        a2_node = {
+          "group": a2_geo_codebook_id,
+          "id":a2_codebook_id,
+          "actor_id":a2_id,
+          "label":a2_name,
+          "title":"Country: " + a2_geo_name+  "<br>Actor: "+ a2_name,
+          "value":a2_codebook_id
+        }
+
+        edge = {
+          "from":a1_codebook_id,
+          "to":a2_codebook_id,
+          "value":edge_count
+        }
+
+        if a1_update:nodes.append(a1_node)
+        if a2_update:nodes.append(a2_node)
+        if a1_update is False and a2_update is False:
+          continue
+        edges.append(edge)
+
+      for i,node in enumerate(nodes):
+        if node["actor_id"] in actor_scale:
+          nodes[i]["value"] = actor_scale[node["actor_id"]]
+      return {
+          "timestamp":self.util.get_present_date_time(),
+          "nodes":nodes,
+          "edges":edges,
+          "status":1,
+          "message":"Successfully created the actor network."
+        }
+
+    except:
+      self.log_error("Exception occurred getting actor network from the DB\n"+
+            "Exception stacktrace: \n"+
+            traceback.format_exc())
+      return None
+
   def get_linked_locations(self,db_name,end_date,svg,start_date=0):
     '''
     Method to get all the linked locaions in the given date range
@@ -535,6 +762,54 @@ class Dal:
             traceback.format_exc())
       return None
 
+  def get_mention_type_from_code(self,db_name,m_code):
+    '''
+
+    :param db_name:
+    :param m_code:
+    :return:
+    '''
+    try:
+      self.log_info("Getting mention type mention types collection")
+      db = self.client[db_name]
+      col_gdelt_mentions_type = db["gdelt_mentions_type"]
+      query = {"code" : m_code}
+      mentions_name = col_gdelt_mentions_type.find_one(query)
+      if mentions_name is None:
+        self.log_error("Invalid Mentions Code : " + m_code)
+        return None
+      name = mentions_name["name"]
+      return name
+    except:
+      self.log_error("Exception occurred getting Mentions type \n"+
+            "Exception stacktrace: \n"+
+            traceback.format_exc())
+      return None
+
+  def get_country_from_cameo_code(self,db_name,cameo_code):
+    '''
+
+    :param db_name:
+    :param cameo_code:
+    :return:
+    '''
+    try:
+      self.log_info("Getting country name from cameo country code")
+      db = self.client[db_name]
+      col_cameo_country = db["cameo_countries"]
+      query = {"CODE" : cameo_code}
+      country_name = col_cameo_country.find_one(query)
+      if country_name is None:
+        self.log_error("Invalid Country Code : " + cameo_code)
+        return None
+      country_name = country_name["LABEL"]
+      return country_name
+    except:
+      self.log_error("Exception occurred getting country name from cameo country code\n"+
+            "Exception stacktrace: \n"+
+            traceback.format_exc())
+      return None
+
   def get_country_from_fips_code(self,db_name,fips_code):
     '''
 
@@ -588,6 +863,126 @@ class Dal:
             "Exception stacktrace: \n"+
             traceback.format_exc())
       return None,None
+
+  def update_articles_per_category(self,db_name,articles_per_category):
+    '''
+
+    :param db_name:
+    :param articles_per_category:
+    :return:
+    '''
+    try:
+      self.log_info("Updating articles_per_category to db.")
+      db = self.client[db_name]
+      coll_articles_per_category = db["coll_articles_per_category"]
+      insert_status = coll_articles_per_category.insert_one(articles_per_category)
+      if insert_status is None:
+        self.log_error("Could not insert articles_per_category into db")
+        return False
+      else:
+        self.log_info("Successfully inserted articles_per_category into db")
+        return True
+    except:
+      self.log_error("Exception occurred while updating articles_per_category.\n"+
+                      "Exception stacktrace: \n" +
+                      traceback.format_exc())
+      return -1
+
+  def update_mentions_timeline(self,db_name,timeline):
+    '''
+
+    :param db_name:
+    :param timeline:
+    :return:
+    '''
+    try:
+      self.log_info("Updating mentions_timeline to db.")
+      db = self.client[db_name]
+      coll_mentions_timeline = db["coll_mentions_timeline"]
+      insert_status = coll_mentions_timeline.insert_one(timeline)
+      if insert_status is None:
+        self.log_error("Could not insert mentions_timeline into db")
+        return False
+      else:
+        self.log_info("Successfully inserted mentions_timeline into db")
+        return True
+    except:
+      self.log_error("Exception occurred while updating mentions_timeline.\n"+
+                      "Exception stacktrace: \n" +
+                      traceback.format_exc())
+      return -1
+
+  def update_high_impact_events(self,db_name,hir_object):
+    '''
+    Method to update high impact events
+    :param db_name:
+    :param hir_object:
+    :return:
+    '''
+    try:
+      self.log_info("Updating High Impact events to db.")
+      db = self.client[db_name]
+      col_high_impact_events = db["coll_high_impact_events"]
+      insert_status = col_high_impact_events.insert_one(hir_object)
+      if insert_status is None:
+        self.log_error("Could not insert high impact events into db")
+        return False
+      else:
+        self.log_info("Successfully inserted high impact events into db")
+        return True
+    except:
+      self.log_error("Exception occurred while updating high events regions.\n"+
+                      "Exception stacktrace: \n" +
+                      traceback.format_exc())
+      return -1
+
+  def update_high_impact_regions(self,db_name,hir_object):
+    '''
+    Method to update high impact regions
+    :param db_name:
+    :param hir_object:
+    :return:
+    '''
+    try:
+      self.log_info("Updating High Impact regions to db.")
+      db = self.client[db_name]
+      col_high_impact_regions = db["coll_high_impact_regions"]
+      insert_status = col_high_impact_regions.insert_one(hir_object)
+      if insert_status is None:
+        self.log_error("Could not insert high impact regions into db")
+        return False
+      else:
+        self.log_info("Successfully inserted high impact regions into db")
+        return True
+    except:
+      self.log_error("Exception occurred while updating high impact regions.\n"+
+                      "Exception stacktrace: \n" +
+                      traceback.format_exc())
+      return -1
+
+  def update_actor_network(self,db_name,actor_network):
+    '''
+
+    :param db_name:
+    :param actor_network:
+    :return:
+    '''
+    try:
+      self.log_info("Inserting actor network to db.")
+      db = self.client[db_name]
+      coll_actor_network = db["coll_actor_network"]
+      insert_status = coll_actor_network.insert_one(actor_network)
+      if insert_status is None:
+        self.log_error("Could not insert actor network into db")
+        return False
+      else:
+        self.log_info("Successfully inserted actor network into db")
+        return True
+    except:
+      self.log_error("Exception occurred while updating actor network.\n"+
+                      "Exception stacktrace: \n" +
+                      traceback.format_exc())
+      return -1
 
   def update_linked_locations(self,db_name,linked_locations):
     '''

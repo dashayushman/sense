@@ -1,6 +1,6 @@
 from constants import Constants
 from jproperties import Properties
-import sys, getopt
+import sys, getopt, traceback
 import logging,logging.handlers
 import urllib2
 from dal import Dal
@@ -10,7 +10,7 @@ import zipfile
 import subprocess
 from difflib import unified_diff
 from datetime import datetime
-import time
+import time, math
 import datetime as dt
 from calendar import monthrange
 
@@ -425,7 +425,7 @@ class Utility:
       last_update_date_gdelt = self.get_present_date_time()
 
     end_date = self.gdelt_date_to_datetime(last_update_date_gdelt)
-    start_date = self.datetime_to_gdelt_date(end_date - dt.timedelta(days=1))
+    start_date = self.datetime_to_gdelt_date(end_date - dt.timedelta(minutes=15))
 
     map_update_status = self.dal.update_impact_map(db_name,start_date,last_update_date_gdelt)
     if map_update_status == 4 or map_update_status == 1 or map_update_status == 2:
@@ -453,6 +453,146 @@ class Utility:
     update_status = self.dal.update_linked_locations(db_name,linked_locations)
     return update_status
 
+  def update_actor_network(self,db_name,n_days=1 ):
+    '''
+
+    :param db_name:
+    :param n_days:
+    :return:
+    '''
+    last_update_date_gdelt = self.dal.get_last_update_date(db_name)
+    if last_update_date_gdelt is None:
+      last_update_date_gdelt = self.get_present_date_time()
+
+    end_date = self.gdelt_date_to_datetime(last_update_date_gdelt)
+    start_date = self.datetime_to_gdelt_date(end_date - dt.timedelta(days=n_days))
+    actor_network = self.dal.get_actor_network(db_name,last_update_date_gdelt,start_date=start_date)
+    if actor_network is None:
+      return False
+    update_status = self.dal.update_actor_network(db_name,actor_network)
+    return update_status
+
+  def update_mentions_timeline(self,db_name,n_years=10):
+    '''
+
+    :param db_name:
+    :param n_years:
+    :return:
+    '''
+    end_date = self.dal.get_last_update_date(db_name)
+    if end_date is None:
+      end_date = self.get_present_date_time()
+
+    end_date_obj = self.gdelt_date_to_datetime(end_date)
+    this_year_start = self.datetime_to_gdelt_date(datetime(*(end_date_obj.year,1,1,0,0,0)))
+    timeline_dt = [(this_year_start,self.datetime_to_gdelt_date(end_date_obj),end_date_obj.year)]
+    prev_year = end_date_obj.year
+    for i in range(n_years-1):
+      yr = prev_year-1
+      timeline_dt.append((self.datetime_to_gdelt_date(datetime(*(yr,1,1,0,0,0))),self.datetime_to_gdelt_date(datetime(*(prev_year,1,1,0,0,0))),yr))
+      prev_year = yr
+    data = []
+    sources = []
+    for (start_date,end_date,year) in timeline_dt:
+      articles_per_category = self.dal.get_articles_per_category(db_name,end_date,start_date=start_date)
+      m_obj = {
+        "year":year
+      }
+      if articles_per_category["status"] == 0:
+        continue
+      for cat in articles_per_category["data"]:
+        cat_name = cat["source"].replace(" ","_")
+        n_mentions = cat["n_mentions"]
+        if cat_name not in sources: sources.append(cat_name)
+        m_obj[cat_name]=n_mentions
+      data.append(m_obj)
+    update_obj = {
+      "data":data,
+      "timestamp":self.get_present_date_time(),
+      "sources":sources
+    }
+    update_status = self.dal.update_mentions_timeline(db_name,update_obj)
+    return update_status
+
+
+  def update_articles_per_category(self,db_name):
+    '''
+    articles_per_category:
+    :param db_name:
+    :return:
+    '''
+    end_date = self.dal.get_last_update_date(db_name)
+    if end_date is None:
+      end_date = self.get_present_date_time()
+    articles_per_category = self.dal.get_articles_per_category(db_name,end_date,start_date=0)
+    if articles_per_category is None:
+      return False
+    update_status = self.dal.update_articles_per_category(db_name,articles_per_category)
+    return update_status
+
+  def update_high_impact_events(self,db_name,limit=10):
+    last_update_date_gdelt = self.dal.get_last_update_date(db_name)
+    if last_update_date_gdelt is None:
+      last_update_date_gdelt = self.get_present_date_time()
+
+    end_date_15 = self.gdelt_date_to_datetime(last_update_date_gdelt)
+    start_date_15 = self.datetime_to_gdelt_date(end_date_15 - dt.timedelta(minutes=15))
+
+    end_date_today = end_date_15
+    start_date_today = self.datetime_to_gdelt_date(datetime(*(end_date_today.year,end_date_today.month,end_date_today.day,0,0,0)))
+    end_date_today = self.datetime_to_gdelt_date(end_date_today)
+
+    last_month,last_year = self.get_last_month_year(end_date_15)
+    days_in_last_month = monthrange(last_year, last_month)[1]
+    start_date_month = self.datetime_to_gdelt_date(datetime(*(last_year,last_month,days_in_last_month,0,0,0)))
+    end_date_month = end_date_today
+
+    h_i_events_15 = self.dal.get_high_impact_events(db_name,last_update_date_gdelt,start_date=start_date_15,limit=limit)
+    h_i_events_today = self.dal.get_high_impact_events(db_name,end_date_today,start_date=start_date_today,limit=limit)
+    h_i_events_month = self.dal.get_high_impact_events(db_name,end_date_month,start_date=start_date_month,limit=limit)
+    if h_i_events_15 is None or h_i_events_today is None or h_i_events_month is None:
+      return False
+
+    hir_object = {
+      "hie_15":h_i_events_15,
+      "hie_today":h_i_events_today,
+      "hie_month":h_i_events_month,
+      "timestamp" : self.get_present_date_time()
+    }
+    update_status = self.dal.update_high_impact_events(db_name,hir_object)
+    return update_status
+
+  def update_high_impact_regions(self,db_name,limit=10):
+    last_update_date_gdelt = self.dal.get_last_update_date(db_name)
+    if last_update_date_gdelt is None:
+      last_update_date_gdelt = self.get_present_date_time()
+
+    end_date_15 = self.gdelt_date_to_datetime(last_update_date_gdelt)
+    start_date_15 = self.datetime_to_gdelt_date(end_date_15 - dt.timedelta(minutes=15))
+
+    end_date_today = end_date_15
+    start_date_today = self.datetime_to_gdelt_date(datetime(*(end_date_today.year,end_date_today.month,end_date_today.day,0,0,0)))
+    end_date_today = self.datetime_to_gdelt_date(end_date_today)
+
+    last_month,last_year = self.get_last_month_year(end_date_15)
+    days_in_last_month = monthrange(last_year, last_month)[1]
+    start_date_month = self.datetime_to_gdelt_date(datetime(*(last_year,last_month,days_in_last_month,0,0,0)))
+    end_date_month = end_date_today
+
+    h_i_regions_15 = self.dal.get_high_impact_regions(db_name,last_update_date_gdelt,start_date=start_date_15,limit=limit)
+    h_i_regions_today = self.dal.get_high_impact_regions(db_name,end_date_today,start_date=start_date_today,limit=limit)
+    h_i_regions_month = self.dal.get_high_impact_regions(db_name,end_date_month,start_date=start_date_month,limit=limit)
+    if h_i_regions_15 is None or h_i_regions_today is None or h_i_regions_month is None:
+      return False
+
+    hir_object = {
+      "hir_15":h_i_regions_15,
+      "hir_today":h_i_regions_today,
+      "hir_month":h_i_regions_month,
+      "timestamp" : self.get_present_date_time()
+    }
+    update_status = self.dal.update_high_impact_regions(db_name,hir_object)
+    return update_status
 
   def update_overall_stats(self,db_name):
     '''
@@ -649,17 +789,24 @@ class Utility:
     a2 = 65280.0
     b2 = 16776960.0
 
+    color_range_neg = ["#ff0000","#ff3200","#ff4800","#ff5d00","#ff8c00","#ff9d00","#ffbb00","#ffc300","#ffd400","#ffe500"]
+    color_range_pos = ["#ffee00","#eeff00","#ddff00","#b2ff00","#9dff00","#76ff00","#48ff00","#3fff00","#32ff00","#00ff04"]
+
     if g_score == 0.0:
-      return ("#"+ str(hex(16776960)).replace("0x",""))
+      return ("#ffee00")
     elif g_score < 0.0:
-      val = (((b1-a1)*((g_score+0.2)-(-10.0)))/(0.0-(-10.0))) + a1
-      hex_str = str(hex(int(val))).replace("0x","")
-      if len(hex_str) < 6:
-        while len(hex_str) == 6:
-          hex_str = "0" + hex_str
-      hex_str = "#" + hex_str
+      #val = (((b1-a1)*((g_score+0.2)-(-10.0)))/(0.0-(-10.0))) + a1
+      #hex_str = str(hex(int(val))).replace("0x","")
+      #if len(hex_str) < 6:
+      #  while len(hex_str) == 6:
+      #    hex_str = "0" + hex_str
+      #hex_str = "#" + hex_str
+      if abs(int(g_score)) > 10:
+        g_score = -10
+      hex_str = color_range_neg[int(math.floor(g_score))]
       return hex_str
     elif g_score > 0.0:
+      '''
       g_score = -1 * g_score
       val = (((b2-a2)*((g_score+0.2)-(-10.0)))/(0.0-(-10.0))) + a2
       hex_str = str(hex(int(val))).replace("0x","")
@@ -667,6 +814,10 @@ class Utility:
         while len(hex_str) == 6:
           hex_str = "0" + hex_str
       hex_str = "#" + hex_str
+      '''
+      if abs(int(g_score)) > 10:
+        g_score = 10
+      hex_str = color_range_pos[int(math.ceil(g_score))]
       return hex_str
 
   def get_present_date_time(self,type="gdelt",d_type="int",timezone="utc"):
@@ -754,7 +905,10 @@ class Utility:
       return True, download_path
     #handle errors
     except HTTPError, e:
-      self.log_error("HTTP Error:"+ str(e.code) + " " + str(url))
+      self.log_error("Exception occurred while Downloading file from URL: "+str(url)+".\n"+
+                      "Exception stacktrace: \n" +
+                      traceback.format_exc())
+      #self.log_error("HTTP Error:"+ str(url))
       return False, None
     except URLError, e:
       self.log_error("URL Error:",+ str(e.reason) + " " + str(url))
