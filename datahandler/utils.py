@@ -445,7 +445,7 @@ class Utility:
       last_update_date_gdelt = self.get_present_date_time()
 
     end_date = self.gdelt_date_to_datetime(last_update_date_gdelt)
-    start_date = self.datetime_to_gdelt_date(end_date - dt.timedelta(days=1))
+    start_date = self.datetime_to_gdelt_date(end_date - dt.timedelta(minutes=15))
 
     linked_locations = self.dal.get_linked_locations(db_name,last_update_date_gdelt,svg,start_date=start_date)
     if linked_locations is None:
@@ -911,10 +911,14 @@ class Utility:
       #self.log_error("HTTP Error:"+ str(url))
       return False, None
     except URLError, e:
-      self.log_error("URL Error:",+ str(e.reason) + " " + str(url))
+      self.log_error("Exception occurred while downloading file from url: "+ str(url)+"\n"+
+            "Exception stacktrace: \n"+
+            traceback.format_exc())
       return False , None
     except Exception, e:
-      self.log_error("Exception Occurred:", + str(e.strerror) )
+      self.log_error("Exception occurred while downloading file from url: "+ str(url)+"\n"+
+            "Exception stacktrace: \n"+
+            traceback.format_exc())
       return False , None
 
   def unzip_file(self,file_path,working_dir):

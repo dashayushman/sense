@@ -122,7 +122,7 @@ def main(argv):
   const = util.load_properties(const)
 
   initialize(const.mongo_host,const.mongo_port,const.mongo_pool_size,const.log_dir)
-  '''
+
   download_insert_new_files(const.url,
                             const.db_name,
                             const.working_dir,
@@ -138,17 +138,18 @@ def main(argv):
                             const.download_limit,
                             const.download_sort)
 
+
   update_metadata(const.db_name)
-  '''
-  #update_indexes(const.db_name)
+
+  update_indexes(const.db_name)
   update_global_dashboard(const.db_name)
-  #update_overall_stats(const.db_name)
-  #update_linked_locations(const.db_name,const.svg)
-  #update_high_impact_regions(const.db_name)
-  #update_high_impact_events(const.db_name)
-  #update_articles_per_category(const.db_name)
-  #update_mentions_timeline(const.db_name)
-  #update_actor_network(const.db_name)
+  update_overall_stats(const.db_name)
+  update_linked_locations(const.db_name,const.svg)
+  update_high_impact_regions(const.db_name)
+  update_high_impact_events(const.db_name)
+  update_articles_per_category(const.db_name)
+  update_mentions_timeline(const.db_name)
+  update_actor_network(const.db_name)
   end = datetime.datetime.now()
   print("total time taken: " + str(end-start))
 

@@ -5,1817 +5,1397 @@
 				is even outside the country itself (like US, because of Alaska and Hawaii)
 				That's why wehave the coordinates stored here
 			*/
+var hello = {
+	"_id" : "5807a32be30bf554a2b9a92d",
+	"startDate" : 20161019150000,
+	"endDate" : 20161019151500,
+	"mapData" : [
+		{
+			"color" : "#ddff00",
+			"code" : "IN",
+			"avg" : 1.21467889908257,
+			"name" : "India",
+			"value" : 1.21467889908257
+		},
+		{
+			"color" : "#ddff00",
+			"code" : "NZ",
+			"avg" : 1.3,
+			"name" : "New Zealand",
+			"value" : 1.3
+		},
+		{
+			"color" : "#ddff00",
+			"code" : "AS",
+			"avg" : 1.43538461538462,
+			"name" : "Australia",
+			"value" : 1.43538461538462
+		},
+		{
+			"color" : "#eeff00",
+			"code" : "US",
+			"avg" : 0.079474216380183,
+			"name" : "United States",
+			"value" : 0.079474216380183
+		},
+		{
+			"color" : "#9dff00",
+			"code" : "JA",
+			"avg" : 3.03793103448276,
+			"name" : "Japan",
+			"value" : 3.03793103448276
+		},
+		{
+			"color" : "#eeff00",
+			"code" : "TU",
+			"avg" : 0.918292682926829,
+			"name" : "Turkey",
+			"value" : 0.918292682926829
+		},
+		{
+			"color" : "#ddff00",
+			"code" : "CA",
+			"avg" : 1.54444444444444,
+			"name" : "Canada",
+			"value" : 1.54444444444444
+		},
+		{
+			"color" : "#ffc300",
+			"code" : "MR",
+			"avg" : -2.28888888888889,
+			"name" : "Mauritania",
+			"value" : 2.28888888888889
+		},
+		{
+			"color" : "#eeff00",
+			"code" : "UK",
+			"avg" : 0.796835443037975,
+			"name" : "United Kingdom",
+			"value" : 0.796835443037975
+		},
+		{
+			"color" : "#ffe500",
+			"code" : "DA",
+			"avg" : -0.0599999999999999,
+			"name" : "Denmark",
+			"value" : 0.0599999999999999
+		},
+		{
+			"color" : "#ff9d00",
+			"code" : "PE",
+			"avg" : -4.2,
+			"name" : "Peru",
+			"value" : 4.2
+		},
+		{
+			"color" : "#eeff00",
+			"code" : "EI",
+			"avg" : 0.183333333333333,
+			"name" : "Ireland",
+			"value" : 0.183333333333333
+		},
+		{
+			"color" : "#ffc300",
+			"code" : "GL",
+			"avg" : -2.8,
+			"name" : "Greenland",
+			"value" : 2.8
+		},
+		{
+			"color" : "#eeff00",
+			"code" : "RP",
+			"avg" : 0.8,
+			"name" : "Philippines",
+			"value" : 0.8
+		},
+		{
+			"color" : "#b2ff00",
+			"code" : "HO",
+			"avg" : 2.5,
+			"name" : "Honduras",
+			"value" : 2.5
+		},
+		{
+			"color" : "#b2ff00",
+			"code" : "HA",
+			"avg" : 2.5,
+			"name" : "Haiti",
+			"value" : 2.5
+		},
+		{
+			"color" : "#ffd400",
+			"code" : "AF",
+			"avg" : -1.24285714285714,
+			"name" : "Afghanistan",
+			"value" : 1.24285714285714
+		},
+		{
+			"color" : "#ffe500",
+			"code" : "PK",
+			"avg" : -0.226086956521739,
+			"name" : "Pakistan",
+			"value" : 0.226086956521739
+		},
+		{
+			"color" : "#ddff00",
+			"code" : "UV",
+			"avg" : 1.125,
+			"name" : "Burkina Faso",
+			"value" : 1.125
+		},
+		{
+			"color" : "#ddff00",
+			"code" : "SF",
+			"avg" : 1.63777777777778,
+			"name" : "South Africa",
+			"value" : 1.63777777777778
+		},
+		{
+			"color" : "#ddff00",
+			"code" : "SY",
+			"avg" : 1.11204819277108,
+			"name" : "Syria",
+			"value" : 1.11204819277108
+		},
+		{
+			"color" : "#ffe500",
+			"code" : "BG",
+			"avg" : -0.136363636363636,
+			"name" : "Bangladesh",
+			"value" : 0.136363636363636
+		},
+		{
+			"color" : "#b2ff00",
+			"code" : "CU",
+			"avg" : 2.05555555555556,
+			"name" : "Cuba",
+			"value" : 2.05555555555556
+		},
+		{
+			"color" : "#b2ff00",
+			"code" : "GV",
+			"avg" : 2.35,
+			"name" : "Equatorial Guinea",
+			"value" : 2.35
+		},
+		{
+			"color" : "#eeff00",
+			"code" : "VE",
+			"avg" : 0.83,
+			"name" : "Venezuela",
+			"value" : 0.83
+		},
+		{
+			"color" : "#b2ff00",
+			"code" : "CH",
+			"avg" : 2.07872340425532,
+			"name" : "China",
+			"value" : 2.07872340425532
+		},
+		{
+			"color" : "#eeff00",
+			"code" : "CG",
+			"avg" : 0.0153846153846153,
+			"name" : "Democratic Republic of the Congo",
+			"value" : 0.0153846153846153
+		},
+		{
+			"color" : "#ffe500",
+			"code" : "GR",
+			"avg" : -0.85,
+			"name" : "Greece",
+			"value" : 0.85
+		},
+		{
+			"color" : "#48ff00",
+			"code" : "JE",
+			"avg" : 5.13333333333333,
+			"name" : "Jersey",
+			"value" : 5.13333333333333
+		},
+		{
+			"color" : "#ffe500",
+			"code" : "NI",
+			"avg" : -0.408333333333333,
+			"name" : "Nigeria",
+			"value" : 0.408333333333333
+		},
+		{
+			"color" : "#b2ff00",
+			"code" : "NO",
+			"avg" : 2.32,
+			"name" : "Norway",
+			"value" : 2.32
+		},
+		{
+			"color" : "#ffc300",
+			"code" : "MY",
+			"avg" : -2.4,
+			"name" : "Malaysia",
+			"value" : 2.4
+		},
+		{
+			"color" : "#9dff00",
+			"code" : "MT",
+			"avg" : 4.0,
+			"name" : "Malta",
+			"value" : 4.0
+		},
+		{
+			"color" : "#ffe500",
+			"code" : "SP",
+			"avg" : -0.4,
+			"name" : "Spain",
+			"value" : 0.4
+		},
+		{
+			"color" : "#eeff00",
+			"code" : "GK",
+			"avg" : 0.514285714285714,
+			"name" : "Guernsey",
+			"value" : 0.514285714285714
+		},
+		{
+			"color" : "#ffd400",
+			"code" : "WE",
+			"avg" : -1.71428571428571,
+			"name" : "West Bank",
+			"value" : 1.71428571428571
+		},
+		{
+			"color" : "#eeff00",
+			"code" : "MX",
+			"avg" : 0.585714285714286,
+			"name" : "Mexico",
+			"value" : 0.585714285714286
+		},
+		{
+			"color" : "#ffe500",
+			"code" : "VI",
+			"avg" : -0.92,
+			"name" : "British Virgin Islands",
+			"value" : 0.92
+		},
+		{
+			"color" : "#9dff00",
+			"code" : "HR",
+			"avg" : 3.16,
+			"name" : "Croatia",
+			"value" : 3.16
+		},
+		{
+			"color" : "#ddff00",
+			"code" : "IR",
+			"avg" : 1.96734693877551,
+			"name" : "Iran",
+			"value" : 1.96734693877551
+		},
+		{
+			"color" : "#eeff00",
+			"code" : "KE",
+			"avg" : 0.290909090909091,
+			"name" : "Kenya",
+			"value" : 0.290909090909091
+		},
+		{
+			"color" : "#b2ff00",
+			"code" : "MA",
+			"avg" : 2.35,
+			"name" : "Madagascar",
+			"value" : 2.35
+		},
+		{
+			"color" : "#eeff00",
+			"code" : "IT",
+			"avg" : 0.977272727272727,
+			"name" : "Italy",
+			"value" : 0.977272727272727
+		},
+		{
+			"color" : "#76ff00",
+			"code" : "MI",
+			"avg" : 4.02,
+			"name" : "Malawi",
+			"value" : 4.02
+		},
+		{
+			"color" : "#ff8c00",
+			"code" : "BM",
+			"avg" : -5.66666666666667,
+			"name" : "Myanmar",
+			"value" : 5.66666666666667
+		},
+		{
+			"color" : "#ddff00",
+			"code" : "IS",
+			"avg" : 1.73055555555556,
+			"name" : "Israel",
+			"value" : 1.73055555555556
+		},
+		{
+			"color" : "#b2ff00",
+			"code" : "NL",
+			"avg" : 2.66666666666667,
+			"name" : "Netherlands",
+			"value" : 2.66666666666667
+		},
+		{
+			"color" : "#ddff00",
+			"code" : "PM",
+			"avg" : 1.07058823529412,
+			"name" : "Panama",
+			"value" : 1.07058823529412
+		},
+		{
+			"color" : "#b2ff00",
+			"code" : "BO",
+			"avg" : 2.05238095238095,
+			"name" : "Belarus",
+			"value" : 2.05238095238095
+		},
+		{
+			"color" : "#ffc300",
+			"code" : "SO",
+			"avg" : -2.1625,
+			"name" : "Somalia",
+			"value" : 2.1625
+		},
+		{
+			"color" : "#48ff00",
+			"code" : "WZ",
+			"avg" : 6.0,
+			"name" : "Swaziland",
+			"value" : 6.0
+		},
+		{
+			"color" : "#ffc300",
+			"code" : "IZ",
+			"avg" : -2.6875,
+			"name" : "Iraq",
+			"value" : 2.6875
+		},
+		{
+			"color" : "#ffd400",
+			"code" : "RS",
+			"avg" : -1.01351351351351,
+			"name" : "Russia",
+			"value" : 1.01351351351351
+		},
+		{
+			"color" : "#76ff00",
+			"code" : "TX",
+			"avg" : 4.71428571428571,
+			"name" : "Turkmenistan",
+			"value" : 4.71428571428571
+		},
+		{
+			"color" : "#9dff00",
+			"code" : "KV",
+			"avg" : 3.4,
+			"name" : "Kosovo",
+			"value" : 3.4
+		},
+		{
+			"color" : "#ff4800",
+			"code" : "TW",
+			"avg" : -7.83333333333333,
+			"name" : "Taiwan",
+			"value" : 7.83333333333333
+		},
+		{
+			"color" : "#eeff00",
+			"code" : "UP",
+			"avg" : 0.979166666666667,
+			"name" : "Ukraine",
+			"value" : 0.979166666666667
+		},
+		{
+			"color" : "#b2ff00",
+			"code" : "BD",
+			"avg" : 2.56666666666667,
+			"name" : "Bermuda",
+			"value" : 2.56666666666667
+		},
+		{
+			"color" : "#ffc300",
+			"code" : "CD",
+			"avg" : -2.5,
+			"name" : "Chad",
+			"value" : 2.5
+		},
+		{
+			"color" : "#ffc300",
+			"code" : "YM",
+			"avg" : -2.7375,
+			"name" : "Yemen",
+			"value" : 2.7375
+		},
+		{
+			"color" : "#48ff00",
+			"code" : "TZ",
+			"avg" : 5.9125,
+			"name" : "Tanzania",
+			"value" : 5.9125
+		},
+		{
+			"color" : "#ffe500",
+			"code" : "EG",
+			"avg" : -0.990476190476191,
+			"name" : "Egypt",
+			"value" : 0.990476190476191
+		},
+		{
+			"color" : "#b2ff00",
+			"code" : "AM",
+			"avg" : 2.575,
+			"name" : "Armenia",
+			"value" : 2.575
+		},
+		{
+			"color" : "#eeff00",
+			"code" : "FR",
+			"avg" : 0.846666666666666,
+			"name" : "France",
+			"value" : 0.846666666666666
+		},
+		{
+			"color" : "#ff9d00",
+			"code" : "AE",
+			"avg" : -5.0,
+			"name" : "United Arab Emirates",
+			"value" : 5.0
+		},
+		{
+			"color" : "#b2ff00",
+			"code" : "AJ",
+			"avg" : 2.8,
+			"name" : "Azerbaijan",
+			"value" : 2.8
+		},
+		{
+			"color" : "#eeff00",
+			"code" : "SN",
+			"avg" : 0.183333333333333,
+			"name" : "Singapore",
+			"value" : 0.183333333333333
+		},
+		{
+			"color" : "#b2ff00",
+			"code" : "KS",
+			"avg" : 2.73571428571428,
+			"name" : "South Korea",
+			"value" : 2.73571428571428
+		},
+		{
+			"color" : "#ffc300",
+			"code" : "BE",
+			"avg" : -2.64705882352941,
+			"name" : "Belgium",
+			"value" : 2.64705882352941
+		},
+		{
+			"color" : "#ddff00",
+			"code" : "SW",
+			"avg" : 1.77058823529412,
+			"name" : "Sweden",
+			"value" : 1.77058823529412
+		},
+		{
+			"color" : "#00ff04",
+			"code" : "BN",
+			"avg" : 8.3,
+			"name" : "Benin",
+			"value" : 8.3
+		},
+		{
+			"color" : "#32ff00",
+			"code" : "BU",
+			"avg" : 7.4,
+			"name" : "Bulgaria",
+			"value" : 7.4
+		},
+		{
+			"color" : "#b2ff00",
+			"code" : "BF",
+			"avg" : 2.2,
+			"name" : "Bahamas, The",
+			"value" : 2.2
+		},
+		{
+			"color" : "#b2ff00",
+			"code" : "HU",
+			"avg" : 2.8,
+			"name" : "Hungary",
+			"value" : 2.8
+		},
+		{
+			"color" : "#9dff00",
+			"code" : "BX",
+			"avg" : 3.14285714285714,
+			"name" : "Brunei",
+			"value" : 3.14285714285714
+		},
+		{
+			"color" : "#ffe500",
+			"code" : "GM",
+			"avg" : -0.016666666666667,
+			"name" : "Germany",
+			"value" : 0.016666666666667
+		},
+		{
+			"color" : "#ffe500",
+			"code" : "JM",
+			"avg" : -0.25,
+			"name" : "Jamaica",
+			"value" : 0.25
+		},
+		{
+			"color" : "#ff9d00",
+			"code" : "SZ",
+			"avg" : -4.33333333333333,
+			"name" : "Switzerland",
+			"value" : 4.33333333333333
+		},
+		{
+			"color" : "#76ff00",
+			"code" : "ID",
+			"avg" : 4.26666666666667,
+			"name" : "Indonesia",
+			"value" : 4.26666666666667
+		},
+		{
+			"color" : "#b2ff00",
+			"code" : "CS",
+			"avg" : 3.0,
+			"name" : "Costa Rica",
+			"value" : 3.0
+		},
+		{
+			"color" : "#9dff00",
+			"code" : "CM",
+			"avg" : 3.98333333333333,
+			"name" : "Cameroon",
+			"value" : 3.98333333333333
+		},
+		{
+			"color" : "#ddff00",
+			"code" : "RO",
+			"avg" : 1.8,
+			"name" : "Romania",
+			"value" : 1.8
+		},
+		{
+			"color" : "#ddff00",
+			"code" : "VM",
+			"avg" : 1.71111111111111,
+			"name" : "Vietnam, Democratic Republic of",
+			"value" : 1.71111111111111
+		},
+		{
+			"color" : "#ffee00",
+			"code" : "MC",
+			"avg" : 0.0,
+			"name" : "Macau",
+			"value" : 0.0
+		},
+		{
+			"color" : "#b2ff00",
+			"code" : "KN",
+			"avg" : 2.06153846153846,
+			"name" : "North Korea",
+			"value" : 2.06153846153846
+		},
+		{
+			"color" : "#eeff00",
+			"code" : "LE",
+			"avg" : 0.716666666666667,
+			"name" : "Lebanon",
+			"value" : 0.716666666666667
+		},
+		{
+			"color" : "#ff9d00",
+			"code" : "CT",
+			"avg" : -5.0,
+			"name" : "Central African Republic",
+			"value" : 5.0
+		},
+		{
+			"color" : "#eeff00",
+			"code" : "CF",
+			"avg" : 0.333333333333333,
+			"name" : "Congo",
+			"value" : 0.333333333333333
+		},
+		{
+			"color" : "#b2ff00",
+			"code" : "CO",
+			"avg" : 2.56666666666667,
+			"name" : "Colombia",
+			"value" : 2.56666666666667
+		},
+		{
+			"color" : "#ff9d00",
+			"code" : "AL",
+			"avg" : -5.0,
+			"name" : "Albania",
+			"value" : 5.0
+		},
+		{
+			"color" : "#ffd400",
+			"code" : "UG",
+			"avg" : -1.28888888888889,
+			"name" : "Uganda",
+			"value" : 1.28888888888889
+		},
+		{
+			"color" : "#ffc300",
+			"code" : "EZ",
+			"avg" : -2.88888888888889,
+			"name" : "Czech Republic",
+			"value" : 2.88888888888889
+		},
+		{
+			"color" : "#b2ff00",
+			"code" : "GH",
+			"avg" : 2.20909090909091,
+			"name" : "Ghana",
+			"value" : 2.20909090909091
+		},
+		{
+			"color" : "#ffe500",
+			"code" : "LY",
+			"avg" : -0.1,
+			"name" : "Libya",
+			"value" : 0.1
+		},
+		{
+			"color" : "#48ff00",
+			"code" : "QA",
+			"avg" : 5.56666666666667,
+			"name" : "Qatar",
+			"value" : 5.56666666666667
+		},
+		{
+			"color" : "#eeff00",
+			"code" : "ER",
+			"avg" : 0.442857142857143,
+			"name" : "Eritrea",
+			"value" : 0.442857142857143
+		},
+		{
+			"color" : "#ffbb00",
+			"code" : "ET",
+			"avg" : -3.6,
+			"name" : "Ethiopia",
+			"value" : 3.6
+		},
+		{
+			"color" : "#ddff00",
+			"code" : "TH",
+			"avg" : 1.76444444444444,
+			"name" : "Thailand",
+			"value" : 1.76444444444444
+		},
+		{
+			"color" : "#9dff00",
+			"code" : "MU",
+			"avg" : 3.6,
+			"name" : "Oman",
+			"value" : 3.6
+		},
+		{
+			"color" : "#9dff00",
+			"code" : "LH",
+			"avg" : 3.4,
+			"name" : "Lithuania",
+			"value" : 3.4
+		},
+		{
+			"color" : "#b2ff00",
+			"code" : "EN",
+			"avg" : 3.0,
+			"name" : "Estonia",
+			"value" : 3.0
+		},
+		{
+			"color" : "#76ff00",
+			"code" : "FI",
+			"avg" : 4.76,
+			"name" : "Finland",
+			"value" : 4.76
+		},
+		{
+			"color" : "#ffbb00",
+			"code" : "SU",
+			"avg" : -3.2875,
+			"name" : "Sudan",
+			"value" : 3.2875
+		},
+		{
+			"color" : "#9dff00",
+			"code" : "BR",
+			"avg" : 3.7,
+			"name" : "Brazil",
+			"value" : 3.7
+		},
+		{
+			"color" : "#32ff00",
+			"code" : "PO",
+			"avg" : 8.0,
+			"name" : "Portugal",
+			"value" : 8.0
+		},
+		{
+			"color" : "#ddff00",
+			"code" : "LI",
+			"avg" : 1.13333333333333,
+			"name" : "Liberia",
+			"value" : 1.13333333333333
+		},
+		{
+			"color" : "#ffbb00",
+			"code" : "LO",
+			"avg" : -4.0,
+			"name" : "Czechoslovakia",
+			"value" : 4.0
+		},
+		{
+			"color" : "#eeff00",
+			"code" : "PL",
+			"avg" : 0.933333333333333,
+			"name" : "Poland",
+			"value" : 0.933333333333333
+		},
+		{
+			"color" : "#ffe500",
+			"code" : "NP",
+			"avg" : -0.4,
+			"name" : "Nepal",
+			"value" : 0.4
+		},
+		{
+			"color" : "#ddff00",
+			"code" : "LA",
+			"avg" : 1.75,
+			"name" : "Laos",
+			"value" : 1.75
+		},
+		{
+			"color" : "#eeff00",
+			"code" : "SA",
+			"avg" : 0.72,
+			"name" : "Saudi Arabia",
+			"value" : 0.72
+		},
+		{
+			"color" : "#ffd400",
+			"code" : "MD",
+			"avg" : -1.2,
+			"name" : "Moldova",
+			"value" : 1.2
+		},
+		{
+			"color" : "#ddff00",
+			"code" : "BK",
+			"avg" : 1.9,
+			"name" : "Bosnia-Herzegovina",
+			"value" : 1.9
+		},
+		{
+			"color" : "#b2ff00",
+			"code" : "WI",
+			"avg" : 2.8,
+			"name" : "Western Sahara",
+			"value" : 2.8
+		},
+		{
+			"color" : "#ff9d00",
+			"code" : "OS",
+			"avg" : -5.0,
+			"name" : "Oceans",
+			"value" : 5.0
+		},
+		{
+			"color" : "#ffbb00",
+			"code" : "RW",
+			"avg" : -3.66666666666667,
+			"name" : "Rwanda",
+			"value" : 3.66666666666667
+		},
+		{
+			"color" : "#9dff00",
+			"code" : "TS",
+			"avg" : 4.0,
+			"name" : "Tunisia",
+			"value" : 4.0
+		},
+		{
+			"color" : "#b2ff00",
+			"code" : "KU",
+			"avg" : 2.8,
+			"name" : "Kuwait",
+			"value" : 2.8
+		},
+		{
+			"color" : "#eeff00",
+			"code" : "MK",
+			"avg" : 1.0,
+			"name" : "Macedonia",
+			"value" : 1.0
+		},
+		{
+			"color" : "#b2ff00",
+			"code" : "TI",
+			"avg" : 3.0,
+			"name" : "Tajikistan",
+			"value" : 3.0
+		},
+		{
+			"color" : "#ffd400",
+			"code" : "DJ",
+			"avg" : -2.0,
+			"name" : "Djibouti",
+			"value" : 2.0
+		},
+		{
+			"color" : "#9dff00",
+			"code" : "RQ",
+			"avg" : 3.4,
+			"name" : "Puerto Rico",
+			"value" : 3.4
+		},
+		{
+			"color" : "#ff0000",
+			"code" : "JO",
+			"avg" : -10.0,
+			"name" : "Jordan",
+			"value" : 10.0
+		},
+		{
+			"color" : "#ffd400",
+			"code" : "TN",
+			"avg" : -2.0,
+			"name" : "Tonga",
+			"value" : 2.0
+		},
+		{
+			"color" : "#3fff00",
+			"code" : "UZ",
+			"avg" : 7.0,
+			"name" : "Uzbekistan",
+			"value" : 7.0
+		}
+	],
+	"timestamp" : 20161019164531,
+	"latlong" : {
+		"BD" : {
+			"latitude" : 32.3333,
+			"longitude" : -64.75
+		},
+		"BE" : {
+			"latitude" : 50.5,
+			"longitude" : 4.75
+		},
+		"WE" : {
+			"latitude" : 32.4594,
+			"longitude" : 35.3009
+		},
+		"BG" : {
+			"latitude" : 22.815,
+			"longitude" : 89.5622
+		},
+		"BM" : {
+			"latitude" : 22,
+			"longitude" : 98
+		},
+		"BN" : {
+			"latitude" : 9.5,
+			"longitude" : 2.25
+		},
+		"BO" : {
+			"latitude" : 53.9,
+			"longitude" : 27.5667
+		},
+		"BF" : {
+			"latitude" : 25.0833,
+			"longitude" : -77.35
+		},
+		"WI" : {
+			"latitude" : 24.5,
+			"longitude" : -13
+		},
+		"BK" : {
+			"latitude" : 44,
+			"longitude" : 18
+		},
+		"BU" : {
+			"latitude" : 43,
+			"longitude" : 25
+		},
+		"JO" : {
+			"latitude" : 31,
+			"longitude" : 36
+		},
+		"BR" : {
+			"latitude" : -15.7833,
+			"longitude" : -47.9167
+		},
+		"JE" : {
+			"latitude" : 49.1961,
+			"longitude" : -2.12585
+		},
+		"BX" : {
+			"latitude" : 15,
+			"longitude" : 115
+		},
+		"JA" : {
+			"latitude" : 36,
+			"longitude" : 138
+		},
+		"RW" : {
+			"latitude" : -2,
+			"longitude" : 30
+		},
+		"RP" : {
+			"latitude" : 16.7222,
+			"longitude" : 120.353
+		},
+		"RQ" : {
+			"latitude" : 18.2359,
+			"longitude" : -66.4838
+		},
+		"RS" : {
+			"latitude" : 60,
+			"longitude" : 100
+		},
+		"RO" : {
+			"latitude" : 46,
+			"longitude" : 25
+		},
+		"GV" : {
+			"latitude" : 11,
+			"longitude" : -10
+		},
+		"GR" : {
+			"latitude" : 35.325,
+			"longitude" : 25.1306
+		},
+		"GM" : {
+			"latitude" : 53.55,
+			"longitude" : 10
+		},
+		"GL" : {
+			"latitude" : 72,
+			"longitude" : -40
+		},
+		"GK" : {
+			"latitude" : 49.4717,
+			"longitude" : -2.62573
+		},
+		"GH" : {
+			"latitude" : 8,
+			"longitude" : -2
+		},
+		"JM" : {
+			"latitude" : 18.25,
+			"longitude" : -77.5
+		},
+		"OS" : {
+			"latitude" : 43,
+			"longitude" : 35
+		},
+		"HR" : {
+			"latitude" : 45.8,
+			"longitude" : 16
+		},
+		"HU" : {
+			"latitude" : 47,
+			"longitude" : 20
+		},
+		"EN" : {
+			"latitude" : 59,
+			"longitude" : 26
+		},
+		"HO" : {
+			"latitude" : 15,
+			"longitude" : -86.5
+		},
+		"HA" : {
+			"latitude" : 18.5392,
+			"longitude" : -72.335
+		},
+		"WZ" : {
+			"latitude" : -26.5,
+			"longitude" : 31.5
+		},
+		"PE" : {
+			"latitude" : -12.05,
+			"longitude" : -77.05
+		},
+		"PK" : {
+			"latitude" : 32.6336,
+			"longitude" : 72.2565
+		},
+		"PO" : {
+			"latitude" : 38.7167,
+			"longitude" : -9.13333
+		},
+		"PL" : {
+			"latitude" : 52,
+			"longitude" : 20
+		},
+		"PM" : {
+			"latitude" : 9.33333,
+			"longitude" : -79.9167
+		},
+		"IR" : {
+			"latitude" : 32.6825,
+			"longitude" : 50.4821
+		},
+		"EI" : {
+			"latitude" : 51.8978,
+			"longitude" : -8.39778
+		},
+		"EG" : {
+			"latitude" : 31.2878,
+			"longitude" : 34.2369
+		},
+		"IT" : {
+			"latitude" : 41.9,
+			"longitude" : 12.4833
+		},
+		"EZ" : {
+			"latitude" : 50.0833,
+			"longitude" : 14.4667
+		},
+		"ET" : {
+			"latitude" : 11.8667,
+			"longitude" : 39.7333
+		},
+		"ER" : {
+			"latitude" : 15.3333,
+			"longitude" : 38.9333
+		},
+		"AL" : {
+			"latitude" : 41,
+			"longitude" : 20
+		},
+		"MD" : {
+			"latitude" : 47.0056,
+			"longitude" : 28.8575
+		},
+		"MA" : {
+			"latitude" : -20,
+			"longitude" : 47
+		},
+		"MC" : {
+			"latitude" : 22.1667,
+			"longitude" : 113.55
+		},
+		"UZ" : {
+			"latitude" : 41.3167,
+			"longitude" : 69.25
+		},
+		"UV" : {
+			"latitude" : 13,
+			"longitude" : -2
+		},
+		"MI" : {
+			"latitude" : -13.5,
+			"longitude" : 34
+		},
+		"UP" : {
+			"latitude" : 48.0466,
+			"longitude" : 36.7518
+		},
+		"US" : {
+			"latitude" : 27.8333,
+			"longitude" : -81.717
+		},
+		"MU" : {
+			"latitude" : 21,
+			"longitude" : 57
+		},
+		"MT" : {
+			"latitude" : 35.8333,
+			"longitude" : 14.5833
+		},
+		"UK" : {
+			"latitude" : 51.7823,
+			"longitude" : -1.31405
+		},
+		"MR" : {
+			"latitude" : 18.1194,
+			"longitude" : -16.0406
+		},
+		"UG" : {
+			"latitude" : 1,
+			"longitude" : 32
+		},
+		"MY" : {
+			"latitude" : 4.78333,
+			"longitude" : 103.35
+		},
+		"MX" : {
+			"latitude" : 19.4342,
+			"longitude" : -99.1386
+		},
+		"FR" : {
+			"latitude" : 46,
+			"longitude" : 2
+		},
+		"FI" : {
+			"latitude" : 64,
+			"longitude" : 26
+		},
+		"NI" : {
+			"latitude" : 8,
+			"longitude" : 8
+		},
+		"NL" : {
+			"latitude" : 52.0938,
+			"longitude" : 5.11909
+		},
+		"NO" : {
+			"latitude" : 59.9167,
+			"longitude" : 10.75
+		},
+		"NZ" : {
+			"latitude" : -41,
+			"longitude" : 174
+		},
+		"NP" : {
+			"latitude" : 28.0417,
+			"longitude" : 84.3527
+		},
+		"CH" : {
+			"latitude" : 23.3506,
+			"longitude" : 116.133
+		},
+		"CO" : {
+			"latitude" : 10.2333,
+			"longitude" : -73.4667
+		},
+		"CM" : {
+			"latitude" : 7.31667,
+			"longitude" : 13.5833
+		},
+		"CA" : {
+			"latitude" : 45.4167,
+			"longitude" : -75.7
+		},
+		"CG" : {
+			"latitude" : -11.6667,
+			"longitude" : 27.4667
+		},
+		"CF" : {
+			"latitude" : -1,
+			"longitude" : 15
+		},
+		"CD" : {
+			"latitude" : 15,
+			"longitude" : 19
+		},
+		"CS" : {
+			"latitude" : 10,
+			"longitude" : -84
+		},
+		"CU" : {
+			"latitude" : 23.1319,
+			"longitude" : -82.3642
+		},
+		"CT" : {
+			"latitude" : 7,
+			"longitude" : 21
+		},
+		"SZ" : {
+			"latitude" : 46.1956,
+			"longitude" : 6.14811
+		},
+		"SY" : {
+			"latitude" : 36.2028,
+			"longitude" : 37.1586
+		},
+		"KE" : {
+			"latitude" : -3.78298,
+			"longitude" : 39.2758
+		},
+		"SP" : {
+			"latitude" : 40,
+			"longitude" : -4
+		},
+		"SW" : {
+			"latitude" : 62,
+			"longitude" : 15
+		},
+		"KN" : {
+			"latitude" : 39.0194,
+			"longitude" : 125.755
+		},
+		"SU" : {
+			"latitude" : 13.5,
+			"longitude" : 23.5
+		},
+		"KS" : {
+			"latitude" : 37.5664,
+			"longitude" : 127
+		},
+		"SO" : {
+			"latitude" : 2.06667,
+			"longitude" : 45.3667
+		},
+		"SN" : {
+			"latitude" : 1.3667,
+			"longitude" : 103.8
+		},
+		"KU" : {
+			"latitude" : 29.3375,
+			"longitude" : 47.6581
+		},
+		"SA" : {
+			"latitude" : 24.6408,
+			"longitude" : 46.7728
+		},
+		"SF" : {
+			"latitude" : -33.9167,
+			"longitude" : 18.4167
+		},
+		"YM" : {
+			"latitude" : 15,
+			"longitude" : 48
+		},
+		"DA" : {
+			"latitude" : 56,
+			"longitude" : 10
+		},
+		"MK" : {
+			"latitude" : 42,
+			"longitude" : 21.4333
+		},
+		"KV" : {
+			"latitude" : 42.5833,
+			"longitude" : 21
+		},
+		"LE" : {
+			"latitude" : 33.8719,
+			"longitude" : 35.5097
+		},
+		"TZ" : {
+			"latitude" : -8.13333,
+			"longitude" : 36.6833
+		},
+		"TX" : {
+			"latitude" : 37.95,
+			"longitude" : 58.3833
+		},
+		"LA" : {
+			"latitude" : 17.9667,
+			"longitude" : 102.6
+		},
+		"TW" : {
+			"latitude" : 25.0478,
+			"longitude" : 121.532
+		},
+		"TU" : {
+			"latitude" : 39,
+			"longitude" : 35
+		},
+		"TS" : {
+			"latitude" : 36.8028,
+			"longitude" : 10.1797
+		},
+		"LH" : {
+			"latitude" : 54.6833,
+			"longitude" : 25.3167
+		},
+		"LI" : {
+			"latitude" : 6.31056,
+			"longitude" : -10.8047
+		},
+		"TN" : {
+			"latitude" : -20,
+			"longitude" : -175
+		},
+		"TH" : {
+			"latitude" : 15,
+			"longitude" : 100
+		},
+		"TI" : {
+			"latitude" : 38.3708,
+			"longitude" : 71.4547
+		},
+		"LY" : {
+			"latitude" : 25,
+			"longitude" : 17
+		},
+		"IZ" : {
+			"latitude" : 33,
+			"longitude" : 44
+		},
+		"AE" : {
+			"latitude" : 25.2522,
+			"longitude" : 55.28
+		},
+		"VE" : {
+			"latitude" : 8,
+			"longitude" : -66
+		},
+		"AF" : {
+			"latitude" : 31,
+			"longitude" : 64
+		},
+		"VI" : {
+			"latitude" : 18.5,
+			"longitude" : -64.5
+		},
+		"IS" : {
+			"latitude" : 31.7667,
+			"longitude" : 35.2333
+		},
+		"AJ" : {
+			"latitude" : 40.3953,
+			"longitude" : 49.8822
+		},
+		"AM" : {
+			"latitude" : 40,
+			"longitude" : 45
+		},
+		"VM" : {
+			"latitude" : 16,
+			"longitude" : 106
+		},
+		"AS" : {
+			"latitude" : -27,
+			"longitude" : 133
+		},
+		"IN" : {
+			"latitude" : 10.8,
+			"longitude" : 79.15
+		},
+		"DJ" : {
+			"latitude" : 19,
+			"longitude" : 39.5
+		},
+		"ID" : {
+			"latitude" : -8.86667,
+			"longitude" : 117.183
+		},
+		"QA" : {
+			"latitude" : 25.2867,
+			"longitude" : 51.5333
+		},
+		"LO" : {
+			"latitude" : 48.6667,
+			"longitude" : 19.5
+		}
+	},
+	"name" : "new"
+}
 
-var latlong = {};
-latlong["AD"] = {
-	"latitude": 42.5,
-	"longitude": 1.5
-};
-latlong["AE"] = {
-	"latitude": 24,
-	"longitude": 54
-};
-latlong["AF"] = {
-	"latitude": 33,
-	"longitude": 65
-};
-latlong["AG"] = {
-	"latitude": 17.05,
-	"longitude": -61.8
-};
-latlong["AI"] = {
-	"latitude": 18.25,
-	"longitude": -63.1667
-};
-latlong["AL"] = {
-	"latitude": 41,
-	"longitude": 20
-};
-latlong["AM"] = {
-	"latitude": 40,
-	"longitude": 45
-};
-latlong["AN"] = {
-	"latitude": 12.25,
-	"longitude": -68.75
-};
-latlong["AO"] = {
-	"latitude": -12.5,
-	"longitude": 18.5
-};
-latlong["AP"] = {
-	"latitude": 35,
-	"longitude": 105
-};
-latlong["AQ"] = {
-	"latitude": -90,
-	"longitude": 0
-};
-latlong["AR"] = {
-	"latitude": -34,
-	"longitude": -64
-};
-latlong["AS"] = {
-	"latitude": -14.3333,
-	"longitude": -170
-};
-latlong["AT"] = {
-	"latitude": 47.3333,
-	"longitude": 13.3333
-};
-latlong["AU"] = {
-	"latitude": -27,
-	"longitude": 133
-};
-latlong["AW"] = {
-	"latitude": 12.5,
-	"longitude": -69.9667
-};
-latlong["AZ"] = {
-	"latitude": 40.5,
-	"longitude": 47.5
-};
-latlong["BA"] = {
-	"latitude": 44,
-	"longitude": 18
-};
-latlong["BB"] = {
-	"latitude": 13.1667,
-	"longitude": -59.5333
-};
-latlong["BD"] = {
-	"latitude": 24,
-	"longitude": 90
-};
-latlong["BE"] = {
-	"latitude": 50.8333,
-	"longitude": 4
-};
-latlong["BF"] = {
-	"latitude": 13,
-	"longitude": -2
-};
-latlong["BG"] = {
-	"latitude": 43,
-	"longitude": 25
-};
-latlong["BH"] = {
-	"latitude": 26,
-	"longitude": 50.55
-};
-latlong["BI"] = {
-	"latitude": -3.5,
-	"longitude": 30
-};
-latlong["BJ"] = {
-	"latitude": 9.5,
-	"longitude": 2.25
-};
-latlong["BM"] = {
-	"latitude": 32.3333,
-	"longitude": -64.75
-};
-latlong["BN"] = {
-	"latitude": 4.5,
-	"longitude": 114.6667
-};
-latlong["BO"] = {
-	"latitude": -17,
-	"longitude": -65
-};
-latlong["BR"] = {
-	"latitude": -10,
-	"longitude": -55
-};
-latlong["BS"] = {
-	"latitude": 24.25,
-	"longitude": -76
-};
-latlong["BT"] = {
-	"latitude": 27.5,
-	"longitude": 90.5
-};
-latlong["BV"] = {
-	"latitude": -54.4333,
-	"longitude": 3.4
-};
-latlong["BW"] = {
-	"latitude": -22,
-	"longitude": 24
-};
-latlong["BY"] = {
-	"latitude": 53,
-	"longitude": 28
-};
-latlong["BZ"] = {
-	"latitude": 17.25,
-	"longitude": -88.75
-};
-latlong["CA"] = {
-	"latitude": 54,
-	"longitude": -100
-};
-latlong["CC"] = {
-	"latitude": -12.5,
-	"longitude": 96.8333
-};
-latlong["CD"] = {
-	"latitude": 0,
-	"longitude": 25
-};
-latlong["CF"] = {
-	"latitude": 7,
-	"longitude": 21
-};
-latlong["CG"] = {
-	"latitude": -1,
-	"longitude": 15
-};
-latlong["CH"] = {
-	"latitude": 47,
-	"longitude": 8
-};
-latlong["CI"] = {
-	"latitude": 8,
-	"longitude": -5
-};
-latlong["CK"] = {
-	"latitude": -21.2333,
-	"longitude": -159.7667
-};
-latlong["CL"] = {
-	"latitude": -30,
-	"longitude": -71
-};
-latlong["CM"] = {
-	"latitude": 6,
-	"longitude": 12
-};
-latlong["CN"] = {
-	"latitude": 35,
-	"longitude": 105
-};
-latlong["CO"] = {
-	"latitude": 4,
-	"longitude": -72
-};
-latlong["CR"] = {
-	"latitude": 10,
-	"longitude": -84
-};
-latlong["CU"] = {
-	"latitude": 21.5,
-	"longitude": -80
-};
-latlong["CV"] = {
-	"latitude": 16,
-	"longitude": -24
-};
-latlong["CX"] = {
-	"latitude": -10.5,
-	"longitude": 105.6667
-};
-latlong["CY"] = {
-	"latitude": 35,
-	"longitude": 33
-};
-latlong["CZ"] = {
-	"latitude": 49.75,
-	"longitude": 15.5
-};
-latlong["DE"] = {
-	"latitude": 51,
-	"longitude": 9
-};
-latlong["DJ"] = {
-	"latitude": 11.5,
-	"longitude": 43
-};
-latlong["DK"] = {
-	"latitude": 56,
-	"longitude": 10
-};
-latlong["DM"] = {
-	"latitude": 15.4167,
-	"longitude": -61.3333
-};
-latlong["DO"] = {
-	"latitude": 19,
-	"longitude": -70.6667
-};
-latlong["DZ"] = {
-	"latitude": 28,
-	"longitude": 3
-};
-latlong["EC"] = {
-	"latitude": -2,
-	"longitude": -77.5
-};
-latlong["EE"] = {
-	"latitude": 59,
-	"longitude": 26
-};
-latlong["EG"] = {
-	"latitude": 27,
-	"longitude": 30
-};
-latlong["EH"] = {
-	"latitude": 24.5,
-	"longitude": -13
-};
-latlong["ER"] = {
-	"latitude": 15,
-	"longitude": 39
-};
-latlong["ES"] = {
-	"latitude": 40,
-	"longitude": -4
-};
-latlong["ET"] = {
-	"latitude": 8,
-	"longitude": 38
-};
-latlong["EU"] = {
-	"latitude": 47,
-	"longitude": 8
-};
-latlong["FI"] = {
-	"latitude": 62,
-	"longitude": 26
-};
-latlong["FJ"] = {
-	"latitude": -18,
-	"longitude": 175
-};
-latlong["FK"] = {
-	"latitude": -51.75,
-	"longitude": -59
-};
-latlong["FM"] = {
-	"latitude": 6.9167,
-	"longitude": 158.25
-};
-latlong["FO"] = {
-	"latitude": 62,
-	"longitude": -7
-};
-latlong["FR"] = {
-	"latitude": 46,
-	"longitude": 2
-};
-latlong["GA"] = {
-	"latitude": -1,
-	"longitude": 11.75
-};
-latlong["GB"] = {
-	"latitude": 54,
-	"longitude": -2
-};
-latlong["GD"] = {
-	"latitude": 12.1167,
-	"longitude": -61.6667
-};
-latlong["GE"] = {
-	"latitude": 42,
-	"longitude": 43.5
-};
-latlong["GF"] = {
-	"latitude": 4,
-	"longitude": -53
-};
-latlong["GH"] = {
-	"latitude": 8,
-	"longitude": -2
-};
-latlong["GI"] = {
-	"latitude": 36.1833,
-	"longitude": -5.3667
-};
-latlong["GL"] = {
-	"latitude": 72,
-	"longitude": -40
-};
-latlong["GM"] = {
-	"latitude": 13.4667,
-	"longitude": -16.5667
-};
-latlong["GN"] = {
-	"latitude": 11,
-	"longitude": -10
-};
-latlong["GP"] = {
-	"latitude": 16.25,
-	"longitude": -61.5833
-};
-latlong["GQ"] = {
-	"latitude": 2,
-	"longitude": 10
-};
-latlong["GR"] = {
-	"latitude": 39,
-	"longitude": 22
-};
-latlong["GS"] = {
-	"latitude": -54.5,
-	"longitude": -37
-};
-latlong["GT"] = {
-	"latitude": 15.5,
-	"longitude": -90.25
-};
-latlong["GU"] = {
-	"latitude": 13.4667,
-	"longitude": 144.7833
-};
-latlong["GW"] = {
-	"latitude": 12,
-	"longitude": -15
-};
-latlong["GY"] = {
-	"latitude": 5,
-	"longitude": -59
-};
-latlong["HK"] = {
-	"latitude": 22.25,
-	"longitude": 114.1667
-};
-latlong["HM"] = {
-	"latitude": -53.1,
-	"longitude": 72.5167
-};
-latlong["HN"] = {
-	"latitude": 15,
-	"longitude": -86.5
-};
-latlong["HR"] = {
-	"latitude": 45.1667,
-	"longitude": 15.5
-};
-latlong["HT"] = {
-	"latitude": 19,
-	"longitude": -72.4167
-};
-latlong["HU"] = {
-	"latitude": 47,
-	"longitude": 20
-};
-latlong["ID"] = {
-	"latitude": -5,
-	"longitude": 120
-};
-latlong["IE"] = {
-	"latitude": 53,
-	"longitude": -8
-};
-latlong["IL"] = {
-	"latitude": 31.5,
-	"longitude": 34.75
-};
-latlong["IN"] = {
-	"latitude": 20,
-	"longitude": 77
-};
-latlong["IO"] = {
-	"latitude": -6,
-	"longitude": 71.5
-};
-latlong["IQ"] = {
-	"latitude": 33,
-	"longitude": 44
-};
-latlong["IR"] = {
-	"latitude": 32,
-	"longitude": 53
-};
-latlong["IS"] = {
-	"latitude": 65,
-	"longitude": -18
-};
-latlong["IT"] = {
-	"latitude": 42.8333,
-	"longitude": 12.8333
-};
-latlong["JM"] = {
-	"latitude": 18.25,
-	"longitude": -77.5
-};
-latlong["JO"] = {
-	"latitude": 31,
-	"longitude": 36
-};
-latlong["JP"] = {
-	"latitude": 36,
-	"longitude": 138
-};
-latlong["KE"] = {
-	"latitude": 1,
-	"longitude": 38
-};
-latlong["KG"] = {
-	"latitude": 41,
-	"longitude": 75
-};
-latlong["KH"] = {
-	"latitude": 13,
-	"longitude": 105
-};
-latlong["KI"] = {
-	"latitude": 1.4167,
-	"longitude": 173
-};
-latlong["KM"] = {
-	"latitude": -12.1667,
-	"longitude": 44.25
-};
-latlong["KN"] = {
-	"latitude": 17.3333,
-	"longitude": -62.75
-};
-latlong["KP"] = {
-	"latitude": 40,
-	"longitude": 127
-};
-latlong["KR"] = {
-	"latitude": 37,
-	"longitude": 127.5
-};
-latlong["KW"] = {
-	"latitude": 29.3375,
-	"longitude": 47.6581
-};
-latlong["KY"] = {
-	"latitude": 19.5,
-	"longitude": -80.5
-};
-latlong["KZ"] = {
-	"latitude": 48,
-	"longitude": 68
-};
-latlong["LA"] = {
-	"latitude": 18,
-	"longitude": 105
-};
-latlong["LB"] = {
-	"latitude": 33.8333,
-	"longitude": 35.8333
-};
-latlong["LC"] = {
-	"latitude": 13.8833,
-	"longitude": -61.1333
-};
-latlong["LI"] = {
-	"latitude": 47.1667,
-	"longitude": 9.5333
-};
-latlong["LK"] = {
-	"latitude": 7,
-	"longitude": 81
-};
-latlong["LR"] = {
-	"latitude": 6.5,
-	"longitude": -9.5
-};
-latlong["LS"] = {
-	"latitude": -29.5,
-	"longitude": 28.5
-};
-latlong["LT"] = {
-	"latitude": 55,
-	"longitude": 24
-};
-latlong["LU"] = {
-	"latitude": 49.75,
-	"longitude": 6
-};
-latlong["LV"] = {
-	"latitude": 57,
-	"longitude": 25
-};
-latlong["LY"] = {
-	"latitude": 25,
-	"longitude": 17
-};
-latlong["MA"] = {
-	"latitude": 32,
-	"longitude": -5
-};
-latlong["MC"] = {
-	"latitude": 43.7333,
-	"longitude": 7.4
-};
-latlong["MD"] = {
-	"latitude": 47,
-	"longitude": 29
-};
-latlong["ME"] = {
-	"latitude": 42.5,
-	"longitude": 19.4
-};
-latlong["MG"] = {
-	"latitude": -20,
-	"longitude": 47
-};
-latlong["MH"] = {
-	"latitude": 9,
-	"longitude": 168
-};
-latlong["MK"] = {
-	"latitude": 41.8333,
-	"longitude": 22
-};
-latlong["ML"] = {
-	"latitude": 17,
-	"longitude": -4
-};
-latlong["MM"] = {
-	"latitude": 22,
-	"longitude": 98
-};
-latlong["MN"] = {
-	"latitude": 46,
-	"longitude": 105
-};
-latlong["MO"] = {
-	"latitude": 22.1667,
-	"longitude": 113.55
-};
-latlong["MP"] = {
-	"latitude": 15.2,
-	"longitude": 145.75
-};
-latlong["MQ"] = {
-	"latitude": 14.6667,
-	"longitude": -61
-};
-latlong["MR"] = {
-	"latitude": 20,
-	"longitude": -12
-};
-latlong["MS"] = {
-	"latitude": 16.75,
-	"longitude": -62.2
-};
-latlong["MT"] = {
-	"latitude": 35.8333,
-	"longitude": 14.5833
-};
-latlong["MU"] = {
-	"latitude": -20.2833,
-	"longitude": 57.55
-};
-latlong["MV"] = {
-	"latitude": 3.25,
-	"longitude": 73
-};
-latlong["MW"] = {
-	"latitude": -13.5,
-	"longitude": 34
-};
-latlong["MX"] = {
-	"latitude": 23,
-	"longitude": -102
-};
-latlong["MY"] = {
-	"latitude": 2.5,
-	"longitude": 112.5
-};
-latlong["MZ"] = {
-	"latitude": -18.25,
-	"longitude": 35
-};
-latlong["NA"] = {
-	"latitude": -22,
-	"longitude": 17
-};
-latlong["NC"] = {
-	"latitude": -21.5,
-	"longitude": 165.5
-};
-latlong["NE"] = {
-	"latitude": 16,
-	"longitude": 8
-};
-latlong["NF"] = {
-	"latitude": -29.0333,
-	"longitude": 167.95
-};
-latlong["NG"] = {
-	"latitude": 10,
-	"longitude": 8
-};
-latlong["NI"] = {
-	"latitude": 13,
-	"longitude": -85
-};
-latlong["NL"] = {
-	"latitude": 52.5,
-	"longitude": 5.75
-};
-latlong["NO"] = {
-	"latitude": 62,
-	"longitude": 10
-};
-latlong["NP"] = {
-	"latitude": 28,
-	"longitude": 84
-};
-latlong["NR"] = {
-	"latitude": -0.5333,
-	"longitude": 166.9167
-};
-latlong["NU"] = {
-	"latitude": -19.0333,
-	"longitude": -169.8667
-};
-latlong["NZ"] = {
-	"latitude": -41,
-	"longitude": 174
-};
-latlong["OM"] = {
-	"latitude": 21,
-	"longitude": 57
-};
-latlong["PA"] = {
-	"latitude": 9,
-	"longitude": -80
-};
-latlong["PE"] = {
-	"latitude": -10,
-	"longitude": -76
-};
-latlong["PF"] = {
-	"latitude": -15,
-	"longitude": -140
-};
-latlong["PG"] = {
-	"latitude": -6,
-	"longitude": 147
-};
-latlong["PH"] = {
-	"latitude": 13,
-	"longitude": 122
-};
-latlong["PK"] = {
-	"latitude": 30,
-	"longitude": 70
-};
-latlong["PL"] = {
-	"latitude": 52,
-	"longitude": 20
-};
-latlong["PM"] = {
-	"latitude": 46.8333,
-	"longitude": -56.3333
-};
-latlong["PR"] = {
-	"latitude": 18.25,
-	"longitude": -66.5
-};
-latlong["PS"] = {
-	"latitude": 32,
-	"longitude": 35.25
-};
-latlong["PT"] = {
-	"latitude": 39.5,
-	"longitude": -8
-};
-latlong["PW"] = {
-	"latitude": 7.5,
-	"longitude": 134.5
-};
-latlong["PY"] = {
-	"latitude": -23,
-	"longitude": -58
-};
-latlong["QA"] = {
-	"latitude": 25.5,
-	"longitude": 51.25
-};
-latlong["RE"] = {
-	"latitude": -21.1,
-	"longitude": 55.6
-};
-latlong["RO"] = {
-	"latitude": 46,
-	"longitude": 25
-};
-latlong["RS"] = {
-	"latitude": 44,
-	"longitude": 21
-};
-latlong["RU"] = {
-	"latitude": 60,
-	"longitude": 100
-};
-latlong["RW"] = {
-	"latitude": -2,
-	"longitude": 30
-};
-latlong["SA"] = {
-	"latitude": 25,
-	"longitude": 45
-};
-latlong["SB"] = {
-	"latitude": -8,
-	"longitude": 159
-};
-latlong["SC"] = {
-	"latitude": -4.5833,
-	"longitude": 55.6667
-};
-latlong["SD"] = {
-	"latitude": 15,
-	"longitude": 30
-};
-latlong["SE"] = {
-	"latitude": 62,
-	"longitude": 15
-};
-latlong["SG"] = {
-	"latitude": 1.3667,
-	"longitude": 103.8
-};
-latlong["SH"] = {
-	"latitude": -15.9333,
-	"longitude": -5.7
-};
-latlong["SI"] = {
-	"latitude": 46,
-	"longitude": 15
-};
-latlong["SJ"] = {
-	"latitude": 78,
-	"longitude": 20
-};
-latlong["SK"] = {
-	"latitude": 48.6667,
-	"longitude": 19.5
-};
-latlong["SL"] = {
-	"latitude": 8.5,
-	"longitude": -11.5
-};
-latlong["SM"] = {
-	"latitude": 43.7667,
-	"longitude": 12.4167
-};
-latlong["SN"] = {
-	"latitude": 14,
-	"longitude": -14
-};
-latlong["SO"] = {
-	"latitude": 10,
-	"longitude": 49
-};
-latlong["SR"] = {
-	"latitude": 4,
-	"longitude": -56
-};
-latlong["ST"] = {
-	"latitude": 1,
-	"longitude": 7
-};
-latlong["SV"] = {
-	"latitude": 13.8333,
-	"longitude": -88.9167
-};
-latlong["SY"] = {
-	"latitude": 35,
-	"longitude": 38
-};
-latlong["SZ"] = {
-	"latitude": -26.5,
-	"longitude": 31.5
-};
-latlong["TC"] = {
-	"latitude": 21.75,
-	"longitude": -71.5833
-};
-latlong["TD"] = {
-	"latitude": 15,
-	"longitude": 19
-};
-latlong["TF"] = {
-	"latitude": -43,
-	"longitude": 67
-};
-latlong["TG"] = {
-	"latitude": 8,
-	"longitude": 1.1667
-};
-latlong["TH"] = {
-	"latitude": 15,
-	"longitude": 100
-};
-latlong["TJ"] = {
-	"latitude": 39,
-	"longitude": 71
-};
-latlong["TK"] = {
-	"latitude": -9,
-	"longitude": -172
-};
-latlong["TM"] = {
-	"latitude": 40,
-	"longitude": 60
-};
-latlong["TN"] = {
-	"latitude": 34,
-	"longitude": 9
-};
-latlong["TO"] = {
-	"latitude": -20,
-	"longitude": -175
-};
-latlong["TR"] = {
-	"latitude": 39,
-	"longitude": 35
-};
-latlong["TT"] = {
-	"latitude": 11,
-	"longitude": -61
-};
-latlong["TV"] = {
-	"latitude": -8,
-	"longitude": 178
-};
-latlong["TW"] = {
-	"latitude": 23.5,
-	"longitude": 121
-};
-latlong["TZ"] = {
-	"latitude": -6,
-	"longitude": 35
-};
-latlong["UA"] = {
-	"latitude": 49,
-	"longitude": 32
-};
-latlong["UG"] = {
-	"latitude": 1,
-	"longitude": 32
-};
-latlong["UM"] = {
-	"latitude": 19.2833,
-	"longitude": 166.6
-};
-latlong["US"] = {
-	"latitude": 38,
-	"longitude": -97
-};
-latlong["UY"] = {
-	"latitude": -33,
-	"longitude": -56
-};
-latlong["UZ"] = {
-	"latitude": 41,
-	"longitude": 64
-};
-latlong["VA"] = {
-	"latitude": 41.9,
-	"longitude": 12.45
-};
-latlong["VC"] = {
-	"latitude": 13.25,
-	"longitude": -61.2
-};
-latlong["VE"] = {
-	"latitude": 8,
-	"longitude": -66
-};
-latlong["VG"] = {
-	"latitude": 18.5,
-	"longitude": -64.5
-};
-latlong["VI"] = {
-	"latitude": 18.3333,
-	"longitude": -64.8333
-};
-latlong["VN"] = {
-	"latitude": 16,
-	"longitude": 106
-};
-latlong["VU"] = {
-	"latitude": -16,
-	"longitude": 167
-};
-latlong["WF"] = {
-	"latitude": -13.3,
-	"longitude": -176.2
-};
-latlong["WS"] = {
-	"latitude": -13.5833,
-	"longitude": -172.3333
-};
-latlong["YE"] = {
-	"latitude": 15,
-	"longitude": 48
-};
-latlong["YT"] = {
-	"latitude": -12.8333,
-	"longitude": 45.1667
-};
-latlong["ZA"] = {
-	"latitude": -29,
-	"longitude": 24
-};
-latlong["ZM"] = {
-	"latitude": -15,
-	"longitude": 30
-};
-latlong["ZW"] = {
-	"latitude": -20,
-	"longitude": 30
-};
-
-var mapData = [{
-	"code": "AF",
-	"name": "Afghanistan",
-	"value": 32358260,
-	"color": "#eea638"
-}, {
-	"code": "AL",
-	"name": "Albania",
-	"value": 3215988,
-	"color": "#d8854f"
-}, {
-	"code": "DZ",
-	"name": "Algeria",
-	"value": 35980193,
-	"color": "#de4c4f"
-}, {
-	"code": "AO",
-	"name": "Angola",
-	"value": 19618432,
-	"color": "#de4c4f"
-}, {
-	"code": "AR",
-	"name": "Argentina",
-	"value": 40764561,
-	"color": "#86a965"
-}, {
-	"code": "AM",
-	"name": "Armenia",
-	"value": 3100236,
-	"color": "#d8854f"
-}, {
-	"code": "AU",
-	"name": "Australia",
-	"value": 22605732,
-	"color": "#8aabb0"
-}, {
-	"code": "AT",
-	"name": "Austria",
-	"value": 8413429,
-	"color": "#d8854f"
-}, {
-	"code": "AZ",
-	"name": "Azerbaijan",
-	"value": 9306023,
-	"color": "#d8854f"
-}, {
-	"code": "BH",
-	"name": "Bahrain",
-	"value": 1323535,
-	"color": "#eea638"
-}, {
-	"code": "BD",
-	"name": "Bangladesh",
-	"value": 150493658,
-	"color": "#eea638"
-}, {
-	"code": "BY",
-	"name": "Belarus",
-	"value": 9559441,
-	"color": "#d8854f"
-}, {
-	"code": "BE",
-	"name": "Belgium",
-	"value": 10754056,
-	"color": "#d8854f"
-}, {
-	"code": "BJ",
-	"name": "Benin",
-	"value": 9099922,
-	"color": "#de4c4f"
-}, {
-	"code": "BT",
-	"name": "Bhutan",
-	"value": 738267,
-	"color": "#eea638"
-}, {
-	"code": "BO",
-	"name": "Bolivia",
-	"value": 10088108,
-	"color": "#86a965"
-}, {
-	"code": "BA",
-	"name": "Bosnia and Herzegovina",
-	"value": 3752228,
-	"color": "#d8854f"
-}, {
-	"code": "BW",
-	"name": "Botswana",
-	"value": 2030738,
-	"color": "#de4c4f"
-}, {
-	"code": "BR",
-	"name": "Brazil",
-	"value": 196655014,
-	"color": "#86a965"
-}, {
-	"code": "BN",
-	"name": "Brunei",
-	"value": 405938,
-	"color": "#eea638"
-}, {
-	"code": "BG",
-	"name": "Bulgaria",
-	"value": 7446135,
-	"color": "#d8854f"
-}, {
-	"code": "BF",
-	"name": "Burkina Faso",
-	"value": 16967845,
-	"color": "#de4c4f"
-}, {
-	"code": "BI",
-	"name": "Burundi",
-	"value": 8575172,
-	"color": "#de4c4f"
-}, {
-	"code": "KH",
-	"name": "Cambodia",
-	"value": 14305183,
-	"color": "#eea638"
-}, {
-	"code": "CM",
-	"name": "Cameroon",
-	"value": 20030362,
-	"color": "#de4c4f"
-}, {
-	"code": "CA",
-	"name": "Canada",
-	"value": 34349561,
-	"color": "#a7a737"
-}, {
-	"code": "CV",
-	"name": "Cape Verde",
-	"value": 500585,
-	"color": "#de4c4f"
-}, {
-	"code": "CF",
-	"name": "Central African Rep.",
-	"value": 4486837,
-	"color": "#de4c4f"
-}, {
-	"code": "TD",
-	"name": "Chad",
-	"value": 11525496,
-	"color": "#de4c4f"
-}, {
-	"code": "CL",
-	"name": "Chile",
-	"value": 17269525,
-	"color": "#86a965"
-}, {
-	"code": "CN",
-	"name": "China",
-	"value": 1347565324,
-	"color": "#eea638"
-}, {
-	"code": "CO",
-	"name": "Colombia",
-	"value": 46927125,
-	"color": "#86a965"
-}, {
-	"code": "KM",
-	"name": "Comoros",
-	"value": 753943,
-	"color": "#de4c4f"
-}, {
-	"code": "CD",
-	"name": "Congo, Dem. Rep.",
-	"value": 67757577,
-	"color": "#de4c4f"
-}, {
-	"code": "CG",
-	"name": "Congo, Rep.",
-	"value": 4139748,
-	"color": "#de4c4f"
-}, {
-	"code": "CR",
-	"name": "Costa Rica",
-	"value": 4726575,
-	"color": "#a7a737"
-}, {
-	"code": "CI",
-	"name": "Cote d'Ivoire",
-	"value": 20152894,
-	"color": "#de4c4f"
-}, {
-	"code": "HR",
-	"name": "Croatia",
-	"value": 4395560,
-	"color": "#d8854f"
-}, {
-	"code": "CU",
-	"name": "Cuba",
-	"value": 11253665,
-	"color": "#a7a737"
-}, {
-	"code": "CY",
-	"name": "Cyprus",
-	"value": 1116564,
-	"color": "#d8854f"
-}, {
-	"code": "CZ",
-	"name": "Czech Rep.",
-	"value": 10534293,
-	"color": "#d8854f"
-}, {
-	"code": "DK",
-	"name": "Denmark",
-	"value": 5572594,
-	"color": "#d8854f"
-}, {
-	"code": "DJ",
-	"name": "Djibouti",
-	"value": 905564,
-	"color": "#de4c4f"
-}, {
-	"code": "DO",
-	"name": "Dominican Rep.",
-	"value": 10056181,
-	"color": "#a7a737"
-}, {
-	"code": "EC",
-	"name": "Ecuador",
-	"value": 14666055,
-	"color": "#86a965"
-}, {
-	"code": "EG",
-	"name": "Egypt",
-	"value": 82536770,
-	"color": "#de4c4f"
-}, {
-	"code": "SV",
-	"name": "El Salvador",
-	"value": 6227491,
-	"color": "#a7a737"
-}, {
-	"code": "GQ",
-	"name": "Equatorial Guinea",
-	"value": 720213,
-	"color": "#de4c4f"
-}, {
-	"code": "ER",
-	"name": "Eritrea",
-	"value": 5415280,
-	"color": "#de4c4f"
-}, {
-	"code": "EE",
-	"name": "Estonia",
-	"value": 1340537,
-	"color": "#d8854f"
-}, {
-	"code": "ET",
-	"name": "Ethiopia",
-	"value": 84734262,
-	"color": "#de4c4f"
-}, {
-	"code": "FJ",
-	"name": "Fiji",
-	"value": 868406,
-	"color": "#8aabb0"
-}, {
-	"code": "FI",
-	"name": "Finland",
-	"value": 5384770,
-	"color": "#d8854f"
-}, {
-	"code": "FR",
-	"name": "France",
-	"value": 63125894,
-	"color": "#d8854f"
-}, {
-	"code": "GA",
-	"name": "Gabon",
-	"value": 1534262,
-	"color": "#de4c4f"
-}, {
-	"code": "GM",
-	"name": "Gambia",
-	"value": 1776103,
-	"color": "#de4c4f"
-}, {
-	"code": "GE",
-	"name": "Georgia",
-	"value": 4329026,
-	"color": "#d8854f"
-}, {
-	"code": "DE",
-	"name": "Germany",
-	"value": 82162512,
-	"color": "#d8854f"
-}, {
-	"code": "GH",
-	"name": "Ghana",
-	"value": 24965816,
-	"color": "#de4c4f"
-}, {
-	"code": "GR",
-	"name": "Greece",
-	"value": 11390031,
-	"color": "#d8854f"
-}, {
-	"code": "GT",
-	"name": "Guatemala",
-	"value": 14757316,
-	"color": "#a7a737"
-}, {
-	"code": "GN",
-	"name": "Guinea",
-	"value": 10221808,
-	"color": "#de4c4f"
-}, {
-	"code": "GW",
-	"name": "Guinea-Bissau",
-	"value": 1547061,
-	"color": "#de4c4f"
-}, {
-	"code": "GY",
-	"name": "Guyana",
-	"value": 756040,
-	"color": "#86a965"
-}, {
-	"code": "HT",
-	"name": "Haiti",
-	"value": 10123787,
-	"color": "#a7a737"
-}, {
-	"code": "HN",
-	"name": "Honduras",
-	"value": 7754687,
-	"color": "#a7a737"
-}, {
-	"code": "HK",
-	"name": "Hong Kong, China",
-	"value": 7122187,
-	"color": "#eea638"
-}, {
-	"code": "HU",
-	"name": "Hungary",
-	"value": 9966116,
-	"color": "#d8854f"
-}, {
-	"code": "IS",
-	"name": "Iceland",
-	"value": 324366,
-	"color": "#d8854f"
-}, {
-	"code": "IN",
-	"name": "India",
-	"value": 1241491960,
-	"color": "#eea638"
-}, {
-	"code": "ID",
-	"name": "Indonesia",
-	"value": 242325638,
-	"color": "#eea638"
-}, {
-	"code": "IR",
-	"name": "Iran",
-	"value": 74798599,
-	"color": "#eea638"
-}, {
-	"code": "IQ",
-	"name": "Iraq",
-	"value": 32664942,
-	"color": "#eea638"
-}, {
-	"code": "IE",
-	"name": "Ireland",
-	"value": 4525802,
-	"color": "#d8854f"
-}, {
-	"code": "IL",
-	"name": "Israel",
-	"value": 7562194,
-	"color": "#eea638"
-}, {
-	"code": "IT",
-	"name": "Italy",
-	"value": 60788694,
-	"color": "#d8854f"
-}, {
-	"code": "JM",
-	"name": "Jamaica",
-	"value": 2751273,
-	"color": "#a7a737"
-}, {
-	"code": "JP",
-	"name": "Japan",
-	"value": 126497241,
-	"color": "#eea638"
-}, {
-	"code": "JO",
-	"name": "Jordan",
-	"value": 6330169,
-	"color": "#eea638"
-}, {
-	"code": "KZ",
-	"name": "Kazakhstan",
-	"value": 16206750,
-	"color": "#eea638"
-}, {
-	"code": "KE",
-	"name": "Kenya",
-	"value": 41609728,
-	"color": "#de4c4f"
-}, {
-	"code": "KR",
-	"name": "Korea, Dem. Rep.",
-	"value": 24451285,
-	"color": "#eea638"
-}, {
-	"code": "KP",
-	"name": "Korea, Rep.",
-	"value": 48391343,
-	"color": "#eea638"
-}, {
-	"code": "KW",
-	"name": "Kuwait",
-	"value": 2818042,
-	"color": "#eea638"
-}, {
-	"code": "KG",
-	"name": "Kyrgyzstan",
-	"value": 5392580,
-	"color": "#eea638"
-}, {
-	"code": "LA",
-	"name": "Laos",
-	"value": 6288037,
-	"color": "#eea638"
-}, {
-	"code": "LV",
-	"name": "Latvia",
-	"value": 2243142,
-	"color": "#d8854f"
-}, {
-	"code": "LB",
-	"name": "Lebanon",
-	"value": 4259405,
-	"color": "#eea638"
-}, {
-	"code": "LS",
-	"name": "Lesotho",
-	"value": 2193843,
-	"color": "#de4c4f"
-}, {
-	"code": "LR",
-	"name": "Liberia",
-	"value": 4128572,
-	"color": "#de4c4f"
-}, {
-	"code": "LY",
-	"name": "Libya",
-	"value": 6422772,
-	"color": "#de4c4f"
-}, {
-	"code": "LT",
-	"name": "Lithuania",
-	"value": 3307481,
-	"color": "#d8854f"
-}, {
-	"code": "LU",
-	"name": "Luxembourg",
-	"value": 515941,
-	"color": "#d8854f"
-}, {
-	"code": "MK",
-	"name": "Macedonia, FYR",
-	"value": 2063893,
-	"color": "#d8854f"
-}, {
-	"code": "MG",
-	"name": "Madagascar",
-	"value": 21315135,
-	"color": "#de4c4f"
-}, {
-	"code": "MW",
-	"name": "Malawi",
-	"value": 15380888,
-	"color": "#de4c4f"
-}, {
-	"code": "MY",
-	"name": "Malaysia",
-	"value": 28859154,
-	"color": "#eea638"
-}, {
-	"code": "ML",
-	"name": "Mali",
-	"value": 15839538,
-	"color": "#de4c4f"
-}, {
-	"code": "MR",
-	"name": "Mauritania",
-	"value": 3541540,
-	"color": "#de4c4f"
-}, {
-	"code": "MU",
-	"name": "Mauritius",
-	"value": 1306593,
-	"color": "#de4c4f"
-}, {
-	"code": "MX",
-	"name": "Mexico",
-	"value": 114793341,
-	"color": "#a7a737"
-}, {
-	"code": "MD",
-	"name": "Moldova",
-	"value": 3544864,
-	"color": "#d8854f"
-}, {
-	"code": "MN",
-	"name": "Mongolia",
-	"value": 2800114,
-	"color": "#eea638"
-}, {
-	"code": "ME",
-	"name": "Montenegro",
-	"value": 632261,
-	"color": "#d8854f"
-}, {
-	"code": "MA",
-	"name": "Morocco",
-	"value": 32272974,
-	"color": "#de4c4f"
-}, {
-	"code": "MZ",
-	"name": "Mozambique",
-	"value": 23929708,
-	"color": "#de4c4f"
-}, {
-	"code": "MM",
-	"name": "Myanmar",
-	"value": 48336763,
-	"color": "#eea638"
-}, {
-	"code": "NA",
-	"name": "Namibia",
-	"value": 2324004,
-	"color": "#de4c4f"
-}, {
-	"code": "NP",
-	"name": "Nepal",
-	"value": 30485798,
-	"color": "#eea638"
-}, {
-	"code": "NL",
-	"name": "Netherlands",
-	"value": 16664746,
-	"color": "#d8854f"
-}, {
-	"code": "NZ",
-	"name": "New Zealand",
-	"value": 4414509,
-	"color": "#8aabb0"
-}, {
-	"code": "NI",
-	"name": "Nicaragua",
-	"value": 5869859,
-	"color": "#a7a737"
-}, {
-	"code": "NE",
-	"name": "Niger",
-	"value": 16068994,
-	"color": "#de4c4f"
-}, {
-	"code": "NG",
-	"name": "Nigeria",
-	"value": 162470737,
-	"color": "#de4c4f"
-}, {
-	"code": "NO",
-	"name": "Norway",
-	"value": 4924848,
-	"color": "#d8854f"
-}, {
-	"code": "OM",
-	"name": "Oman",
-	"value": 2846145,
-	"color": "#eea638"
-}, {
-	"code": "PK",
-	"name": "Pakistan",
-	"value": 176745364,
-	"color": "#eea638"
-}, {
-	"code": "PA",
-	"name": "Panama",
-	"value": 3571185,
-	"color": "#a7a737"
-}, {
-	"code": "PG",
-	"name": "Papua New Guinea",
-	"value": 7013829,
-	"color": "#8aabb0"
-}, {
-	"code": "PY",
-	"name": "Paraguay",
-	"value": 6568290,
-	"color": "#86a965"
-}, {
-	"code": "PE",
-	"name": "Peru",
-	"value": 29399817,
-	"color": "#86a965"
-}, {
-	"code": "PH",
-	"name": "Philippines",
-	"value": 94852030,
-	"color": "#eea638"
-}, {
-	"code": "PL",
-	"name": "Poland",
-	"value": 38298949,
-	"color": "#d8854f"
-}, {
-	"code": "PT",
-	"name": "Portugal",
-	"value": 10689663,
-	"color": "#d8854f"
-}, {
-	"code": "PR",
-	"name": "Puerto Rico",
-	"value": 3745526,
-	"color": "#a7a737"
-}, {
-	"code": "QA",
-	"name": "Qatar",
-	"value": 1870041,
-	"color": "#eea638"
-}, {
-	"code": "RO",
-	"name": "Romania",
-	"value": 21436495,
-	"color": "#d8854f"
-}, {
-	"code": "RU",
-	"name": "Russia",
-	"value": 142835555,
-	"color": "#d8854f"
-}, {
-	"code": "RW",
-	"name": "Rwanda",
-	"value": 10942950,
-	"color": "#de4c4f"
-}, {
-	"code": "SA",
-	"name": "Saudi Arabia",
-	"value": 28082541,
-	"color": "#eea638"
-}, {
-	"code": "SN",
-	"name": "Senegal",
-	"value": 12767556,
-	"color": "#de4c4f"
-}, {
-	"code": "RS",
-	"name": "Serbia",
-	"value": 9853969,
-	"color": "#d8854f"
-}, {
-	"code": "SL",
-	"name": "Sierra Leone",
-	"value": 5997486,
-	"color": "#de4c4f"
-}, {
-	"code": "SG",
-	"name": "Singapore",
-	"value": 5187933,
-	"color": "#eea638"
-}, {
-	"code": "SK",
-	"name": "Slovak Republic",
-	"value": 5471502,
-	"color": "#d8854f"
-}, {
-	"code": "SI",
-	"name": "Slovenia",
-	"value": 2035012,
-	"color": "#d8854f"
-}, {
-	"code": "SB",
-	"name": "Solomon Islands",
-	"value": 552267,
-	"color": "#8aabb0"
-}, {
-	"code": "SO",
-	"name": "Somalia",
-	"value": 9556873,
-	"color": "#de4c4f"
-}, {
-	"code": "ZA",
-	"name": "South Africa",
-	"value": 50459978,
-	"color": "#de4c4f"
-}, {
-	"code": "ES",
-	"name": "Spain",
-	"value": 46454895,
-	"color": "#d8854f"
-}, {
-	"code": "LK",
-	"name": "Sri Lanka",
-	"value": 21045394,
-	"color": "#eea638"
-}, {
-	"code": "SD",
-	"name": "Sudan",
-	"value": 34735288,
-	"color": "#de4c4f"
-}, {
-	"code": "SR",
-	"name": "Suriname",
-	"value": 529419,
-	"color": "#86a965"
-}, {
-	"code": "SZ",
-	"name": "Swaziland",
-	"value": 1203330,
-	"color": "#de4c4f"
-}, {
-	"code": "SE",
-	"name": "Sweden",
-	"value": 9440747,
-	"color": "#d8854f"
-}, {
-	"code": "CH",
-	"name": "Switzerland",
-	"value": 7701690,
-	"color": "#d8854f"
-}, {
-	"code": "SY",
-	"name": "Syria",
-	"value": 20766037,
-	"color": "#eea638"
-}, {
-	"code": "TW",
-	"name": "Taiwan",
-	"value": 23072000,
-	"color": "#eea638"
-}, {
-	"code": "TJ",
-	"name": "Tajikistan",
-	"value": 6976958,
-	"color": "#eea638"
-}, {
-	"code": "TZ",
-	"name": "Tanzania",
-	"value": 46218486,
-	"color": "#de4c4f"
-}, {
-	"code": "TH",
-	"name": "Thailand",
-	"value": 69518555,
-	"color": "#eea638"
-}, {
-	"code": "TG",
-	"name": "Togo",
-	"value": 6154813,
-	"color": "#de4c4f"
-}, {
-	"code": "TT",
-	"name": "Trinidad and Tobago",
-	"value": 1346350,
-	"color": "#a7a737"
-}, {
-	"code": "TN",
-	"name": "Tunisia",
-	"value": 10594057,
-	"color": "#de4c4f"
-}, {
-	"code": "TR",
-	"name": "Turkey",
-	"value": 73639596,
-	"color": "#d8854f"
-}, {
-	"code": "TM",
-	"name": "Turkmenistan",
-	"value": 5105301,
-	"color": "#eea638"
-}, {
-	"code": "UG",
-	"name": "Uganda",
-	"value": 34509205,
-	"color": "#de4c4f"
-}, {
-	"code": "UA",
-	"name": "Ukraine",
-	"value": 45190180,
-	"color": "#d8854f"
-}, {
-	"code": "AE",
-	"name": "United Arab Emirates",
-	"value": 7890924,
-	"color": "#eea638"
-}, {
-	"code": "GB",
-	"name": "United Kingdom",
-	"value": 62417431,
-	"color": "#d8854f"
-}, {
-	"code": "US",
-	"name": "United States",
-	"value": 313085380,
-	"color": "#a7a737"
-}, {
-	"code": "UY",
-	"name": "Uruguay",
-	"value": 3380008,
-	"color": "#86a965"
-}, {
-	"code": "UZ",
-	"name": "Uzbekistan",
-	"value": 27760267,
-	"color": "#eea638"
-}, {
-	"code": "VE",
-	"name": "Venezuela",
-	"value": 29436891,
-	"color": "#86a965"
-}, {
-	"code": "PS",
-	"name": "West Bank and Gaza",
-	"value": 4152369,
-	"color": "#eea638"
-}, {
-	"code": "VN",
-	"name": "Vietnam",
-	"value": 88791996,
-	"color": "#eea638"
-}, {
-	"code": "YE",
-	"name": "Yemen, Rep.",
-	"value": 24799880,
-	"color": "#eea638"
-}, {
-	"code": "ZM",
-	"name": "Zambia",
-	"value": 13474959,
-	"color": "#de4c4f"
-}, {
-	"code": "ZW",
-	"name": "Zimbabwe",
-	"value": 12754378,
-	"color": "#de4c4f"
-}];
+var latlong = hello["latlong"];
 
 
+mapData = hello["mapData"]
 var map;
 var minBulletSize = 3;
 var maxBulletSize = 70;
@@ -1848,7 +1428,7 @@ AmCharts.ready(function() {
 		unlistedAreasAlpha: 0.1
 	};
 	map.imagesSettings = {
-		balloonText: "<span style='font-size:14px;'><b>[[title]]</b>: [[value]]</span>",
+		balloonText: "<span style='font-size:14px;'><b>[[title]]</b></span>",
 		alpha: 0.6
 	}
 
@@ -1882,8 +1462,9 @@ AmCharts.ready(function() {
 			color: dataItem.color,
 			longitude: latlong[id].longitude,
 			latitude: latlong[id].latitude,
-			title: dataItem.name,
-			value: value
+			title: dataItem.name + ": " + dataItem.avg,
+			value: value,
+			gval:dataItem["avg"]
 		});
 	}
 
@@ -1965,19 +1546,30 @@ AmCharts.ready(function() {
                         latitudes: [51.5002, 54.6896],
                         longitudes: [-0.1262, 25.2799]
                     }, {
+                        latitudes: [51.5002, 20],
+                        longitudes: [-0.1262, -20]
+                    }, {
                         latitudes: [51.5002, 64.1353],
                         longitudes: [-0.1262, -21.8952]
                     }, {
                         latitudes: [51.5002, 40.4300],
                         longitudes: [-0.1262, -74.0000]
-                    }],
+                    },{
+						latitudes: [40.4300, 60.0000],
+						longitudes: [-74.0000, 14.0000]
+					}],
                     images: [{
-                        id: "london",
                         svgPath: targetSVG,
                         title: "London",
                         latitude: 51.5002,
                         longitude: -0.1262,
-                        scale: 1
+                        scale: 0.5
+                    }, {
+                        svgPath: targetSVG,
+                        title: "MAKARA",
+                        latitude: 20,
+                        longitude: -20,
+                        scale: 5
                     }, {
                         svgPath: targetSVG,
                         title: "Brussels",
@@ -2080,7 +1672,13 @@ AmCharts.ready(function() {
                         latitude: 40.43,
                         longitude: -74,
                         scale: 0.5
-                    }]
+                    },{
+						svgPath: targetSVG,
+						title: "Haloo",
+						latitude: 60.0000,
+						longitude: 14.0000,
+						scale: 2
+					}]
                 },
 
                 areasSettings: {
@@ -2098,7 +1696,7 @@ AmCharts.ready(function() {
                     arrow: "middle",
                     color: "#CC0000",
                     alpha: 0.4,
-                    arrowAlpha: 1,
+                    arrowAlpha: 2,
                     arrowSize: 4,
                     dashLength:2
                 },

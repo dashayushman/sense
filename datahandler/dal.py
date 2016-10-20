@@ -471,7 +471,7 @@ class Dal:
     try:
       db = self.client[db_name]
       coll_events = db["cameo_events"]
-      agg_pipeline = [{"$match":{"$and":[{"DATEADDED":{"$lte":end_date}},{"ActionGeo_CountryCode":{"$ne":""}},{"Actor1Geo_CountryCode":{"$ne":""}},{"Actor2Geo_CountryCode":{"$ne":""}},{"Actor2Geo_CountryCode":{"$ne":""}}]}},{"$project":{"GLOBALEVENTID":1,"EventCode":1,"GoldsteinScale":1,"NumMentions":1,"NumSources":1,"NumArticles":1,"AvgTone":1,"Actor1Geo_FullName":1,"Actor1Geo_CountryCode":1,"Actor2Geo_FullName":1,"Actor2Geo_CountryCode":1,"ActionGeo_FullName":1,"ActionGeo_CountryCode":1,"score":{"$avg":[{"$abs":"$GoldsteinScale"},"$NumMentions","$NumSources","$NumArticles",{"$abs":"$AvgTone"}]}}},{"$sort":{"score":-1}},{"$limit":10}]
+      agg_pipeline = [{"$match":{"$and":[{"DATEADDED":{"$lte":end_date}},{"Actor1Name":{"$ne":""}},{"Actor2Name":{"$ne":""}},{"ActionGeo_CountryCode":{"$ne":""}},{"Actor1Geo_CountryCode":{"$ne":""}},{"Actor2Geo_CountryCode":{"$ne":""}},{"Actor2Geo_CountryCode":{"$ne":""}}]}},{"$project":{"GLOBALEVENTID":1,"EventCode":1,"GoldsteinScale":1,"Actor1Name":1,"Actor2Name":1,"NumMentions":1,"NumSources":1,"NumArticles":1,"AvgTone":1,"Actor1Geo_FullName":1,"Actor1Geo_CountryCode":1,"Actor2Geo_FullName":1,"Actor2Geo_CountryCode":1,"ActionGeo_FullName":1,"ActionGeo_CountryCode":1,"score":{"$avg":[{"$abs":"$GoldsteinScale"},"$NumMentions","$NumSources","$NumArticles",{"$abs":"$AvgTone"}]}}},{"$sort":{"score":-1}},{"$limit":10}]
       if start_date != 0:
         agg_pipeline[0]["$match"]["$and"].append({"DATEADDED":{"$gt":start_date}})
       results = list(coll_events.aggregate(agg_pipeline))
@@ -484,8 +484,13 @@ class Dal:
       else:
         for i,e in enumerate(results):
           geo_code = e["ActionGeo_CountryCode"]
+          e_code = e["EventCode"]
           geo_name = self.get_country_from_fips_code(db_name,geo_code)
+          event_type = self.get_event_type_from_cameo_code(db_name,e_code)
+          if event_type is None:
+            event_type = ""
           results[i]["FIPS_Country_Name"] = geo_name
+          results[i]["EventType"] = event_type
         return {
           "data":results,
           "status":1,
@@ -509,10 +514,11 @@ class Dal:
     try:
       db = self.client[db_name]
       coll_events = db["cameo_events"]
-      agg_pipeline = [{"$match":{"$and":[{"DATEADDED":{"$lte":end_date}},{"ActionGeo_CountryCode":{"$ne":""}}]}},{"$project":{"GLOBALEVENTID":1,"GoldsteinScale":1,"ActionGeo_FullName":1,"ActionGeo_CountryCode":1,"score":{"$avg":[{"$abs":"$GoldsteinScale"},{"$abs":"$AvgTone"}]}}},{"$sort":{"score":-1}},{"$limit":limit}]
+      agg_pipeline = [{"$match":{"$and":[{"DATEADDED":{"$lte":end_date}},{"ActionGeo_CountryCode":{"$ne":""}}]}},{"$project":{"GLOBALEVENTID":1,"GoldsteinScale":1,"ActionGeo_FullName":1,"ActionGeo_CountryCode":1,"score":{"$avg":[{"$abs":"$GoldsteinScale"},{"$abs":"$AvgTone"}]}}},{"$sort":{"score":-1}},{"$limit":100}]
       if start_date != 0:
         agg_pipeline[0]["$match"]["$and"].append({"DATEADDED":{"$gt":start_date}})
       results = list(coll_events.aggregate(agg_pipeline))
+      final_results = []
       if len(results) == 0:
         return {
           "data":[],
@@ -520,12 +526,21 @@ class Dal:
           "message":"No events were found in the given duration."
         }
       else:
+        already_added = []
         for i,e in enumerate(results):
+          if len(already_added) == limit:
+            break
           geo_code = e["ActionGeo_CountryCode"]
-          geo_name = self.get_country_from_fips_code(db_name,geo_code)
-          results[i]["FIPS_Country_Name"] = geo_name
+          _id = e["ActionGeo_FullName"]+"_"+geo_code
+          if _id not in already_added:
+            already_added.append(_id)
+            geo_name = self.get_country_from_fips_code(db_name,geo_code)
+            results[i]["FIPS_Country_Name"] = geo_name
+            final_results.append(results[i])
+          else:
+            continue
         return {
-          "data":results,
+          "data":final_results,
           "status":1,
           "message":"Successfully retrieved High Imapct regions."
         }
@@ -670,7 +685,9 @@ class Dal:
           "message": "No 1st actors could be found in the selected time duration"
         }
       already_added = []
-      for actor_geo in actor_1_geos:
+      for k,actor_geo in enumerate(actor_1_geos):
+        if k == 25:
+          break
         if len(actor_geo) == 0:
           continue
         a1_geo_name = self.get_country_from_fips_code(db_name,actor_geo)
@@ -694,10 +711,12 @@ class Dal:
             "title": a1_geo_name,
             "latitude": a1_lat,
             "longitude": a1_long,
-            "scale": 1.5
+            "scale": 1.0
           })
           already_added.append(actor_geo)
-        for e in linked_events:
+        for l,e in enumerate(linked_events):
+          if l == 20:
+            break
           a2_geo_code = e["Actor2Geo_CountryCode"]
           if len(a2_geo_code) is 0:
             continue
@@ -806,6 +825,30 @@ class Dal:
       return country_name
     except:
       self.log_error("Exception occurred getting country name from cameo country code\n"+
+            "Exception stacktrace: \n"+
+            traceback.format_exc())
+      return None
+
+  def get_event_type_from_cameo_code(self,db_name,cameo_code):
+    '''
+
+    :param db_name:
+    :param fips_code:
+    :return:
+    '''
+    try:
+      self.log_info("Getting country name from FIPS country code")
+      db = self.client[db_name]
+      col_cameo_type = db["cameo_eventcodes"]
+      query = {"CAMEOEVENTCODE" : cameo_code}
+      event_name = col_cameo_type.find_one(query)
+      if event_name is None:
+        self.log_error("Invalid Event Code : " + cameo_code)
+        return None
+      event_name = event_name["EVENTDESCRIPTION"]
+      return event_name
+    except:
+      self.log_error("Exception occurred getting Event type from Cameo event code\n"+
             "Exception stacktrace: \n"+
             traceback.format_exc())
       return None
@@ -1132,6 +1175,7 @@ class Dal:
       if metadata is None:
         self.log_info("No Metadata object found. Creating a new metadata object and updating it.")
         metadata = {
+            "last_update_date_str" : "",
             "last_update_date" : 0,
             "n_old_files" : 0,
             "n_new_files" : 0,
@@ -1155,6 +1199,8 @@ class Dal:
         metadata["last_update_date"] = self.util.get_present_date_time()
       else:
         metadata["last_update_date"] = latest_added_file["timestamp"]
+
+      metadata["last_update_date_str"] = str(self.util.gdelt_date_to_datetime(metadata["last_update_date"]))
 
       # updating the number of old files
       metadata["n_old_files"] = metadata["n_new_files"]

@@ -33,11 +33,15 @@ FIPS.country
 
 mongoimport -d db_sense -c fips_country --type tsv --file "/home/ayushman/projects/sense/GDELT2.0/codebooks/FIPS.country.txt" --headerline
 
+GDELT.mentions.type
+
+mongoimport -d db_sense -c gdelt_mentions_type --type tsv --file "/home/ayushman/projects/sense/GDELT2.0/codebooks/GDELT.mentions.sources.txt" --headerline -h localhost:3000
+
 CAMEO.events
 
-mongoimport -d DBNAME -c cameo_events --type tsv --file "FILEPATH" --fieldFile "HEADERPATH"
+mongoimport -d db_sense -c cameo_events --type tsv --file "/home/ayushman/projects/sense/GDELT2.0/events_data/09/20160901001500.export.CSV" --fieldFile "/home/ayushman/projects/sense/GDELT2.0/gdelt2HeaderRows-master/schema_csvs/events_headers.txt" -h localhost:3000
 
 
 CAMEO.mentions
 
-mongoimport -d db_sense -c cameo_mentions --type tsv --file "C:\Users\Ayushman\Google Drive\TU KAISERSLAUTERN\Work\DFKI\MADM\DATA\GDELT_2.0\mentions\20161004134500.mentions.csv" --fieldFile "C:\Users\Ayushman\Google Drive\TU KAISERSLAUTERN\Work\DFKI\MADM\DATA\gdelt2HeaderRows-master\schema_csvs\mentions_headers.txt"
+mongoimport -d db_sense -c cameo_mentions --type tsv --file "/home/ayushman/projects/sense/GDELT2.0/events_data/09/20160901001500.mentions.CSV" --fieldFile "/home/ayushman/projects/sense/GDELT2.0/gdelt2HeaderRows-master/schema_csvs/mentions_headers.txt" -h localhost:3000
