@@ -6,6 +6,9 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
+var themeSimple = require('./routes/themeSimple');
+var indexDark = require('./routes/indexDark');
+var sample = require('./routes/sample');
 var getActorNetwork = require('./routes/getActorNetwork');
 var getMentionsTimeline = require('./routes/getMentionsTimeline');
 var getArticlesPerCategory = require('./routes/getArticlesPerCategory');
@@ -34,6 +37,9 @@ app.use(bodyParser.raw({limit: '100mb'}));
 app.use(bodyParser.text({limit: '100mb'}));
 
 app.use('/', routes);
+app.use('/themeSimple', themeSimple);
+app.use('/indexDark', indexDark);
+app.use('/sample', sample);
 app.use('/getActorNetwork', getActorNetwork);
 app.use('/getMentionsTimeline', getMentionsTimeline);
 app.use('/getArticlesPerCategory', getArticlesPerCategory);

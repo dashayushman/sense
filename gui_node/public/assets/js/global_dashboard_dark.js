@@ -11,11 +11,11 @@ var network_of_actors = 0;
 
 var obj_hir = null;
 var obj_hie = null;
-var hir_row = '<tr><td class="v-align-middle bold text-success">GEOCODE</td><td class="v-align-middle"><span class="muted">CONNAME</span> </td><td><span class="muted bold text-success">LOCATION</span> </td><td class="v-align-middle"><span class="muted bold HALOOCOL">IMPACT</span></td></tr>'
+var hir_row = '<tr><td class="v-align-middle bold" style="color: #FF2EFF">GEOCODE</td><td class="v-align-middle"><span class="muted">CONNAME</span> </td><td><span class="muted bold" style="color: #FF2EFF">LOCATION</span> </td><td class="v-align-middle"><span class="bold HALOOCOL">IMPACT</span></td></tr>'
 var hir_col_green = "text-success"
 var hir_col_red = "text-error"
 
-var hie_row = '<tr><td class="v-align-middle bold text-success">EVENTTYPE</td><td class="v-align-middle"><span class="muted bold text-info">ACTOR1</span> </td><td><span class="bold text-info">GEOACT1</span> </td><td class="v-align-middle"><span class="bold">ACTOR2</span> </td><td><span class="bold">GEOACT2</span> </td><td class="v-align-middle bold text-success">IMPORTANCE</td></tr>'
+var hie_row = '<tr><td class="v-align-middle bold" style="color: #FF2EFF">EVENTTYPE</td><td class="v-align-middle"><span class="bold text-info" >ACTOR1</span> </td><td><span class="bold text-info">GEOACT1</span> </td><td class="v-align-middle"><span class="bold" style="color: #D5B9F1">ACTOR2</span> </td><td><span class="bold" style="color: #D5B9F1">GEOACT2</span> </td><td class="v-align-middle bold" style="color: #6DFFFA">IMPORTANCE</td></tr>'
 
 var loc = ['bottom', 'right'];
 var style = 'flat';
@@ -24,6 +24,7 @@ for (var i=0; i < loc.length; i++)
     classes += ' messenger-on-' + loc[i];
 $.globalMessenger({ extraClasses: classes, theme: style });
 Messenger.options = { extraClasses: classes, theme: style };
+
 
 var waypoint_gim = new Waypoint({
     element: document.getElementById('id_wp_gim'),
@@ -46,15 +47,6 @@ var waypoint_os = new Waypoint({
     offset: '40%'
 });
 
-var waypoint_linked_geo = new Waypoint({
-    element: document.getElementById('id_wp_lgeo'),
-    handler: function(direction) {
-        if(linked_geo == 0){
-            loadLinkedLocation();
-        }
-    },
-    offset: '30%'
-});
 
 
 var waypoint_hir = new Waypoint({
@@ -77,15 +69,6 @@ var waypoint_hie = new Waypoint({
     offset: '20%'
 });
 
-var waypoint_ampc = new Waypoint({
-    element: document.getElementById('id_wp_ampc'),
-    handler: function(direction) {
-        if(articles_mentioned_per_cat == 0){
-            loadAmpc();
-        }
-    },
-    offset: '10%'
-});
 
 var waypoint_mt = new Waypoint({
     element: document.getElementById('id_wp_mt'),
@@ -95,16 +78,6 @@ var waypoint_mt = new Waypoint({
         }
     },
     offset: '20%'
-});
-
-var waypoint_noa = new Waypoint({
-    element: document.getElementById('id_wp_noa'),
-    handler: function(direction) {
-        if(network_of_actors == 0){
-            loadNoa();
-        }
-    },
-    offset: '75%'
 });
 
 $( ".btn-small" ).click(function() {
@@ -653,7 +626,7 @@ function updateHieTable(top10List) {
 function updateMtLineChart(data,sources) {
     AmCharts.makeChart("trendchartdiv", {
         type: "serial",
-        color:"black",
+        theme: "black",
         export: {
             "enabled": true
         },
@@ -673,6 +646,7 @@ function updateMtLineChart(data,sources) {
         }],
 
         graphs: [{
+            id:"gid_web",
             type: "line",
             title: "Web",
             valueField: "web",
@@ -689,7 +663,7 @@ function updateMtLineChart(data,sources) {
         }],
         legend: {
             position: "bottom",
-            color:"black",
+            color:"white",
             valueText: "[[value]]",
             valueWidth: 100,
             valueAlign: "left",
@@ -700,7 +674,9 @@ function updateMtLineChart(data,sources) {
             cursorAlpha: 0
         },
         chartScrollbar: {
-            color: "FFFFFF"
+            "autoGridCount": true,
+            "graph": "gid_web",
+            "scrollbarHeight": 40
         }
 
     });

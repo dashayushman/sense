@@ -1,4 +1,3 @@
-from constants import Constants
 from jproperties import Properties
 import sys, getopt, traceback
 import logging,logging.handlers
@@ -8,7 +7,6 @@ import os
 from urllib2 import urlopen, URLError, HTTPError
 import zipfile
 import subprocess
-from difflib import unified_diff
 from datetime import datetime
 import time, math
 import datetime as dt
@@ -154,26 +152,6 @@ class Utility:
     else:
       return None
 
-  def get_newly_added_fileurls(self,cache_content,new_content):
-    try:
-      lines = unified_diff(cache_content, new_content, fromfile='before.py', tofile='after.py')
-      added = []
-      for i,line in enumerate(lines):
-        if i <=2:
-          continue
-        splt_line = line.split()
-        if splt_line[0] == '+':
-          added.append(" ".join(splt_line[2:]))
-      if len(added) is 0:
-        return None
-      else:
-        return "\n".join(added)
-    except Exception as e:
-      print("Some exception occurred while creating a file diff and extracting newly added file urls. Returning the new content.\n"+
-            "Exception " + e.message)
-      return new_content
-
-
   def get_file_urls(self,url):
     '''
     Method that makes an HTTP GET request to the given url and extracts all the current file names from GDELT2.0
@@ -182,20 +160,6 @@ class Utility:
     :return: structured files list (grouped categorically and chronologically)
     '''
     try:
-
-      '''
-      str_current_files = self.get_cached_file_urls(cache_file_path)
-      if str_current_files is None:
-        str_current_files = urllib2.urlopen(url).read()
-        cache_ststus = self.create_cache_file(cache_file_path,str_current_files)
-      else:
-        new_content = urllib2.urlopen(url).read()
-        str_current_files = self.get_newly_added_fileurls(str_current_files,new_content)
-
-        if str_current_files is None:
-          self.log_info("No new files have been added to the GDELT2.0 master list. Exitting!!!")
-          return 0
-      '''
 
       str_current_files = urllib2.urlopen(url).read()
       list_current_files = str_current_files.splitlines()
