@@ -1,0 +1,89 @@
+[
+  {
+    "$match": {
+      "$and": [
+        {
+          "DATEADDED": {
+            "$lte": 20161019100000
+          }
+        },
+        {
+          "DATEADDED": {
+            "$gt": 20161018000000
+          }
+        },
+        {
+          "Actor1CountryCode": {
+            "$ne": ""
+          }
+        },
+        {
+          "Actor2CountryCode": {
+            "$ne": ""
+          }
+        },
+        {
+          "Actor1Name": {
+            "$ne": ""
+          }
+        },
+        {
+          "Actor2Name": {
+            "$ne": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "$project": {
+      "GLOBALEVENTID": 1,
+      "DATEADDED": 1,
+      "Actor1CountryCode": 1,
+      "Actor2CountryCode": 1,
+      "Actor1Name": 1,
+      "Actor2Name": 1
+    }
+  },
+  {
+    "$group": {
+      "_id": {
+        "Actor1CountryCode": "$Actor1CountryCode",
+        "Actor2CountryCode": "$Actor2CountryCode",
+        "Actor1Name": "$Actor1Name",
+        "Actor2Name": "$Actor2Name"
+      },
+      "count": {
+        "$sum": 1
+      }
+    }
+  },
+  {
+    "$project": {
+      "Actor1CountryCode": "$_id.Actor1CountryCode",
+      "Actor2CountryCode": "$_id.Actor2CountryCode",
+      "Actor1Name": "$_id.Actor1Name",
+      "Actor2Name": "$_id.Actor2Name",
+      "Count": "$count",
+      "Actor1Id": {
+        "$concat": [
+          "$_id.Actor1Name",
+          "_",
+          "$_id.Actor1CountryCode"
+        ]
+      },
+      "Actor2Id": {
+        "$concat": [
+          "$_id.Actor2Name",
+          "_",
+          "$_id.Actor2CountryCode"
+        ]
+      }
+    }
+  },
+  {
+    "$sort": {
+      "Count": -1
+    }
+  }
+]

@@ -1,0 +1,69 @@
+
+    <!-- BEGIN SIDEBAR -->
+
+    <a href="#" class="scrollup">Scroll</a>
+
+    <!-- END SIDEBAR -->
+    <!-- BEGIN PAGE CONTAINER-->
+    <div class="page-content" style="background-color: #1C1C1C;">
+        <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+        <div class="content" style="padding-top: 70px;background-color: #1C1C1C;">
+
+            <div class="row" id="id_wp_gim" >
+                <div class="col-md-12">
+                    <div class="grid simple" style="margin-bottom: 0px;">
+                        <div class="grid-title no-border" style="background-color: #1C1C1C;">
+                            <h1 style="color: white;">Network of <span class="semi-bold"> Actors</span><span id="id_loader_noa">
+                                <i class="fa fa-spinner fa fa-spin"></i>
+                            </span></h1>
+
+                            <div class="tools">  </div>
+                            <span class="muted">This is a network of actors (Influential people or group mentioned or involved in articles or events)
+                                from different countries. This network shows connections of between country and inter country actors.
+                                The bigger the nodes are the more number of times they have occurred in the selected day.
+                                The thicker the edges are the more number of times the nodes have interacted.</span>
+                        </div>
+                        <div class="grid-body no-border" style="background-color: #1C1C1C;">
+
+                            <div class="row hide" id="id_cont_noa" style=" background-color: #000; color: #fff;">
+                                <div style="width: 100%; height: 1000px;" id="mynetwork"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        </div>
+
+    <!-- BEGIN CHAT -->
+    <div class="chat-window-wrapper">
+        <div id="main-chat-wrapper" class="inner-content">
+            <div class="chat-window-wrapper scroller scrollbar-dynamic" id="chat-users" >
+
+                <div class="side-widget">
+                    <div class="side-widget-title" style="font-size: 12px;color: white;">Date</div>
+                    <div class="side-widget-content">
+                        <div >
+
+                            <div id="idStartDate" class="input-append success date col-md-10 col-lg-6 no-padding" style="width: 70%;margin-left: 12px;margin-top: 10px;margin-bottom: 10px;">
+                                <input type="text" class="form-control" style="background-color: white;">
+                                <span class="add-on" style="background: #9900FF;"><span class="arrow"></span><i class="fa fa-th"></i></span> </div>
+
+                            <br>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="side-widget">
+                    <button id="idFilterButton" class="btn btn-block btn-primary" type="button" style="background-color: #0aa699;width: 80%;margin-left: 15px;"><i class="fa fa-filter"></i>&nbsp;&nbsp;Filter Results&nbsp;&nbsp;<span class="hide" id="idFilterLoader"><i class="fa fa-spinner fa fa-spin"></i></span></button>
+                </div>
+
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>

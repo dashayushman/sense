@@ -1,0 +1,42 @@
+top 10 events wih average importance
+
+[
+  {
+    "$project": {
+      "GLOBALEVENTID": 1,
+      "EventCode": 1,
+      "GoldsteinScale": 1,
+      "NumMentions": 1,
+      "NumSources": 1,
+      "NumArticles": 1,
+      "AvgTone": 1,
+      "Actor1Geo_FullName": 1,
+      "Actor1Geo_CountryCode": 1,
+      "Actor2Geo_FullName": 1,
+      "Actor2Geo_CountryCode": 1,
+      "ActionGeo_FullName": 1,
+      "ActionGeo_CountryCode": 1,
+      "score": {
+        "$avg": [
+          {
+            "$abs": "$GoldsteinScale"
+          },
+          "$NumMentions",
+          "$NumSources",
+          "$NumArticles",
+          {
+            "$abs": "$AvgTone"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "$sort": {
+      "score": -1
+    }
+  },
+  {
+    "$limit": 10
+  }
+]
