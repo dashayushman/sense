@@ -1,0 +1,26 @@
+[
+  {
+    "$match": {
+      "$and": [
+        {
+          "MentionTimeDate": {
+            "$lte": 20161018124500
+          }
+        },
+        {
+          "MentionTimeDate": {
+            "$gt": 20160930000000
+          }
+        }
+      ]
+    }
+  },
+  {
+    "$group": {
+      "_id": "$MentionType",
+      "count": {
+        "$sum": 1
+      }
+    }
+  }
+]

@@ -1,0 +1,21 @@
+[
+  {
+    "$project": {
+      "GLOBALEVENTID": 1,
+      "GoldsteinScale": 1,
+      "ActionGeo_FullName": 1,
+      "ActionGeo_CountryCode": 1,
+      "score": {
+        "$abs": "$GoldsteinScale"
+      }
+    }
+  },
+  {
+    "$sort": {
+      "score": -1
+    }
+  },
+  {
+    "$limit": 10
+  }
+]

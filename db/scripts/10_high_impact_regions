@@ -1,0 +1,49 @@
+[
+  {
+    "$match": {
+      "$and": [
+        {
+          "DATEADDED": {
+            "$lte": "end_date"
+          }
+        },
+        {
+          "DATEADDED": {
+            "$gt": "end_date"
+          }
+        },
+        {
+          "ActionGeo_CountryCode": {
+            "$ne": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "$project": {
+      "GLOBALEVENTID": 1,
+      "GoldsteinScale": 1,
+      "ActionGeo_FullName": 1,
+      "ActionGeo_CountryCode": 1,
+      "score": {
+        "$avg": [
+          {
+            "$abs": "$GoldsteinScale"
+          },
+          {
+            "$abs": "$AvgTone"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "$sort": {
+      "score": -1
+    }
+  },
+  {
+    "$limit": 10
+  }
+]

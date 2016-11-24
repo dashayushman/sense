@@ -63,7 +63,7 @@
 <div class="header navbar navbar-inverse " style="background-color: #1C1C1C;">
     <!-- BEGIN TOP NAVIGATION BAR -->
     <div class="navbar-inner">
-        <div class="header-seperation" style="background-color: #1C1C1C;">
+        <div class="header-seperation" style="width: 200px;background-color: #1C1C1C;">
             <ul class="nav pull-left notifcation-center" id="main-menu-toggle-wrapper" style="display:none">
                 <li class="dropdown"> <a id="main-menu-toggle" href="#main-menu"  class="" > <div class="iconset top-menu-toggle-white"></div> </a> </li>
             </ul>
@@ -78,7 +78,7 @@
             <div class="pull-left">
                 <ul class="nav quick-section" style="margin-left: 3px;margin-top: 2px;">
                     <li class="quicklinks"> <a href="#" class="" id="layout-condensed-toggle" >
-                        <img src="assets/img/madm_fav_ico.png" style="height: 48px;">
+                        <div id="idCondenseIcon"><img src="assets/img/madm_fav_ico.png" style="height: 48px;"></div>
                     </a> </li>
                 </ul>
                 <ul class="nav quick-section">
@@ -94,7 +94,9 @@
                 <ul class="nav quick-section " style="margin-top: 8px;color: white;">
                     <h4 style="color: white;"><span class="bold">Last updated on:</span> <span id="id_lst_upd_date"><span></span></span></h4>
                 </ul>
+                <!--
                 <ul class="nav quick-section ">
+
                     <li class="quicklinks">
                         <a data-toggle="dropdown" class="dropdown-toggle  pull-right " href="#" id="user-options" style="color: white !important;">
                             <i class="fa fa-gear" ></i>
@@ -111,6 +113,7 @@
                         </ul>
                     </li>
                 </ul>
+                -->
 
             </div>
             <!-- END CHAT TOGGLER -->
@@ -157,7 +160,7 @@
                         <div class="grid-title no-border" style="background-color: #1C1C1C;">
                             <h1 style="color: white;">Impact of events <span class="semi-bold">on the World</span></h1>
                             <div class="tools">  </div>
-                            <span class="muted">The size of the bubbles reflects the amount of impact and the colour of the bubble shows how positive (Green) or negative (Red) the imapct is.</span>
+                            <span class="muted">The size of the bubbles reflects the amount of impact and the colour of the bubble shows how positive (Green) or negative (Red) the imapct is.<img src="assets/img/gsscale.png" style="margin-left: 10px;padding-bottom: 2px;"> </span>
                         </div>
                         <div class="grid-body no-border" style="background-color: #1C1C1C;">
                             <div class="row" id="id_loader_gim">
@@ -297,6 +300,7 @@
                                             <th style="">Country</th>
                                             <th style="">Location</th>
                                             <th style="">Impact</th>
+                                            <th style=""></th>
                                         </tr>
                                         </thead>
                                         <tbody id="id_hir_body">
@@ -347,12 +351,13 @@
                                     <table class="table no-more-tables m-t-20 m-l-20 m-b-30" style="margin-left: 0px;margin-top: 0px;">
                                         <thead class="text-white">
                                         <tr>
-                                            <th style="width:9%">Event Type</th>
-                                            <th style="width:5%">Actor1</th>
-                                            <th style="width:10%">Actor1 Geo</th>
-                                            <th style="width:6%">Actor2</th>
-                                            <th style="width:15%">Actor2 Geo</th>
-                                            <th style="width:1%">Importance</th>
+                                            <th style="">Event Type</th>
+                                            <th style="">Actor1</th>
+                                            <th style="">Actor1 Geo</th>
+                                            <th style="">Actor2</th>
+                                            <th style="">Actor2 Geo</th>
+                                            <th style="">Importance</th>
+                                            <th style=""></th>
                                         </tr>
                                         </thead>
                                         <tbody id="id_hie_body">
@@ -435,7 +440,6 @@
 
 <!-- BEGIN CORE TEMPLATE JS -->
 <script src="assets/js/core.js" type="text/javascript"></script>
-<script src="assets/js/chat.js" type="text/javascript"></script>
 <script src="assets/js/demo.js" type="text/javascript"></script>
 
 <script>

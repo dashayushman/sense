@@ -6,7 +6,7 @@ var MongoClient = require('mongodb').MongoClient;
 var url = 'mongodb://localhost:3000/db_sense'
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  var resp_obj = null
+  var resp_obj = null;
   MongoClient.connect(url, function(err, db) {
     // Create a collection we want to drop later
     var col = db.collection('coll_mentions_timeline');
@@ -15,12 +15,12 @@ router.get('/', function(req, res, next) {
       if(err != null){
         db.close();
         res.json({"status":0,"message":"Could not retrieve Mentions timeline from database."});
-      }else{
+      } else {
         resp_obj = items[0];
         resp_obj.status = 1;
-        resp_obj.message = "Successfully retrieved Mentions timeline from database."
+        resp_obj.message = "Successfully retrieved Mentions timeline from database.";
         db.close();
-        res.json(resp_obj)
+        res.json(resp_obj);
       }
     });
   });

@@ -393,9 +393,14 @@ $(document).ready(function () {
     $('#layout-condensed-toggle').click(function () {
         if ($('#main-menu').attr('data-inner-menu') == '1') {
             //Do nothing
+
+
             console.log("Menu is already condensed");
         } else {
+
+
             if ($('#main-menu').hasClass('mini')) {
+                $("#idCondenseIcon").html('<img src="assets/img/icon/bars.png" style="height: 30px;margin-top: 10px;">');
                 $('body').removeClass('grey');
                 $('body').removeClass('condense-menu');
                 $('#main-menu').removeClass('mini');
@@ -406,6 +411,7 @@ $(document).ready(function () {
                 $('.header-seperation').css('height', '61px');
                 $('.footer-widget').show();
             } else {
+                $("#idCondenseIcon").html('<img src="assets/img/madm_fav_ico.png" style="height: 48px;">');
                 $('body').addClass('grey');
                 $('#main-menu').addClass('mini');
                 $('.page-content').addClass('condensed');

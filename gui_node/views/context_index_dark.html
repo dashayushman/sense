@@ -1,0 +1,286 @@
+
+    <!-- BEGIN SIDEBAR -->
+
+    <a href="#" class="scrollup">Scroll</a>
+
+    <!-- END SIDEBAR -->
+    <!-- BEGIN PAGE CONTAINER-->
+    <div class="page-content" >
+        <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+        <div class="content" style="padding-top: 50px;background-color: #1C1C1C;">
+            <div class="row" id="id_wp_gim" >
+                <div class="col-md-12">
+                    <div class="grid simple" style="margin-bottom: 0px;">
+                        <div class="grid-title no-border" style="background-color: #1C1C1C;">
+                            <h1 style="color: white;">Impact of events <span class="semi-bold">on the World</span>
+                                <span id="id_loader_gim">
+                                    <i class="fa fa-spinner fa fa-spin"></i>
+                                </span>
+                            </h1>
+                            <div class="tools">  </div>
+                            <span class="muted">The size of the bubbles reflects the amount of impact and the colour of the bubble shows how positive (Green) or negative (Red) the imapct is.<img src="assets/img/gsscale.png" style="margin-left: 10px;padding-bottom: 2px;"> </span>
+                        </div>
+                        <div class="grid-body no-border" style="background-color: #1C1C1C;">
+
+                            <div class="row hide" id="id_cont_gim" style=" background-color: #000; color: #fff;">
+                                <div id="mapdiv" style="width: 100%; height: 600px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="padding-top: 0px;padding-bottom: 15px;background-color: #1C1C1C;" id="id_wp_os">
+                <div class="row" id="id_loader_os">
+                   <i style="margin-left: 38%;margin-bottom: 3%;" class="fa fa-spinner fa fa-6x fa-spin"></i>
+                </div>
+                <div class="row hide" id="id_cont_os">
+                    <div class="col-md-4 col-vlg-3 col-sm-6">
+
+                        <div class="tiles green m-b-10" style="background-color: #E800E8;">
+
+                            <div class="tiles-body">
+                                <div class="controller"> <a href="javascript:;" class="reload"></a> <a href="javascript:;" class="remove"></a> </div>
+                                <div class="tiles-title text-black" style="color: white !important;">OVERALL EVENTS </div>
+                                <div class="widget-stats">
+                                    <div class="wrapper transparent">
+                                        <span class="item-title">Total Events</span> <span class="item-count animate-number semi-bold"  data-animation-duration="700" id="id_oe_total">0</span>
+                                    </div>
+                                </div>
+                                <div class="widget-stats">
+                                    <div class="wrapper transparent">
+                                        <span class="item-title">Today</span> <span class="item-count animate-number semi-bold"  data-animation-duration="700" id="id_oe_today">0</span>
+                                    </div>
+                                </div>
+                                <div class="widget-stats ">
+                                    <div class="wrapper last">
+                                        <span class="item-title">This Month</span> <span class="item-count animate-number semi-bold"  data-animation-duration="700" id="id_oe_month">0</span>
+                                    </div>
+                                </div>
+
+                                <div class="progress transparent progress-small no-radius m-t-20" style="width:90%">
+                                    <div class="progress-bar progress-bar-white animate-progress-bar" data-percentage="100.0%" ></div>
+                                </div>
+                                <div class="description"> <span class="text-white mini-description"></span> <span class="blend text-white bold">Click on view all to go to the search page. </span><a href="search" target="_blank" type="button" class="btn btn-white btn-xs btn-mini" style="margin-left: 20px;">View All</a></span></div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="col-md-4 col-vlg-3 col-sm-6">
+                        <div class="tiles blue m-b-10" style="background-color: #9900FF;">
+                            <div class="tiles-body">
+                                <div class="controller"> <a href="javascript:;" class="reload"></a> <a href="javascript:;" class="remove"></a> </div>
+                                <div class="tiles-title text-black" style="color: white !important;">OVERALL MENTIONS </div>
+                                <div class="widget-stats">
+                                    <div class="wrapper transparent">
+                                        <span class="item-title">Total Mentions</span> <span class="item-count animate-number semi-bold"  data-animation-duration="700" id="id_om_total">0</span>
+                                    </div>
+                                </div>
+                                <div class="widget-stats">
+                                    <div class="wrapper transparent">
+                                        <span class="item-title">Today</span> <span class="item-count animate-number semi-bold"  data-animation-duration="700" id="id_om_today">0</span>
+                                    </div>
+                                </div>
+                                <div class="widget-stats ">
+                                    <div class="wrapper last">
+                                        <span class="item-title">This Month</span> <span class="item-count animate-number semi-bold"  data-animation-duration="700" id="id_om_month">0</span>
+                                    </div>
+                                </div>
+                                <div class="progress transparent progress-small no-radius m-t-20" style="width:90%">
+                                    <div class="progress-bar progress-bar-white animate-progress-bar" data-percentage="100%" ></div>
+                                </div>
+                                <div class="description"> <span class="text-white mini-description "><span class="bold">Click on view all to go to the search page.</span><a  href="search" target="_blank" type="button" class="btn btn-white btn-xs btn-mini" style="margin-left: 20px;">View All</a></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-vlg-3 col-sm-6">
+                        <div class="tiles purple m-b-10" style="background-color: #6600CC;">
+                            <div class="tiles-body">
+                                <div class="controller"> <a href="javascript:;" class="reload"></a> <a href="javascript:;" class="remove"></a> </div>
+                                <div class="tiles-title text-black" style="color: white !important;">INVOLVED LOCATIONS </div>
+                                <div class="widget-stats">
+                                    <div class="wrapper transparent">
+                                        <span class="item-title">Total</span> <span class="item-count animate-number semi-bold"  data-animation-duration="700" id="id_ol_total">0</span>
+                                    </div>
+                                </div>
+                                <div class="widget-stats">
+                                    <div class="wrapper transparent">
+                                        <span class="item-title">Today</span> <span class="item-count animate-number semi-bold" data-animation-duration="700" id="id_ol_today">0</span>
+                                    </div>
+                                </div>
+                                <div class="widget-stats ">
+                                    <div class="wrapper last">
+                                        <span class="item-title">This Month</span> <span class="item-count animate-number semi-bold" data-animation-duration="700" id="id_ol_month">0</span>
+                                    </div>
+                                </div>
+                                <div class="progress transparent progress-small no-radius m-t-20" style="width:90%">
+                                    <div class="progress-bar progress-bar-white animate-progress-bar" data-percentage="70%" ></div>
+                                </div>
+                                <div class="description"> <span class="text-white mini-description "><span id="id_ol_higher" class="bold">50</span><span class="bold">% higher </span><span class="blend text-white">than last month</span><a  href="search" target="_blank" type="button" class="btn btn-white btn-xs btn-mini" style="margin-left: 20px;">View All</a></span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row" id="id_wp_hie">
+                <div class="col-md-12" >
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="grid simple ">
+                                <div class="grid-title no-border" style="background-color: #1C1C1C">
+
+                                </div>
+                                <div class="grid-body no-border" style="background-color: #1C1C1C">
+                                    <h3 class="text-white">Top 10 <span class="semi-bold">Important Events</span>
+                                        <span  id="id_loader_hie">
+                                             <i class="fa fa-spinner fa fa-spin"></i>
+                                        </span>
+                                    </h3>
+                                    <p style="margin-right: 20px;" class="muted">This is a list of top 10 important events in the selected duration. The importance is calculated from the number of mentions that it has, the average tone of the articles that it has been mentioned in and the Glodstein's impact score.</p>
+                                    <br>
+                                    <div class="clearfix"></div>
+
+                                    <div class="hide" id="id_cont_hie">
+                                        <button type="button" class="btn btn-primary btn-sm btn-small" value="hie_15">15 minutes</button>
+                                        <button type="button" class="btn btn-primary btn-sm btn-small" value="hie_today">Today</button>
+                                        <button type="button" class="btn btn-primary btn-sm btn-small" value="hie_month">Month</button>
+                                        <a  href="search" target="_blank" type="button" class="btn btn-primary btn-sm btn-small" >View All</a>
+
+                                        <table class="table no-more-tables m-t-20 m-l-20 m-b-30" style="margin-left: 0px;margin-top: 0px;">
+                                            <thead class="text-white">
+                                            <tr>
+                                                <th style="">Event Type</th>
+                                                <th style="">Actor1</th>
+                                                <th style="">Actor1 Geo</th>
+                                                <th style="">Actor2</th>
+                                                <th style="">Actor2 Geo</th>
+                                                <th style="">Importance</th>
+                                                <th style=""></th>
+                                            </tr>
+                                            </thead>
+                                            <tbody id="id_hie_body">
+
+                                            </tbody>
+                                        </table>
+
+                                        <button type="button" class="btn btn-primary btn-sm btn-small" value="hie_15">15 minutes</button>
+                                        <button type="button" class="btn btn-primary btn-sm btn-small" value="hie_today">Today</button>
+                                        <button type="button" class="btn btn-primary btn-sm btn-small" value="hie_month">Month</button>
+                                        <a  href="search" target="_blank" type="button" class="btn btn-primary btn-sm btn-small">View All</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" id="id_wp_hir">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="grid simple ">
+                                <div class="grid-title no-border" style="background-color: #1C1C1C">
+
+                                </div>
+                                <div class="grid-body no-border" style="background-color: #1C1C1C">
+                                    <h3 class="text-white">Top 10 <span class="semi-bold">High Impact</span> Regions
+                                        <span id="id_loader_hir">
+                                            <i class="fa fa-spinner fa fa-spin"></i>
+                                        </span>
+                                    </h3>
+                                    <p style="margin-right: 20px;" class="muted">This is a list of top 10 high impact regions (both positive and negative) in the selected duration</p>
+                                    <br>
+                                    <div class="clearfix"></div>
+
+
+                                    <div class="hide" id="id_cont_hir">
+                                        <button type="button" class="btn btn-primary btn-sm btn-small" value="hir_15">15 minutes</button>
+                                        <button type="button" class="btn btn-primary btn-sm btn-small" value="hir_today">Today</button>
+                                        <button type="button" class="btn btn-primary btn-sm btn-small" value="hir_month">Month</button>
+                                        <a  href="search" target="_blank" type="button" class="btn btn-primary btn-sm btn-small" val="none">View All</a>
+                                        <table class="table no-more-tables m-t-20 m-l-20 m-b-30" style="margin-left: 0px;margin-top: 0px;">
+                                            <thead >
+                                            <tr class="text-white">
+                                                <th style="">GEO Code</th>
+                                                <th style="">Country</th>
+                                                <th style="">Location</th>
+                                                <th style="">Impact</th>
+                                                <th style=""></th>
+                                            </tr>
+                                            </thead>
+                                            <tbody id="id_hir_body">
+
+                                            </tbody>
+                                        </table>
+
+                                        <button type="button" class="btn btn-primary btn-sm btn-small" value="hir_15">15 minutes</button>
+                                        <button type="button" class="btn btn-primary btn-sm btn-small" value="hir_today">Today</button>
+                                        <button type="button" class="btn btn-primary btn-sm btn-small" value="hir_month">Month</button>
+                                        <a href="search" target="_blank" type="button" class="btn btn-primary btn-sm btn-small" val="none">View All</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div >
+            <div class="row" id="id_wp_mt" style="background-color: #1C1C1C">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="grid simple ">
+
+
+                                <div class="grid-body no-border" style="background-color: #1C1C1C">
+                                    <h3 class="text-white">Trend  <span class="semi-bold">on a Timeline</span>
+                                        <span id="id_loader_mt">
+                                            <i class="fa fa-spinner fa fa-spin"></i>
+                                        </span>
+                                    </h3>
+                                    <p class="muted">The trend of how much global events are being mentioned in articles from different sources.
+                                    </p>
+                                    <br>
+
+                                    <div class="row hide" id="id_cont_mt" style=" background-color: #000; color: #fff;">
+                                        <div id="trendchartdiv" style="width:100%; height:400px;"></div>
+                                    </div>
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row" id="id_wp_et" style="background-color: #1C1C1C">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="grid simple ">
+
+
+                                <div class="grid-body no-border" style="background-color: #1C1C1C">
+                                    <h3 class="text-white">Events  <span class="semi-bold">on a Timeline</span>
+                                        <span id="id_loader_et">
+                                            <i class="fa fa-spinner fa fa-spin"></i>
+                                        </span>
+                                    </h3>
+                                    <p class="muted">The trend of how many global events are occurring.
+                                    </p>
+                                    <br>
+
+                                    <div class="row hide" id="id_cont_et" style=" background-color: #000; color: #fff;">
+                                        <div id="ettrendchartdiv" style="width:100%; height:400px;"></div>
+                                    </div>
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        </div>

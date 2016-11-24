@@ -1,0 +1,2350 @@
+var mynet = {
+    "_id" : "58077d3ee30bf533c3adf49d",
+    "status" : 1,
+    "timestamp" : 20161019140342,
+    "edges" : [ 
+        {
+            "to" : 2,
+            "from" : 1,
+            "value" : 1
+        }, 
+        {
+            "to" : 4,
+            "from" : 3,
+            "value" : 2
+        }, 
+        {
+            "to" : 6,
+            "from" : 5,
+            "value" : 1
+        }, 
+        {
+            "to" : 8,
+            "from" : 7,
+            "value" : 1
+        }, 
+        {
+            "to" : 10,
+            "from" : 9,
+            "value" : 1
+        }, 
+        {
+            "to" : 12,
+            "from" : 11,
+            "value" : 1
+        }, 
+        {
+            "to" : 10,
+            "from" : 13,
+            "value" : 1
+        }, 
+        {
+            "to" : 15,
+            "from" : 14,
+            "value" : 1
+        }, 
+        {
+            "to" : 16,
+            "from" : 14,
+            "value" : 1
+        }, 
+        {
+            "to" : 17,
+            "from" : 14,
+            "value" : 1
+        }, 
+        {
+            "to" : 10,
+            "from" : 18,
+            "value" : 2
+        }, 
+        {
+            "to" : 19,
+            "from" : 10,
+            "value" : 1
+        }, 
+        {
+            "to" : 21,
+            "from" : 20,
+            "value" : 1
+        }, 
+        {
+            "to" : 22,
+            "from" : 10,
+            "value" : 1
+        }, 
+        {
+            "to" : 23,
+            "from" : 10,
+            "value" : 2
+        }, 
+        {
+            "to" : 24,
+            "from" : 10,
+            "value" : 4
+        }, 
+        {
+            "to" : 26,
+            "from" : 25,
+            "value" : 1
+        }, 
+        {
+            "to" : 11,
+            "from" : 27,
+            "value" : 2
+        }, 
+        {
+            "to" : 28,
+            "from" : 20,
+            "value" : 1
+        }, 
+        {
+            "to" : 29,
+            "from" : 27,
+            "value" : 1
+        }, 
+        {
+            "to" : 31,
+            "from" : 30,
+            "value" : 2
+        }, 
+        {
+            "to" : 32,
+            "from" : 30,
+            "value" : 2
+        }, 
+        {
+            "to" : 4,
+            "from" : 33,
+            "value" : 2
+        }, 
+        {
+            "to" : 35,
+            "from" : 34,
+            "value" : 1
+        }, 
+        {
+            "to" : 37,
+            "from" : 36,
+            "value" : 2
+        }, 
+        {
+            "to" : 39,
+            "from" : 38,
+            "value" : 1
+        }, 
+        {
+            "to" : 38,
+            "from" : 40,
+            "value" : 1
+        }, 
+        {
+            "to" : 41,
+            "from" : 38,
+            "value" : 1
+        }, 
+        {
+            "to" : 2,
+            "from" : 42,
+            "value" : 1
+        }, 
+        {
+            "to" : 44,
+            "from" : 43,
+            "value" : 2
+        }, 
+        {
+            "to" : 10,
+            "from" : 45,
+            "value" : 1
+        }, 
+        {
+            "to" : 47,
+            "from" : 46,
+            "value" : 2
+        }, 
+        {
+            "to" : 48,
+            "from" : 45,
+            "value" : 2
+        }, 
+        {
+            "to" : 32,
+            "from" : 49,
+            "value" : 1
+        }, 
+        {
+            "to" : 50,
+            "from" : 45,
+            "value" : 2
+        }, 
+        {
+            "to" : 36,
+            "from" : 51,
+            "value" : 2
+        }, 
+        {
+            "to" : 52,
+            "from" : 51,
+            "value" : 1
+        }, 
+        {
+            "to" : 53,
+            "from" : 49,
+            "value" : 2
+        }, 
+        {
+            "to" : 54,
+            "from" : 32,
+            "value" : 2
+        }, 
+        {
+            "to" : 55,
+            "from" : 6,
+            "value" : 2
+        }, 
+        {
+            "to" : 57,
+            "from" : 56,
+            "value" : 2
+        }, 
+        {
+            "to" : 58,
+            "from" : 56,
+            "value" : 3
+        }, 
+        {
+            "to" : 59,
+            "from" : 14,
+            "value" : 1
+        }, 
+        {
+            "to" : 60,
+            "from" : 56,
+            "value" : 2
+        }, 
+        {
+            "to" : 61,
+            "from" : 10,
+            "value" : 4
+        }, 
+        {
+            "to" : 62,
+            "from" : 62,
+            "value" : 2
+        }, 
+        {
+            "to" : 64,
+            "from" : 63,
+            "value" : 1
+        }, 
+        {
+            "to" : 65,
+            "from" : 45,
+            "value" : 2
+        }, 
+        {
+            "to" : 66,
+            "from" : 63,
+            "value" : 2
+        }, 
+        {
+            "to" : 67,
+            "from" : 10,
+            "value" : 2
+        }, 
+        {
+            "to" : 63,
+            "from" : 68,
+            "value" : 2
+        }, 
+        {
+            "to" : 70,
+            "from" : 69,
+            "value" : 1
+        }, 
+        {
+            "to" : 71,
+            "from" : 69,
+            "value" : 2
+        }, 
+        {
+            "to" : 72,
+            "from" : 69,
+            "value" : 2
+        }, 
+        {
+            "to" : 73,
+            "from" : 69,
+            "value" : 1
+        }, 
+        {
+            "to" : 25,
+            "from" : 74,
+            "value" : 2
+        }, 
+        {
+            "to" : 75,
+            "from" : 74,
+            "value" : 2
+        }, 
+        {
+            "to" : 50,
+            "from" : 76,
+            "value" : 3
+        }, 
+        {
+            "to" : 77,
+            "from" : 73,
+            "value" : 1
+        }, 
+        {
+            "to" : 79,
+            "from" : 78,
+            "value" : 3
+        }, 
+        {
+            "to" : 10,
+            "from" : 80,
+            "value" : 1
+        }, 
+        {
+            "to" : 38,
+            "from" : 81,
+            "value" : 1
+        }, 
+        {
+            "to" : 82,
+            "from" : 10,
+            "value" : 2
+        }, 
+        {
+            "to" : 83,
+            "from" : 26,
+            "value" : 1
+        }, 
+        {
+            "to" : 84,
+            "from" : 66,
+            "value" : 4
+        }, 
+        {
+            "to" : 86,
+            "from" : 85,
+            "value" : 1
+        }, 
+        {
+            "to" : 87,
+            "from" : 16,
+            "value" : 2
+        }, 
+        {
+            "to" : 10,
+            "from" : 88,
+            "value" : 1
+        }, 
+        {
+            "to" : 35,
+            "from" : 89,
+            "value" : 1
+        }, 
+        {
+            "to" : 90,
+            "from" : 90,
+            "value" : 1
+        }, 
+        {
+            "to" : 91,
+            "from" : 43,
+            "value" : 2
+        }, 
+        {
+            "to" : 92,
+            "from" : 92,
+            "value" : 1
+        }, 
+        {
+            "to" : 93,
+            "from" : 8,
+            "value" : 2
+        }, 
+        {
+            "to" : 94,
+            "from" : 52,
+            "value" : 1
+        }, 
+        {
+            "to" : 74,
+            "from" : 95,
+            "value" : 1
+        }, 
+        {
+            "to" : 97,
+            "from" : 96,
+            "value" : 2
+        }, 
+        {
+            "to" : 99,
+            "from" : 98,
+            "value" : 3
+        }, 
+        {
+            "to" : 101,
+            "from" : 100,
+            "value" : 1
+        }, 
+        {
+            "to" : 102,
+            "from" : 10,
+            "value" : 3
+        }, 
+        {
+            "to" : 103,
+            "from" : 75,
+            "value" : 2
+        }, 
+        {
+            "to" : 10,
+            "from" : 104,
+            "value" : 1
+        }, 
+        {
+            "to" : 10,
+            "from" : 105,
+            "value" : 1
+        }, 
+        {
+            "to" : 106,
+            "from" : 52,
+            "value" : 2
+        }, 
+        {
+            "to" : 64,
+            "from" : 107,
+            "value" : 1
+        }, 
+        {
+            "to" : 109,
+            "from" : 108,
+            "value" : 1
+        }, 
+        {
+            "to" : 110,
+            "from" : 75,
+            "value" : 1
+        }, 
+        {
+            "to" : 111,
+            "from" : 10,
+            "value" : 2
+        }, 
+        {
+            "to" : 112,
+            "from" : 50,
+            "value" : 2
+        }, 
+        {
+            "to" : 50,
+            "from" : 113,
+            "value" : 1
+        }, 
+        {
+            "to" : 115,
+            "from" : 114,
+            "value" : 1
+        }, 
+        {
+            "to" : 80,
+            "from" : 116,
+            "value" : 3
+        }, 
+        {
+            "to" : 117,
+            "from" : 27,
+            "value" : 1
+        }, 
+        {
+            "to" : 118,
+            "from" : 118,
+            "value" : 1
+        }, 
+        {
+            "to" : 36,
+            "from" : 119,
+            "value" : 4
+        }, 
+        {
+            "to" : 121,
+            "from" : 120,
+            "value" : 2
+        }, 
+        {
+            "to" : 123,
+            "from" : 122,
+            "value" : 1
+        }, 
+        {
+            "to" : 124,
+            "from" : 102,
+            "value" : 1
+        }, 
+        {
+            "to" : 125,
+            "from" : 125,
+            "value" : 1
+        }, 
+        {
+            "to" : 126,
+            "from" : 38,
+            "value" : 4
+        }, 
+        {
+            "to" : 84,
+            "from" : 127,
+            "value" : 3
+        }, 
+        {
+            "to" : 87,
+            "from" : 128,
+            "value" : 2
+        }, 
+        {
+            "to" : 129,
+            "from" : 45,
+            "value" : 2
+        }, 
+        {
+            "to" : 60,
+            "from" : 130,
+            "value" : 1
+        }, 
+        {
+            "to" : 131,
+            "from" : 10,
+            "value" : 2
+        }, 
+        {
+            "to" : 133,
+            "from" : 132,
+            "value" : 1
+        }, 
+        {
+            "to" : 69,
+            "from" : 134,
+            "value" : 2
+        }, 
+        {
+            "to" : 136,
+            "from" : 135,
+            "value" : 2
+        }, 
+        {
+            "to" : 74,
+            "from" : 137,
+            "value" : 1
+        }, 
+        {
+            "to" : 138,
+            "from" : 80,
+            "value" : 2
+        }, 
+        {
+            "to" : 140,
+            "from" : 139,
+            "value" : 1
+        }, 
+        {
+            "to" : 141,
+            "from" : 33,
+            "value" : 2
+        }, 
+        {
+            "to" : 142,
+            "from" : 7,
+            "value" : 1
+        }, 
+        {
+            "to" : 144,
+            "from" : 143,
+            "value" : 1
+        }, 
+        {
+            "to" : 146,
+            "from" : 145,
+            "value" : 1
+        }, 
+        {
+            "to" : 102,
+            "from" : 147,
+            "value" : 1
+        }, 
+        {
+            "to" : 116,
+            "from" : 148,
+            "value" : 2
+        }, 
+        {
+            "to" : 34,
+            "from" : 149,
+            "value" : 1
+        }, 
+        {
+            "to" : 151,
+            "from" : 150,
+            "value" : 4
+        }, 
+        {
+            "to" : 152,
+            "from" : 27,
+            "value" : 1
+        }, 
+        {
+            "to" : 153,
+            "from" : 132,
+            "value" : 1
+        }, 
+        {
+            "to" : 155,
+            "from" : 154,
+            "value" : 1
+        }, 
+        {
+            "to" : 157,
+            "from" : 156,
+            "value" : 1
+        }, 
+        {
+            "to" : 158,
+            "from" : 26,
+            "value" : 2
+        }, 
+        {
+            "to" : 4,
+            "from" : 159,
+            "value" : 1
+        }, 
+        {
+            "to" : 160,
+            "from" : 102,
+            "value" : 1
+        }, 
+        {
+            "to" : 161,
+            "from" : 132,
+            "value" : 2
+        }, 
+        {
+            "to" : 163,
+            "from" : 162,
+            "value" : 2
+        }, 
+        {
+            "to" : 164,
+            "from" : 82,
+            "value" : 1
+        }, 
+        {
+            "to" : 100,
+            "from" : 165,
+            "value" : 1
+        }, 
+        {
+            "to" : 166,
+            "from" : 166,
+            "value" : 1
+        }, 
+        {
+            "to" : 134,
+            "from" : 167,
+            "value" : 2
+        }, 
+        {
+            "to" : 168,
+            "from" : 10,
+            "value" : 1
+        }, 
+        {
+            "to" : 169,
+            "from" : 107,
+            "value" : 1
+        }, 
+        {
+            "to" : 148,
+            "from" : 170,
+            "value" : 1
+        }, 
+        {
+            "to" : 159,
+            "from" : 171,
+            "value" : 2
+        }, 
+        {
+            "to" : 34,
+            "from" : 172,
+            "value" : 3
+        }, 
+        {
+            "to" : 69,
+            "from" : 173,
+            "value" : 1
+        }, 
+        {
+            "to" : 102,
+            "from" : 174,
+            "value" : 1
+        }, 
+        {
+            "to" : 176,
+            "from" : 175,
+            "value" : 1
+        }, 
+        {
+            "to" : 84,
+            "from" : 177,
+            "value" : 2
+        }, 
+        {
+            "to" : 49,
+            "from" : 178,
+            "value" : 2
+        }, 
+        {
+            "to" : 179,
+            "from" : 22,
+            "value" : 1
+        }, 
+        {
+            "to" : 180,
+            "from" : 10,
+            "value" : 1
+        }, 
+        {
+            "to" : 181,
+            "from" : 4,
+            "value" : 1
+        }, 
+        {
+            "to" : 85,
+            "from" : 182,
+            "value" : 2
+        }, 
+        {
+            "to" : 183,
+            "from" : 183,
+            "value" : 2
+        }, 
+        {
+            "to" : 184,
+            "from" : 98,
+            "value" : 2
+        }, 
+        {
+            "to" : 185,
+            "from" : 6,
+            "value" : 1
+        }, 
+        {
+            "to" : 187,
+            "from" : 186,
+            "value" : 1
+        }, 
+        {
+            "to" : 188,
+            "from" : 52,
+            "value" : 3
+        }, 
+        {
+            "to" : 98,
+            "from" : 189,
+            "value" : 1
+        }, 
+        {
+            "to" : 190,
+            "from" : 182,
+            "value" : 1
+        }, 
+        {
+            "to" : 138,
+            "from" : 191,
+            "value" : 1
+        }, 
+        {
+            "to" : 192,
+            "from" : 103,
+            "value" : 1
+        }, 
+        {
+            "to" : 102,
+            "from" : 193,
+            "value" : 1
+        }, 
+        {
+            "to" : 195,
+            "from" : 194,
+            "value" : 3
+        }
+    ],
+    "nodes" : [ 
+        {
+            "group" : 64,
+            "title" : "Country: South Africa<br>Actor: SOUTH AFRICAN",
+            "value" : 2,
+            "label" : "SOUTH AFRICAN",
+            "actor_id" : "SOUTH AFRICAN_ZAF",
+            "id" : 1
+        }, 
+        {
+            "group" : 58,
+            "title" : "Country: Africa<br>Actor: AFRICA",
+            "value" : 12,
+            "label" : "AFRICA",
+            "actor_id" : "AFRICA_AFR",
+            "id" : 2
+        }, 
+        {
+            "group" : 56,
+            "title" : "Country: Vietnam<br>Actor: VIETNAM",
+            "value" : 1,
+            "label" : "VIETNAM",
+            "actor_id" : "VIETNAM_VNM",
+            "id" : 3
+        }, 
+        {
+            "group" : 61,
+            "title" : "Country: Kenya<br>Actor: KENYA",
+            "value" : 8,
+            "label" : "KENYA",
+            "actor_id" : "KENYA_KEN",
+            "id" : 4
+        }, 
+        {
+            "group" : 31,
+            "title" : "Country: Uzbekistan<br>Actor: UZBEKISTAN",
+            "value" : 1,
+            "label" : "UZBEKISTAN",
+            "actor_id" : "UZBEKISTAN_UZB",
+            "id" : 5
+        }, 
+        {
+            "group" : 65,
+            "title" : "Country: Turkey<br>Actor: TURKEY",
+            "value" : 7,
+            "label" : "TURKEY",
+            "actor_id" : "TURKEY_TUR",
+            "id" : 6
+        }, 
+        {
+            "group" : 6,
+            "title" : "Country: United States<br>Actor: HILLARY CLINTON",
+            "value" : 3,
+            "label" : "HILLARY CLINTON",
+            "actor_id" : "HILLARY CLINTON_USA",
+            "id" : 7
+        }, 
+        {
+            "group" : 6,
+            "title" : "Country: United States<br>Actor: NEW YORK",
+            "value" : 3,
+            "label" : "NEW YORK",
+            "actor_id" : "NEW YORK_USA",
+            "id" : 8
+        }, 
+        {
+            "group" : 6,
+            "title" : "Country: United States<br>Actor: THE WHITE HOUSE",
+            "value" : 2,
+            "label" : "THE WHITE HOUSE",
+            "actor_id" : "THE WHITE HOUSE_USA",
+            "id" : 9
+        }, 
+        {
+            "group" : 6,
+            "title" : "Country: United States<br>Actor: UNITED STATES",
+            "value" : 42,
+            "label" : "UNITED STATES",
+            "actor_id" : "UNITED STATES_USA",
+            "id" : 10
+        }, 
+        {
+            "group" : 6,
+            "title" : "Country: United States<br>Actor: OBAMA",
+            "value" : 5,
+            "label" : "OBAMA",
+            "actor_id" : "OBAMA_USA",
+            "id" : 11
+        }, 
+        {
+            "group" : 69,
+            "title" : "Country: Italy<br>Actor: ITALY",
+            "value" : 4,
+            "label" : "ITALY",
+            "actor_id" : "ITALY_ITA",
+            "id" : 12
+        }, 
+        {
+            "group" : 6,
+            "title" : "Country: United States<br>Actor: COLORADO",
+            "value" : 3,
+            "label" : "COLORADO",
+            "actor_id" : "COLORADO_USA",
+            "id" : 13
+        }, 
+        {
+            "group" : 6,
+            "title" : "Country: United States<br>Actor: AMERICAN",
+            "value" : 8,
+            "label" : "AMERICAN",
+            "actor_id" : "AMERICAN_USA",
+            "id" : 14
+        }, 
+        {
+            "group" : 54,
+            "title" : "Country: Greece<br>Actor: ATHENS",
+            "value" : 1,
+            "label" : "ATHENS",
+            "actor_id" : "ATHENS_GRC",
+            "id" : 15
+        }, 
+        {
+            "group" : 6,
+            "title" : "Country: United States<br>Actor: LAS VEGAS",
+            "value" : 4,
+            "label" : "LAS VEGAS",
+            "actor_id" : "LAS VEGAS_USA",
+            "id" : 16
+        }, 
+        {
+            "group" : 40,
+            "title" : "Country: Germany<br>Actor: FRANKFURT",
+            "value" : 1,
+            "label" : "FRANKFURT",
+            "actor_id" : "FRANKFURT_DEU",
+            "id" : 17
+        }, 
+        {
+            "group" : 6,
+            "title" : "Country: United States<br>Actor: LAWRENCE",
+            "value" : 1,
+            "label" : "LAWRENCE",
+            "actor_id" : "LAWRENCE_USA",
+            "id" : 18
+        }, 
+        {
+            "group" : 6,
+            "title" : "Country: United States<br>Actor: RICHARD NIXON",
+            "value" : 1,
+            "label" : "RICHARD NIXON",
+            "actor_id" : "RICHARD NIXON_USA",
+            "id" : 19
+        }, 
+        {
+            "group" : 6,
+            "title" : "Country: United States<br>Actor: CALIFORNIA",
+            "value" : 3,
+            "label" : "CALIFORNIA",
+            "actor_id" : "CALIFORNIA_USA",
+            "id" : 20
+        }, 
+        {
+            "group" : 6,
+            "title" : "Country: United States<br>Actor: WELLS FARGO",
+            "value" : 1,
+            "label" : "WELLS FARGO",
+            "actor_id" : "WELLS FARGO_USA",
+            "id" : 21
+        }, 
+        {
+            "group" : 6,
+            "title" : "Country: United States<br>Actor: BOEING",
+            "value" : 3,
+            "label" : "BOEING",
+            "actor_id" : "BOEING_USA",
+            "id" : 22
+        }, 
+        {
+            "group" : 6,
+            "title" : "Country: United States<br>Actor: GENERAL ELECTRIC",
+            "value" : 1,
+            "label" : "GENERAL ELECTRIC",
+            "actor_id" : "GENERAL ELECTRIC_USA",
+            "id" : 23
+        }, 
+        {
+            "group" : 76,
+            "title" : "Country: Lebanon<br>Actor: LEBANON",
+            "value" : 1,
+            "label" : "LEBANON",
+            "actor_id" : "LEBANON_LBN",
+            "id" : 24
+        }, 
+        {
+            "group" : 6,
+            "title" : "Country: United States<br>Actor: THE US",
+            "value" : 8,
+            "label" : "THE US",
+            "actor_id" : "THE US_USA",
+            "id" : 25
+        }, 
+        {
+            "group" : 35,
+            "title" : "Country: Ecuador<br>Actor: ECUADOR",
+            "value" : 5,
+            "label" : "ECUADOR",
+            "actor_id" : "ECUADOR_ECU",
+            "id" : 26
+        }, 
+        {
+            "group" : 6,
+            "title" : "Country: United States<br>Actor: WASHINGTON",
+            "value" : 7,
+            "label" : "WASHINGTON",
+            "actor_id" : "WASHINGTON_USA",
+            "id" : 27
+        }, 
+        {
+            "group" : 40,
+            "title" : "Country: Germany<br>Actor: GERMANY",
+            "value" : 9,
+            "label" : "GERMANY",
+            "actor_id" : "GERMANY_DEU",
+            "id" : 28
+        }, 
+        {
+            "group" : 49,
+            "title" : "Country: Belarus<br>Actor: BELARUS",
+            "value" : 2,
+            "label" : "BELARUS",
+            "actor_id" : "BELARUS_BLR",
+            "id" : 29
+        }, 
+        {
+            "group" : 16,
+            "title" : "Country: Ukraine<br>Actor: UKRAINE",
+            "value" : 9,
+            "label" : "UKRAINE",
+            "actor_id" : "UKRAINE_UKR",
+            "id" : 30
+        }, 
+        {
+            "group" : 16,
+            "title" : "Country: Ukraine<br>Actor: UKRAINIAN",
+            "value" : 2,
+            "label" : "UKRAINIAN",
+            "actor_id" : "UKRAINIAN_UKR",
+            "id" : 31
+        }, 
+        {
+            "group" : 75,
+            "title" : "Country: Russia<br>Actor: RUSSIAN",
+            "value" : 13,
+            "label" : "RUSSIAN",
+            "actor_id" : "RUSSIAN_RUS",
+            "id" : 32
+        }, 
+        {
+            "group" : 71,
+            "title" : "Country: Uganda<br>Actor: UGANDA",
+            "value" : 2,
+            "label" : "UGANDA",
+            "actor_id" : "UGANDA_UGA",
+            "id" : 33
+        }, 
+        {
+            "group" : 28,
+            "title" : "Country: Taiwan<br>Actor: TAIWAN",
+            "value" : 3,
+            "label" : "TAIWAN",
+            "actor_id" : "TAIWAN_TWN",
+            "id" : 34
+        }, 
+        {
+            "group" : 6,
+            "title" : "Country: United States<br>Actor: REUTERS",
+            "value" : 2,
+            "label" : "REUTERS",
+            "actor_id" : "REUTERS_USA",
+            "id" : 35
+        }, 
+        {
+            "group" : 65,
+            "title" : "Country: Turkey<br>Actor: TURKISH",
+            "value" : 3,
+            "label" : "TURKISH",
+            "actor_id" : "TURKISH_TUR",
+            "id" : 36
+        }, 
+        {
+            "group" : 45,
+            "title" : "Country: Iraq<br>Actor: MOSUL",
+            "value" : 4,
+            "label" : "MOSUL",
+            "actor_id" : "MOSUL_IRQ",
+            "id" : 37
+        }, 
+        {
+            "group" : 70,
+            "title" : "Country: Syria<br>Actor: SYRIA",
+            "value" : 15,
+            "label" : "SYRIA",
+            "actor_id" : "SYRIA_SYR",
+            "id" : 38
+        }, 
+        {
+            "group" : 43,
+            "title" : "Country: Switzerland<br>Actor: LAUSANNE",
+            "value" : 2,
+            "label" : "LAUSANNE",
+            "actor_id" : "LAUSANNE_CHE",
+            "id" : 39
+        }, 
+        {
+            "group" : 70,
+            "title" : "Country: Syria<br>Actor: SYRIAN",
+            "value" : 3,
+            "label" : "SYRIAN",
+            "actor_id" : "SYRIAN_SYR",
+            "id" : 40
+        }, 
+        {
+            "group" : 7,
+            "title" : "Country: Luxembourg<br>Actor: LUXEMBOURG",
+            "value" : 2,
+            "label" : "LUXEMBOURG",
+            "actor_id" : "LUXEMBOURG_LUX",
+            "id" : 41
+        }, 
+        {
+            "group" : 12,
+            "title" : "Country: Swaziland<br>Actor: SWAZILAND",
+            "value" : 1,
+            "label" : "SWAZILAND",
+            "actor_id" : "SWAZILAND_SWZ",
+            "id" : 42
+        }, 
+        {
+            "group" : 50,
+            "title" : "Country: Singapore<br>Actor: SINGAPORE",
+            "value" : 5,
+            "label" : "SINGAPORE",
+            "actor_id" : "SINGAPORE_SGP",
+            "id" : 43
+        }, 
+        {
+            "group" : 19,
+            "title" : "Country: France<br>Actor: CANNES",
+            "value" : 2,
+            "label" : "CANNES",
+            "actor_id" : "CANNES_FRA",
+            "id" : 44
+        }, 
+        {
+            "group" : 38,
+            "title" : "Country: Saudi Arabia<br>Actor: SAUDI ARABIA",
+            "value" : 10,
+            "label" : "SAUDI ARABIA",
+            "actor_id" : "SAUDI ARABIA_SAU",
+            "id" : 45
+        }, 
+        {
+            "group" : 38,
+            "title" : "Country: Saudi Arabia<br>Actor: SAUDI",
+            "value" : 1,
+            "label" : "SAUDI",
+            "actor_id" : "SAUDI_SAU",
+            "id" : 46
+        }, 
+        {
+            "group" : 6,
+            "title" : "Country: United States<br>Actor: TENNESSEE",
+            "value" : 1,
+            "label" : "TENNESSEE",
+            "actor_id" : "TENNESSEE_USA",
+            "id" : 47
+        }, 
+        {
+            "group" : 66,
+            "title" : "Country: Kyrgyzstan<br>Actor: KYRGYZ",
+            "value" : 2,
+            "label" : "KYRGYZ",
+            "actor_id" : "KYRGYZ_KGZ",
+            "id" : 48
+        }, 
+        {
+            "group" : 75,
+            "title" : "Country: Russia<br>Actor: RUSSIA",
+            "value" : 11,
+            "label" : "RUSSIA",
+            "actor_id" : "RUSSIA_RUS",
+            "id" : 49
+        }, 
+        {
+            "group" : 47,
+            "title" : "Country: Afghanistan<br>Actor: AFGHANISTAN",
+            "value" : 13,
+            "label" : "AFGHANISTAN",
+            "actor_id" : "AFGHANISTAN_AFG",
+            "id" : 50
+        }, 
+        {
+            "group" : 75,
+            "title" : "Country: Russia<br>Actor: VLADIMIR PUTIN",
+            "value" : 8,
+            "label" : "VLADIMIR PUTIN",
+            "actor_id" : "VLADIMIR PUTIN_RUS",
+            "id" : 51
+        }, 
+        {
+            "group" : 40,
+            "title" : "Country: Germany<br>Actor: GERMAN",
+            "value" : 8,
+            "label" : "GERMAN",
+            "actor_id" : "GERMAN_DEU",
+            "id" : 52
+        }, 
+        {
+            "group" : 70,
+            "title" : "Country: Syria<br>Actor: ALEPPO",
+            "value" : 3,
+            "label" : "ALEPPO",
+            "actor_id" : "ALEPPO_SYR",
+            "id" : 53
+        }, 
+        {
+            "group" : 45,
+            "title" : "Country: Iraq<br>Actor: IRAQ",
+            "value" : 11,
+            "label" : "IRAQ",
+            "actor_id" : "IRAQ_IRQ",
+            "id" : 54
+        }, 
+        {
+            "group" : 55,
+            "title" : "Country: Iran<br>Actor: KURDISTAN",
+            "value" : 1,
+            "label" : "KURDISTAN",
+            "actor_id" : "KURDISTAN_IRN",
+            "id" : 55
+        }, 
+        {
+            "group" : 1,
+            "title" : "Country: Qatar<br>Actor: QATAR",
+            "value" : 4,
+            "label" : "QATAR",
+            "actor_id" : "QATAR_QAT",
+            "id" : 56
+        }, 
+        {
+            "group" : 39,
+            "title" : "Country: Mongolia<br>Actor: MONGOLIA",
+            "value" : 2,
+            "label" : "MONGOLIA",
+            "actor_id" : "MONGOLIA_MNG",
+            "id" : 57
+        }, 
+        {
+            "group" : 55,
+            "title" : "Country: Iran<br>Actor: IRAN",
+            "value" : 9,
+            "label" : "IRAN",
+            "actor_id" : "IRAN_IRN",
+            "id" : 58
+        }, 
+        {
+            "group" : 63,
+            "title" : "Country: Japan<br>Actor: JAPANESE",
+            "value" : 1,
+            "label" : "JAPANESE",
+            "actor_id" : "JAPANESE_JPN",
+            "id" : 59
+        }, 
+        {
+            "group" : 44,
+            "title" : "Country: Spain<br>Actor: SPAIN",
+            "value" : 3,
+            "label" : "SPAIN",
+            "actor_id" : "SPAIN_ESP",
+            "id" : 60
+        }, 
+        {
+            "group" : 13,
+            "title" : "Country: United Kingdom<br>Actor: LONDON",
+            "value" : 5,
+            "label" : "LONDON",
+            "actor_id" : "LONDON_GBR",
+            "id" : 61
+        }, 
+        {
+            "group" : 46,
+            "title" : "Country: Sweden<br>Actor: SWEDEN",
+            "value" : 3,
+            "label" : "SWEDEN",
+            "actor_id" : "SWEDEN_SWE",
+            "id" : 62
+        }, 
+        {
+            "group" : 32,
+            "title" : "Country: Occupied Palestinian Territory<br>Actor: HAMAS",
+            "value" : 4,
+            "label" : "HAMAS",
+            "actor_id" : "HAMAS_PSE",
+            "id" : 63
+        }, 
+        {
+            "group" : 32,
+            "title" : "Country: Occupied Palestinian Territory<br>Actor: GAZA",
+            "value" : 2,
+            "label" : "GAZA",
+            "actor_id" : "GAZA_PSE",
+            "id" : 64
+        }, 
+        {
+            "group" : 22,
+            "title" : "Country: Tanzania<br>Actor: TANZANIA",
+            "value" : 2,
+            "label" : "TANZANIA",
+            "actor_id" : "TANZANIA_TZA",
+            "id" : 65
+        }, 
+        {
+            "group" : 2,
+            "title" : "Country: Egypt<br>Actor: EGYPT",
+            "value" : 6,
+            "label" : "EGYPT",
+            "actor_id" : "EGYPT_EGY",
+            "id" : 66
+        }, 
+        {
+            "group" : 6,
+            "title" : "Country: United States<br>Actor: MONTANA",
+            "value" : 2,
+            "label" : "MONTANA",
+            "actor_id" : "MONTANA_USA",
+            "id" : 67
+        }, 
+        {
+            "group" : 32,
+            "title" : "Country: Occupied Palestinian Territory<br>Actor: PALESTINIAN",
+            "value" : 4,
+            "label" : "PALESTINIAN",
+            "actor_id" : "PALESTINIAN_PSE",
+            "id" : 68
+        }, 
+        {
+            "group" : 30,
+            "title" : "Country: Poland<br>Actor: POLAND",
+            "value" : 6,
+            "label" : "POLAND",
+            "actor_id" : "POLAND_POL",
+            "id" : 69
+        }, 
+        {
+            "group" : 30,
+            "title" : "Country: Poland<br>Actor: POLISH",
+            "value" : 1,
+            "label" : "POLISH",
+            "actor_id" : "POLISH_POL",
+            "id" : 70
+        }, 
+        {
+            "group" : 78,
+            "title" : "Country: Norway<br>Actor: NORWEGIAN",
+            "value" : 1,
+            "label" : "NORWEGIAN",
+            "actor_id" : "NORWEGIAN_NOR",
+            "id" : 71
+        }, 
+        {
+            "group" : 6,
+            "title" : "Country: United States<br>Actor: LOCKHEED MARTIN",
+            "value" : 1,
+            "label" : "LOCKHEED MARTIN",
+            "actor_id" : "LOCKHEED MARTIN_USA",
+            "id" : 72
+        }, 
+        {
+            "group" : 19,
+            "title" : "Country: France<br>Actor: FRANCE",
+            "value" : 12,
+            "label" : "FRANCE",
+            "actor_id" : "FRANCE_FRA",
+            "id" : 73
+        }, 
+        {
+            "group" : 62,
+            "title" : "Country: Philippines<br>Actor: PHILIPPINE",
+            "value" : 4,
+            "label" : "PHILIPPINE",
+            "actor_id" : "PHILIPPINE_PHL",
+            "id" : 74
+        }, 
+        {
+            "group" : 48,
+            "title" : "Country: China<br>Actor: CHINA",
+            "value" : 14,
+            "label" : "CHINA",
+            "actor_id" : "CHINA_CHN",
+            "id" : 75
+        }, 
+        {
+            "group" : 47,
+            "title" : "Country: Afghanistan<br>Actor: TALIBAN",
+            "value" : 4,
+            "label" : "TALIBAN",
+            "actor_id" : "TALIBAN_AFG",
+            "id" : 76
+        }, 
+        {
+            "group" : 40,
+            "title" : "Country: Germany<br>Actor: BERLIN",
+            "value" : 2,
+            "label" : "BERLIN",
+            "actor_id" : "BERLIN_DEU",
+            "id" : 77
+        }, 
+        {
+            "group" : 8,
+            "title" : "Country: Israel<br>Actor: ISRAELI",
+            "value" : 2,
+            "label" : "ISRAELI",
+            "actor_id" : "ISRAELI_ISR",
+            "id" : 78
+        }, 
+        {
+            "group" : 2,
+            "title" : "Country: Egypt<br>Actor: EGYPTIAN",
+            "value" : 3,
+            "label" : "EGYPTIAN",
+            "actor_id" : "EGYPTIAN_EGY",
+            "id" : 79
+        }, 
+        {
+            "group" : 51,
+            "title" : "Country: Australia<br>Actor: AUSTRALIA",
+            "value" : 9,
+            "label" : "AUSTRALIA",
+            "actor_id" : "AUSTRALIA_AUS",
+            "id" : 80
+        }, 
+        {
+            "group" : 45,
+            "title" : "Country: Iraq<br>Actor: IRAQI",
+            "value" : 10,
+            "label" : "IRAQI",
+            "actor_id" : "IRAQI_IRQ",
+            "id" : 81
+        }, 
+        {
+            "group" : 13,
+            "title" : "Country: United Kingdom<br>Actor: BRITISH",
+            "value" : 5,
+            "label" : "BRITISH",
+            "actor_id" : "BRITISH_GBR",
+            "id" : 82
+        }, 
+        {
+            "group" : 20,
+            "title" : "Country: Columbia<br>Actor: COLOMBIA",
+            "value" : 5,
+            "label" : "COLOMBIA",
+            "actor_id" : "COLOMBIA_COL",
+            "id" : 83
+        }, 
+        {
+            "group" : 8,
+            "title" : "Country: Israel<br>Actor: ISRAEL",
+            "value" : 8,
+            "label" : "ISRAEL",
+            "actor_id" : "ISRAEL_ISR",
+            "id" : 84
+        }, 
+        {
+            "group" : 47,
+            "title" : "Country: Afghanistan<br>Actor: KABUL",
+            "value" : 3,
+            "label" : "KABUL",
+            "actor_id" : "KABUL_AFG",
+            "id" : 85
+        }, 
+        {
+            "group" : 47,
+            "title" : "Country: Afghanistan<br>Actor: ASHRAF GHANI",
+            "value" : 2,
+            "label" : "ASHRAF GHANI",
+            "actor_id" : "ASHRAF GHANI_AFG",
+            "id" : 86
+        }, 
+        {
+            "group" : 26,
+            "title" : "Country: Libya<br>Actor: LIBYA",
+            "value" : 8,
+            "label" : "LIBYA",
+            "actor_id" : "LIBYA_LBY",
+            "id" : 87
+        }, 
+        {
+            "group" : 26,
+            "title" : "Country: Libya<br>Actor: BENGHAZI",
+            "value" : 2,
+            "label" : "BENGHAZI",
+            "actor_id" : "BENGHAZI_LBY",
+            "id" : 88
+        }, 
+        {
+            "group" : 6,
+            "title" : "Country: United States<br>Actor: A US",
+            "value" : 1,
+            "label" : "A US",
+            "actor_id" : "A US_USA",
+            "id" : 89
+        }, 
+        {
+            "group" : 42,
+            "title" : "Country: Croatia<br>Actor: CROATIA",
+            "value" : 2,
+            "label" : "CROATIA",
+            "actor_id" : "CROATIA_HRV",
+            "id" : 90
+        }, 
+        {
+            "group" : 6,
+            "title" : "Country: United States<br>Actor: HEWLETT PACKARD",
+            "value" : 2,
+            "label" : "HEWLETT PACKARD",
+            "actor_id" : "HEWLETT PACKARD_USA",
+            "id" : 91
+        }, 
+        {
+            "group" : 4,
+            "title" : "Country: Bangladesh<br>Actor: BANGLADESH",
+            "value" : 3,
+            "label" : "BANGLADESH",
+            "actor_id" : "BANGLADESH_BGD",
+            "id" : 92
+        }, 
+        {
+            "group" : 19,
+            "title" : "Country: France<br>Actor: PARIS",
+            "value" : 2,
+            "label" : "PARIS",
+            "actor_id" : "PARIS_FRA",
+            "id" : 93
+        }, 
+        {
+            "group" : 27,
+            "title" : "Country: Mexico<br>Actor: MEXICO",
+            "value" : 2,
+            "label" : "MEXICO",
+            "actor_id" : "MEXICO_MEX",
+            "id" : 94
+        }, 
+        {
+            "group" : 60,
+            "title" : "Country: Monaco<br>Actor: ALBERT",
+            "value" : 1,
+            "label" : "ALBERT",
+            "actor_id" : "ALBERT_MCO",
+            "id" : 95
+        }, 
+        {
+            "group" : 79,
+            "title" : "Country: Czech Republic<br>Actor: CZECH REPUBLIC",
+            "value" : 4,
+            "label" : "CZECH REPUBLIC",
+            "actor_id" : "CZECH REPUBLIC_CZE",
+            "id" : 96
+        }, 
+        {
+            "group" : 48,
+            "title" : "Country: China<br>Actor: XI JINPING",
+            "value" : 2,
+            "label" : "XI JINPING",
+            "actor_id" : "XI JINPING_CHN",
+            "id" : 97
+        }, 
+        {
+            "group" : 21,
+            "title" : "Country: Nigeria<br>Actor: NIGERIA",
+            "value" : 5,
+            "label" : "NIGERIA",
+            "actor_id" : "NIGERIA_NGA",
+            "id" : 98
+        }, 
+        {
+            "group" : 17,
+            "title" : "Country: Benin<br>Actor: BENIN",
+            "value" : 1,
+            "label" : "BENIN",
+            "actor_id" : "BENIN_BEN",
+            "id" : 99
+        }, 
+        {
+            "group" : 20,
+            "title" : "Country: Columbia<br>Actor: FARC",
+            "value" : 3,
+            "label" : "FARC",
+            "actor_id" : "FARC_COL",
+            "id" : 100
+        }, 
+        {
+            "group" : 35,
+            "title" : "Country: Ecuador<br>Actor: ECUADOREAN",
+            "value" : 2,
+            "label" : "ECUADOREAN",
+            "actor_id" : "ECUADOREAN_ECU",
+            "id" : 101
+        }, 
+        {
+            "group" : 13,
+            "title" : "Country: United Kingdom<br>Actor: UNITED KINGDOM",
+            "value" : 16,
+            "label" : "UNITED KINGDOM",
+            "actor_id" : "UNITED KINGDOM_GBR",
+            "id" : 102
+        }, 
+        {
+            "group" : 24,
+            "title" : "Country: Pakistan<br>Actor: PAKISTAN",
+            "value" : 12,
+            "label" : "PAKISTAN",
+            "actor_id" : "PAKISTAN_PAK",
+            "id" : 103
+        }, 
+        {
+            "group" : 6,
+            "title" : "Country: United States<br>Actor: INDIANA",
+            "value" : 1,
+            "label" : "INDIANA",
+            "actor_id" : "INDIANA_USA",
+            "id" : 104
+        }, 
+        {
+            "group" : 6,
+            "title" : "Country: United States<br>Actor: FLORIDA",
+            "value" : 1,
+            "label" : "FLORIDA",
+            "actor_id" : "FLORIDA_USA",
+            "id" : 105
+        }, 
+        {
+            "group" : 40,
+            "title" : "Country: Germany<br>Actor: HELMUT KOHL",
+            "value" : 1,
+            "label" : "HELMUT KOHL",
+            "actor_id" : "HELMUT KOHL_DEU",
+            "id" : 106
+        }, 
+        {
+            "group" : 5,
+            "title" : "Country: Honduras<br>Actor: HONDURAS",
+            "value" : 3,
+            "label" : "HONDURAS",
+            "actor_id" : "HONDURAS_HND",
+            "id" : 107
+        }, 
+        {
+            "group" : 6,
+            "title" : "Country: United States<br>Actor: CITIGROUP",
+            "value" : 1,
+            "label" : "CITIGROUP",
+            "actor_id" : "CITIGROUP_USA",
+            "id" : 108
+        }, 
+        {
+            "group" : 14,
+            "title" : "Country: Canada<br>Actor: TESCO",
+            "value" : 1,
+            "label" : "TESCO",
+            "actor_id" : "TESCO_CAN",
+            "id" : 109
+        }, 
+        {
+            "group" : 57,
+            "title" : "Country: Finland<br>Actor: HELSINKI",
+            "value" : 2,
+            "label" : "HELSINKI",
+            "actor_id" : "HELSINKI_FIN",
+            "id" : 110
+        }, 
+        {
+            "group" : 59,
+            "title" : "Country: Europe<br>Actor: THE EU",
+            "value" : 3,
+            "label" : "THE EU",
+            "actor_id" : "THE EU_EUR",
+            "id" : 111
+        }, 
+        {
+            "group" : 38,
+            "title" : "Country: Saudi Arabia<br>Actor: RIYADH",
+            "value" : 2,
+            "label" : "RIYADH",
+            "actor_id" : "RIYADH_SAU",
+            "id" : 112
+        }, 
+        {
+            "group" : 51,
+            "title" : "Country: Australia<br>Actor: AUSTRALIAN",
+            "value" : 2,
+            "label" : "AUSTRALIAN",
+            "actor_id" : "AUSTRALIAN_AUS",
+            "id" : 113
+        }, 
+        {
+            "group" : 44,
+            "title" : "Country: Spain<br>Actor: MADRID",
+            "value" : 1,
+            "label" : "MADRID",
+            "actor_id" : "MADRID_ESP",
+            "id" : 114
+        }, 
+        {
+            "group" : 0,
+            "title" : "Country: Hungary<br>Actor: BUDAPEST",
+            "value" : 1,
+            "label" : "BUDAPEST",
+            "actor_id" : "BUDAPEST_HUN",
+            "id" : 115
+        }, 
+        {
+            "group" : 63,
+            "title" : "Country: Japan<br>Actor: JAPAN",
+            "value" : 3,
+            "label" : "JAPAN",
+            "actor_id" : "JAPAN_JPN",
+            "id" : 116
+        }, 
+        {
+            "group" : 49,
+            "title" : "Country: Belarus<br>Actor: BELARUSIAN",
+            "value" : 2,
+            "label" : "BELARUSIAN",
+            "actor_id" : "BELARUSIAN_BLR",
+            "id" : 117
+        }, 
+        {
+            "group" : 14,
+            "title" : "Country: Canada<br>Actor: CANADA",
+            "value" : 2,
+            "label" : "CANADA",
+            "actor_id" : "CANADA_CAN",
+            "id" : 118
+        }, 
+        {
+            "group" : 36,
+            "title" : "Country: Persian Gulf<br>Actor: GULF COOPERATION COUNCIL",
+            "value" : 1,
+            "label" : "GULF COOPERATION COUNCIL",
+            "actor_id" : "GULF COOPERATION COUNCIL_PGS",
+            "id" : 119
+        }, 
+        {
+            "group" : 41,
+            "title" : "Country: Marshall Islands<br>Actor: MARSHALL ISLANDS",
+            "value" : 1,
+            "label" : "MARSHALL ISLANDS",
+            "actor_id" : "MARSHALL ISLANDS_MHL",
+            "id" : 120
+        }, 
+        {
+            "group" : 37,
+            "title" : "Country: New Zealand<br>Actor: NEW ZEALAND",
+            "value" : 4,
+            "label" : "NEW ZEALAND",
+            "actor_id" : "NEW ZEALAND_NZL",
+            "id" : 121
+        }, 
+        {
+            "group" : 6,
+            "title" : "Country: United States<br>Actor: GOOGLE",
+            "value" : 2,
+            "label" : "GOOGLE",
+            "actor_id" : "GOOGLE_USA",
+            "id" : 122
+        }, 
+        {
+            "group" : 75,
+            "title" : "Country: Russia<br>Actor: MOSCOW",
+            "value" : 2,
+            "label" : "MOSCOW",
+            "actor_id" : "MOSCOW_RUS",
+            "id" : 123
+        }, 
+        {
+            "group" : 19,
+            "title" : "Country: France<br>Actor: BNP PARIBAS",
+            "value" : 1,
+            "label" : "BNP PARIBAS",
+            "actor_id" : "BNP PARIBAS_FRA",
+            "id" : 124
+        }, 
+        {
+            "group" : 67,
+            "title" : "Country: Thailand<br>Actor: THAI",
+            "value" : 3,
+            "label" : "THAI",
+            "actor_id" : "THAI_THA",
+            "id" : 125
+        }, 
+        {
+            "group" : 76,
+            "title" : "Country: Lebanon<br>Actor: LEBANESE",
+            "value" : 1,
+            "label" : "LEBANESE",
+            "actor_id" : "LEBANESE_LBN",
+            "id" : 126
+        }, 
+        {
+            "group" : 72,
+            "title" : "Country: United Arab Emirates<br>Actor: UNITED ARAB EMIRATES",
+            "value" : 3,
+            "label" : "UNITED ARAB EMIRATES",
+            "actor_id" : "UNITED ARAB EMIRATES_ARE",
+            "id" : 127
+        }, 
+        {
+            "group" : 2,
+            "title" : "Country: Egypt<br>Actor: SINAI PENINSULA",
+            "value" : 2,
+            "label" : "SINAI PENINSULA",
+            "actor_id" : "SINAI PENINSULA_EGY",
+            "id" : 128
+        }, 
+        {
+            "group" : 66,
+            "title" : "Country: Kyrgyzstan<br>Actor: KYRGYZSTAN",
+            "value" : 2,
+            "label" : "KYRGYZSTAN",
+            "actor_id" : "KYRGYZSTAN_KGZ",
+            "id" : 129
+        }, 
+        {
+            "group" : 73,
+            "title" : "Country: Argentina<br>Actor: ARGENTINE",
+            "value" : 1,
+            "label" : "ARGENTINE",
+            "actor_id" : "ARGENTINE_ARG",
+            "id" : 130
+        }, 
+        {
+            "group" : 27,
+            "title" : "Country: Mexico<br>Actor: MEXICAN",
+            "value" : 1,
+            "label" : "MEXICAN",
+            "actor_id" : "MEXICAN_MEX",
+            "id" : 131
+        }, 
+        {
+            "group" : 19,
+            "title" : "Country: France<br>Actor: FRENCH",
+            "value" : 9,
+            "label" : "FRENCH",
+            "actor_id" : "FRENCH_FRA",
+            "id" : 132
+        }, 
+        {
+            "group" : 3,
+            "title" : "Country: Equatorial Guinea<br>Actor: TEODORO NGUEMA OBIANG",
+            "value" : 1,
+            "label" : "TEODORO NGUEMA OBIANG",
+            "actor_id" : "TEODORO NGUEMA OBIANG_GNQ",
+            "id" : 133
+        }, 
+        {
+            "group" : 59,
+            "title" : "Country: Europe<br>Actor: EUROPE",
+            "value" : 2,
+            "label" : "EUROPE",
+            "actor_id" : "EUROPE_EUR",
+            "id" : 134
+        }, 
+        {
+            "group" : 10,
+            "title" : "Country: Azerbaijan<br>Actor: ILHAM ALIYEV",
+            "value" : 1,
+            "label" : "ILHAM ALIYEV",
+            "actor_id" : "ILHAM ALIYEV_AZE",
+            "id" : 135
+        }, 
+        {
+            "group" : 10,
+            "title" : "Country: Azerbaijan<br>Actor: AZERBAIJAN",
+            "value" : 2,
+            "label" : "AZERBAIJAN",
+            "actor_id" : "AZERBAIJAN_AZE",
+            "id" : 136
+        }, 
+        {
+            "group" : 48,
+            "title" : "Country: China<br>Actor: BEIJING",
+            "value" : 2,
+            "label" : "BEIJING",
+            "actor_id" : "BEIJING_CHN",
+            "id" : 137
+        }, 
+        {
+            "group" : 47,
+            "title" : "Country: Afghanistan<br>Actor: AFGHAN",
+            "value" : 5,
+            "label" : "AFGHAN",
+            "actor_id" : "AFGHAN_AFG",
+            "id" : 138
+        }, 
+        {
+            "group" : 77,
+            "title" : "Country: Armenia<br>Actor: ARMENIA",
+            "value" : 1,
+            "label" : "ARMENIA",
+            "actor_id" : "ARMENIA_ARM",
+            "id" : 139
+        }, 
+        {
+            "group" : 77,
+            "title" : "Country: Armenia<br>Actor: ARMENIAN",
+            "value" : 1,
+            "label" : "ARMENIAN",
+            "actor_id" : "ARMENIAN_ARM",
+            "id" : 140
+        }, 
+        {
+            "group" : 29,
+            "title" : "Country: Rwanda<br>Actor: RWANDA",
+            "value" : 1,
+            "label" : "RWANDA",
+            "actor_id" : "RWANDA_RWA",
+            "id" : 141
+        }, 
+        {
+            "group" : 6,
+            "title" : "Country: United States<br>Actor: GEORGE SOROS",
+            "value" : 1,
+            "label" : "GEORGE SOROS",
+            "actor_id" : "GEORGE SOROS_USA",
+            "id" : 142
+        }, 
+        {
+            "group" : 51,
+            "title" : "Country: Australia<br>Actor: WAYNE SWAN",
+            "value" : 1,
+            "label" : "WAYNE SWAN",
+            "actor_id" : "WAYNE SWAN_AUS",
+            "id" : 143
+        }, 
+        {
+            "group" : 51,
+            "title" : "Country: Australia<br>Actor: BHP BILLITON",
+            "value" : 1,
+            "label" : "BHP BILLITON",
+            "actor_id" : "BHP BILLITON_AUS",
+            "id" : 144
+        }, 
+        {
+            "group" : 6,
+            "title" : "Country: United States<br>Actor: BILL CLINTON",
+            "value" : 1,
+            "label" : "BILL CLINTON",
+            "actor_id" : "BILL CLINTON_USA",
+            "id" : 145
+        }, 
+        {
+            "group" : 6,
+            "title" : "Country: United States<br>Actor: PHILADELPHIA",
+            "value" : 1,
+            "label" : "PHILADELPHIA",
+            "actor_id" : "PHILADELPHIA_USA",
+            "id" : 146
+        }, 
+        {
+            "group" : 13,
+            "title" : "Country: United Kingdom<br>Actor: WELSH",
+            "value" : 1,
+            "label" : "WELSH",
+            "actor_id" : "WELSH_GBR",
+            "id" : 147
+        }, 
+        {
+            "group" : 11,
+            "title" : "Country: Indonesia<br>Actor: INDONESIA",
+            "value" : 2,
+            "label" : "INDONESIA",
+            "actor_id" : "INDONESIA_IDN",
+            "id" : 148
+        }, 
+        {
+            "group" : 74,
+            "title" : "Country: India<br>Actor: COIMBATORE",
+            "value" : 1,
+            "label" : "COIMBATORE",
+            "actor_id" : "COIMBATORE_IND",
+            "id" : 149
+        }, 
+        {
+            "group" : 34,
+            "title" : "Country: Botswana<br>Actor: BOTSWANA",
+            "value" : 2,
+            "label" : "BOTSWANA",
+            "actor_id" : "BOTSWANA_BWA",
+            "id" : 150
+        }, 
+        {
+            "group" : 25,
+            "title" : "Country: Zimbabwe<br>Actor: ZIMBABWE",
+            "value" : 2,
+            "label" : "ZIMBABWE",
+            "actor_id" : "ZIMBABWE_ZWE",
+            "id" : 151
+        }, 
+        {
+            "group" : 63,
+            "title" : "Country: Japan<br>Actor: HONDA",
+            "value" : 1,
+            "label" : "HONDA",
+            "actor_id" : "HONDA_JPN",
+            "id" : 152
+        }, 
+        {
+            "group" : 30,
+            "title" : "Country: Poland<br>Actor: WARSAW",
+            "value" : 1,
+            "label" : "WARSAW",
+            "actor_id" : "WARSAW_POL",
+            "id" : 153
+        }, 
+        {
+            "group" : 43,
+            "title" : "Country: Switzerland<br>Actor: SWISS",
+            "value" : 2,
+            "label" : "SWISS",
+            "actor_id" : "SWISS_CHE",
+            "id" : 154
+        }, 
+        {
+            "group" : 13,
+            "title" : "Country: United Kingdom<br>Actor: MANCHESTER",
+            "value" : 2,
+            "label" : "MANCHESTER",
+            "actor_id" : "MANCHESTER_GBR",
+            "id" : 155
+        }, 
+        {
+            "group" : 74,
+            "title" : "Country: India<br>Actor: KOLKATA",
+            "value" : 1,
+            "label" : "KOLKATA",
+            "actor_id" : "KOLKATA_IND",
+            "id" : 156
+        }, 
+        {
+            "group" : 23,
+            "title" : "Country: Jordan<br>Actor: HASSAN",
+            "value" : 1,
+            "label" : "HASSAN",
+            "actor_id" : "HASSAN_JOR",
+            "id" : 157
+        }, 
+        {
+            "group" : 46,
+            "title" : "Country: Sweden<br>Actor: SWEDE",
+            "value" : 1,
+            "label" : "SWEDE",
+            "actor_id" : "SWEDE_SWE",
+            "id" : 158
+        }, 
+        {
+            "group" : 52,
+            "title" : "Country: Myanmar<br>Actor: MYANMAR",
+            "value" : 2,
+            "label" : "MYANMAR",
+            "actor_id" : "MYANMAR_MMR",
+            "id" : 159
+        }, 
+        {
+            "group" : 6,
+            "title" : "Country: United States<br>Actor: CHARLOTTE",
+            "value" : 1,
+            "label" : "CHARLOTTE",
+            "actor_id" : "CHARLOTTE_USA",
+            "id" : 160
+        }, 
+        {
+            "group" : 15,
+            "title" : "Country: People's Republic of the Congo<br>Actor: CONGO",
+            "value" : 1,
+            "label" : "CONGO",
+            "actor_id" : "CONGO_COG",
+            "id" : 161
+        }, 
+        {
+            "group" : 48,
+            "title" : "Country: China<br>Actor: JIANG ZEMIN",
+            "value" : 1,
+            "label" : "JIANG ZEMIN",
+            "actor_id" : "JIANG ZEMIN_CHN",
+            "id" : 162
+        }, 
+        {
+            "group" : 48,
+            "title" : "Country: China<br>Actor: HU JINTAO",
+            "value" : 1,
+            "label" : "HU JINTAO",
+            "actor_id" : "HU JINTAO_CHN",
+            "id" : 163
+        }, 
+        {
+            "group" : 6,
+            "title" : "Country: United States<br>Actor: MASSACHUSETTS",
+            "value" : 2,
+            "label" : "MASSACHUSETTS",
+            "actor_id" : "MASSACHUSETTS_USA",
+            "id" : 164
+        }, 
+        {
+            "group" : 20,
+            "title" : "Country: Columbia<br>Actor: COLOMBIAN",
+            "value" : 1,
+            "label" : "COLOMBIAN",
+            "actor_id" : "COLOMBIAN_COL",
+            "id" : 165
+        }, 
+        {
+            "group" : 9,
+            "title" : "Country: Ghana<br>Actor: GHANA",
+            "value" : 2,
+            "label" : "GHANA",
+            "actor_id" : "GHANA_GHA",
+            "id" : 166
+        }, 
+        {
+            "group" : 54,
+            "title" : "Country: Greece<br>Actor: GREECE",
+            "value" : 1,
+            "label" : "GREECE",
+            "actor_id" : "GREECE_GRC",
+            "id" : 167
+        }, 
+        {
+            "group" : 6,
+            "title" : "Country: United States<br>Actor: JOE BIDEN",
+            "value" : 1,
+            "label" : "JOE BIDEN",
+            "actor_id" : "JOE BIDEN_USA",
+            "id" : 168
+        }, 
+        {
+            "group" : 6,
+            "title" : "Country: United States<br>Actor: WALL STREET JOURNAL",
+            "value" : 1,
+            "label" : "WALL STREET JOURNAL",
+            "actor_id" : "WALL STREET JOURNAL_USA",
+            "id" : 169
+        }, 
+        {
+            "group" : 11,
+            "title" : "Country: Indonesia<br>Actor: INDONESIAN",
+            "value" : 1,
+            "label" : "INDONESIAN",
+            "actor_id" : "INDONESIAN_IDN",
+            "id" : 170
+        }, 
+        {
+            "group" : 52,
+            "title" : "Country: Myanmar<br>Actor: BURMESE",
+            "value" : 1,
+            "label" : "BURMESE",
+            "actor_id" : "BURMESE_MMR",
+            "id" : 171
+        }, 
+        {
+            "group" : 74,
+            "title" : "Country: India<br>Actor: MUMBAI",
+            "value" : 1,
+            "label" : "MUMBAI",
+            "actor_id" : "MUMBAI_IND",
+            "id" : 172
+        }, 
+        {
+            "group" : 74,
+            "title" : "Country: India<br>Actor: BANGALORE",
+            "value" : 1,
+            "label" : "BANGALORE",
+            "actor_id" : "BANGALORE_IND",
+            "id" : 173
+        }, 
+        {
+            "group" : 53,
+            "title" : "Country: Ireland<br>Actor: IRELAND",
+            "value" : 1,
+            "label" : "IRELAND",
+            "actor_id" : "IRELAND_IRL",
+            "id" : 174
+        }, 
+        {
+            "group" : 53,
+            "title" : "Country: Ireland<br>Actor: IRISH",
+            "value" : 1,
+            "label" : "IRISH",
+            "actor_id" : "IRISH_IRL",
+            "id" : 175
+        }, 
+        {
+            "group" : 57,
+            "title" : "Country: Finland<br>Actor: FINN",
+            "value" : 1,
+            "label" : "FINN",
+            "actor_id" : "FINN_FIN",
+            "id" : 176
+        }, 
+        {
+            "group" : 55,
+            "title" : "Country: Iran<br>Actor: IRANIAN",
+            "value" : 1,
+            "label" : "IRANIAN",
+            "actor_id" : "IRANIAN_IRN",
+            "id" : 177
+        }, 
+        {
+            "group" : 78,
+            "title" : "Country: Norway<br>Actor: NORWAY",
+            "value" : 1,
+            "label" : "NORWAY",
+            "actor_id" : "NORWAY_NOR",
+            "id" : 178
+        }, 
+        {
+            "group" : 6,
+            "title" : "Country: United States<br>Actor: CHICAGO",
+            "value" : 1,
+            "label" : "CHICAGO",
+            "actor_id" : "CHICAGO_USA",
+            "id" : 179
+        }, 
+        {
+            "group" : 74,
+            "title" : "Country: India<br>Actor: MADRAS",
+            "value" : 1,
+            "label" : "MADRAS",
+            "actor_id" : "MADRAS_IND",
+            "id" : 180
+        }, 
+        {
+            "group" : 61,
+            "title" : "Country: Kenya<br>Actor: KENYAN",
+            "value" : 1,
+            "label" : "KENYAN",
+            "actor_id" : "KENYAN_KEN",
+            "id" : 181
+        }, 
+        {
+            "group" : 24,
+            "title" : "Country: Pakistan<br>Actor: ISLAMABAD",
+            "value" : 2,
+            "label" : "ISLAMABAD",
+            "actor_id" : "ISLAMABAD_PAK",
+            "id" : 182
+        }, 
+        {
+            "group" : 18,
+            "title" : "Country: South Korea<br>Actor: SOUTH KOREA",
+            "value" : 2,
+            "label" : "SOUTH KOREA",
+            "actor_id" : "SOUTH KOREA_KOR",
+            "id" : 183
+        }, 
+        {
+            "group" : 6,
+            "title" : "Country: United States<br>Actor: FIRST STATE",
+            "value" : 1,
+            "label" : "FIRST STATE",
+            "actor_id" : "FIRST STATE_USA",
+            "id" : 184
+        }, 
+        {
+            "group" : 6,
+            "title" : "Country: United States<br>Actor: PENNSYLVANIA",
+            "value" : 1,
+            "label" : "PENNSYLVANIA",
+            "actor_id" : "PENNSYLVANIA_USA",
+            "id" : 185
+        }, 
+        {
+            "group" : 68,
+            "title" : "Country: Oman<br>Actor: OMAN",
+            "value" : 3,
+            "label" : "OMAN",
+            "actor_id" : "OMAN_OMN",
+            "id" : 186
+        }, 
+        {
+            "group" : 68,
+            "title" : "Country: Oman<br>Actor: OMANI",
+            "value" : 1,
+            "label" : "OMANI",
+            "actor_id" : "OMANI_OMN",
+            "id" : 187
+        }, 
+        {
+            "group" : 60,
+            "title" : "Country: Monaco<br>Actor: MONACO",
+            "value" : 1,
+            "label" : "MONACO",
+            "actor_id" : "MONACO_MCO",
+            "id" : 188
+        }, 
+        {
+            "group" : 21,
+            "title" : "Country: Nigeria<br>Actor: NIGERIAN",
+            "value" : 1,
+            "label" : "NIGERIAN",
+            "actor_id" : "NIGERIAN_NGA",
+            "id" : 189
+        }, 
+        {
+            "group" : 24,
+            "title" : "Country: Pakistan<br>Actor: NAWAZ SHARIF",
+            "value" : 1,
+            "label" : "NAWAZ SHARIF",
+            "actor_id" : "NAWAZ SHARIF_PAK",
+            "id" : 190
+        }, 
+        {
+            "group" : 24,
+            "title" : "Country: Pakistan<br>Actor: PESHAWAR",
+            "value" : 1,
+            "label" : "PESHAWAR",
+            "actor_id" : "PESHAWAR_PAK",
+            "id" : 191
+        }, 
+        {
+            "group" : 24,
+            "title" : "Country: Pakistan<br>Actor: KARACHI",
+            "value" : 1,
+            "label" : "KARACHI",
+            "actor_id" : "KARACHI_PAK",
+            "id" : 192
+        }, 
+        {
+            "group" : 33,
+            "title" : "Country: Serbia<br>Actor: SERBIA",
+            "value" : 1,
+            "label" : "SERBIA",
+            "actor_id" : "SERBIA_SRB",
+            "id" : 193
+        }, 
+        {
+            "group" : 62,
+            "title" : "Country: Philippines<br>Actor: FILIPINO",
+            "value" : 1,
+            "label" : "FILIPINO",
+            "actor_id" : "FILIPINO_PHL",
+            "id" : 194
+        }, 
+        {
+            "group" : 72,
+            "title" : "Country: United Arab Emirates<br>Actor: ABU DHABI",
+            "value" : 1,
+            "label" : "ABU DHABI",
+            "actor_id" : "ABU DHABI_ARE",
+            "id" : 195
+        }
+    ],
+    "message" : "Successfully created the actor network."
+};

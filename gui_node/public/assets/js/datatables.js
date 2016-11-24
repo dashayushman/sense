@@ -2,154 +2,46 @@
 /* This JS is only for DEMO Purposes - Extract the code that you need
 -----------------------------------------------------------------*/	
 /* Set the defaults for DataTables initialisation */
-$.extend( true, $.fn.dataTable.defaults, {
-	"sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span12'p i>>",
-	"sPaginationType": "bootstrap",
-	"oLanguage": {
-		"sLengthMenu": "_MENU_"
-	}
-} );
 
+var dataSet = [
+	[ "Tiger Nixon", "System Architect", "Edinburgh", "5421", "2011/04/25", "$320,800" ],
+	[ "Garrett Winters", "Accountant", "Tokyo", "8422", "2011/07/25", "$170,750" ],
+	[ "Ashton Cox", "Junior Technical Author", "San Francisco", "1562", "2009/01/12", "$86,000" ],
+	[ "Cedric Kelly", "Senior Javascript Developer", "Edinburgh", "6224", "2012/03/29", "$433,060" ],
+	[ "Airi Satou", "Accountant", "Tokyo", "5407", "2008/11/28", "$162,700" ],
+	[ "Brielle Williamson", "Integration Specialist", "New York", "4804", "2012/12/02", "$372,000" ],
+	[ "Herrod Chandler", "Sales Assistant", "San Francisco", "9608", "2012/08/06", "$137,500" ],
+	[ "Rhona Davidson", "Integration Specialist", "Tokyo", "6200", "2010/10/14", "$327,900" ],
+	[ "Colleen Hurst", "Javascript Developer", "San Francisco", "2360", "2009/09/15", "$205,500" ],
+	[ "Sonya Frost", "Software Engineer", "Edinburgh", "1667", "2008/12/13", "$103,600" ],
+	[ "Jena Gaines", "Office Manager", "London", "3814", "2008/12/19", "$90,560" ],
+	[ "Quinn Flynn", "Support Lead", "Edinburgh", "9497", "2013/03/03", "$342,000" ],
+	[ "Charde Marshall", "Regional Director", "San Francisco", "6741", "2008/10/16", "$470,600" ],
+	[ "Haley Kennedy", "Senior Marketing Designer", "London", "3597", "2012/12/18", "$313,500" ],
+	[ "Tatyana Fitzpatrick", "Regional Director", "London", "1965", "2010/03/17", "$385,750" ],
+	[ "Michael Silva", "Marketing Designer", "London", "1581", "2012/11/27", "$198,500" ],
+	[ "Paul Byrd", "Chief Financial Officer (CFO)", "New York", "3059", "2010/06/09", "$725,000" ],
+	[ "Gloria Little", "Systems Administrator", "New York", "1721", "2009/04/10", "$237,500" ],
+	[ "Bradley Greer", "Software Engineer", "London", "2558", "2012/10/13", "$132,000" ],
+	[ "Dai Rios", "Personnel Lead", "Edinburgh", "2290", "2012/09/26", "$217,500" ],
+	[ "Jenette Caldwell", "Development Lead", "New York", "1937", "2011/09/03", "$345,000" ],
+	[ "Yuri Berry", "Chief Marketing Officer (CMO)", "New York", "6154", "2009/06/25", "$675,000" ],
+	[ "Caesar Vance", "Pre-Sales Support", "New York", "8330", "2011/12/12", "$106,450" ],
+	[ "Doris Wilder", "Sales Assistant", "Sidney", "3023", "2010/09/20", "$85,600" ],
+	[ "Angelica Ramos", "Chief Executive Officer (CEO)", "London", "5797", "2009/10/09", "$1,200,000" ],
+	[ "Gavin Joyce", "Developer", "Edinburgh", "8822", "2010/12/22", "$92,575" ],
+	[ "Jennifer Chang", "Regional Director", "Singapore", "9239", "2010/11/14", "$357,650" ],
+	[ "Brenden Wagner", "Software Engineer", "San Francisco", "1314", "2011/06/07", "$206,850" ],
+	[ "Fiona Green", "Chief Operating Officer (COO)", "San Francisco", "2947", "2010/03/11", "$850,000" ],
+	[ "Shou Itou", "Regional Marketing", "Tokyo", "8899", "2011/08/14", "$163,000" ],
+	[ "Michelle House", "Integration Specialist", "Sidney", "2769", "2011/06/02", "$95,400" ],
+	[ "Suki Burks", "Developer", "London", "6832", "2009/10/22", "$114,500" ],
+	[ "Prescott Bartlett", "Technical Author", "London", "3606", "2011/05/07", "$145,000" ],
+	[ "Gavin Cortez", "Team Leader", "San Francisco", "2860", "2008/10/26", "$235,500" ],
+	[ "Martena Mccray", "Post-Sales support", "Edinburgh", "8240", "2011/03/09", "$324,050" ],
+	[ "Unity Butler", "Marketing Designer", "San Francisco", "5384", "2009/12/09", "$85,675" ]
+];
 
-/* Default class modification */
-$.extend( $.fn.dataTableExt.oStdClasses, {
-	"sWrapper": "dataTables_wrapper form-inline"
-} );
-
-
-/* API method to get paging information */
-$.fn.dataTableExt.oApi.fnPagingInfo = function ( oSettings )
-{
-	return {
-		"iStart":         oSettings._iDisplayStart,
-		"iEnd":           oSettings.fnDisplayEnd(),
-		"iLength":        oSettings._iDisplayLength,
-		"iTotal":         oSettings.fnRecordsTotal(),
-		"iFilteredTotal": oSettings.fnRecordsDisplay(),
-		"iPage":          oSettings._iDisplayLength === -1 ?
-			0 : Math.ceil( oSettings._iDisplayStart / oSettings._iDisplayLength ),
-		"iTotalPages":    oSettings._iDisplayLength === -1 ?
-			0 : Math.ceil( oSettings.fnRecordsDisplay() / oSettings._iDisplayLength )
-	};
-};
-
-
-
-/* Bootstrap style pagination control */
-$.extend( $.fn.dataTableExt.oPagination, {
-	"bootstrap": {
-		"fnInit": function( oSettings, nPaging, fnDraw ) {
-			var oLang = oSettings.oLanguage.oPaginate;
-			var fnClickHandler = function ( e ) {
-				e.preventDefault();
-				if ( oSettings.oApi._fnPageChange(oSettings, e.data.action) ) {
-					fnDraw( oSettings );
-				}
-			};
-
-			$(nPaging).addClass('pagination').append(
-				'<ul>'+
-					'<li class="prev disabled"><a href="#"><i class="fa fa-chevron-left"></i></a></li>'+
-					'<li class="next disabled"><a href="#"><i class="fa fa-chevron-right"></i></a></li>'+
-				'</ul>'
-			);
-			var els = $('a', nPaging);
-			$(els[0]).bind( 'click.DT', { action: "previous" }, fnClickHandler );
-			$(els[1]).bind( 'click.DT', { action: "next" }, fnClickHandler );
-		},
-
-		"fnUpdate": function ( oSettings, fnDraw ) {
-			var iListLength = 5;
-			var oPaging = oSettings.oInstance.fnPagingInfo();
-			var an = oSettings.aanFeatures.p;
-			var i, ien, j, sClass, iStart, iEnd, iHalf=Math.floor(iListLength/2);
-
-			if ( oPaging.iTotalPages < iListLength) {
-				iStart = 1;
-				iEnd = oPaging.iTotalPages;
-			}
-			else if ( oPaging.iPage <= iHalf ) {
-				iStart = 1;
-				iEnd = iListLength;
-			} else if ( oPaging.iPage >= (oPaging.iTotalPages-iHalf) ) {
-				iStart = oPaging.iTotalPages - iListLength + 1;
-				iEnd = oPaging.iTotalPages;
-			} else {
-				iStart = oPaging.iPage - iHalf + 1;
-				iEnd = iStart + iListLength - 1;
-			}
-
-			for ( i=0, ien=an.length ; i<ien ; i++ ) {
-				// Remove the middle elements
-				$('li:gt(0)', an[i]).filter(':not(:last)').remove();
-
-				// Add the new list items and their event handlers
-				for ( j=iStart ; j<=iEnd ; j++ ) {
-					sClass = (j==oPaging.iPage+1) ? 'class="active"' : '';
-					$('<li '+sClass+'><a href="#">'+j+'</a></li>')
-						.insertBefore( $('li:last', an[i])[0] )
-						.bind('click', function (e) {
-							e.preventDefault();
-							oSettings._iDisplayStart = (parseInt($('a', this).text(),10)-1) * oPaging.iLength;
-							fnDraw( oSettings );
-						} );
-				}
-
-				// Add / remove disabled classes from the static elements
-				if ( oPaging.iPage === 0 ) {
-					$('li:first', an[i]).addClass('disabled');
-				} else {
-					$('li:first', an[i]).removeClass('disabled');
-				}
-
-				if ( oPaging.iPage === oPaging.iTotalPages-1 || oPaging.iTotalPages === 0 ) {
-					$('li:last', an[i]).addClass('disabled');
-				} else {
-					$('li:last', an[i]).removeClass('disabled');
-				}
-			}
-		}
-	}
-} );
-
-
-/*
- * TableTools Bootstrap compatibility
- * Required TableTools 2.1+
- */
-
-	// Set the classes that TableTools uses to something suitable for Bootstrap
-	$.extend( true, $.fn.DataTable.TableTools.classes, {
-		"container": "DTTT ",
-		"buttons": {
-			"normal": "btn btn-white",
-			"disabled": "disabled"
-		},
-		"collection": {
-			"container": "DTTT_dropdown dropdown-menu",
-			"buttons": {
-				"normal": "",
-				"disabled": "disabled"
-			}
-		},
-		"print": {
-			"info": "DTTT_print_info modal"
-		},
-		"select": {
-			"row": "active"
-		}
-	} );
-
-	// Have the collection use a bootstrap compatible dropdown
-	$.extend( true, $.fn.DataTable.TableTools.DEFAULTS.oTags, {
-		"collection": {
-			"container": "ul",
-			"button": "li",
-			"liner": "a"
-		}
-	} );
-	
-$(".select2-wrapper").select2({minimumResultsForSearch: -1});	
 
 /* Table initialisation */
 $(document).ready(function() {
@@ -161,168 +53,24 @@ $(document).ready(function() {
 	var tableElement = $('#example');
 
     tableElement.dataTable( {
-		"sDom": "<'row'<'col-md-6'l T><'col-md-6'f>r>t<'row'<'col-md-12'p i>>",
-			"oTableTools": {
-			"aButtons": [
-				{
-					"sExtends":    "collection",
-					"sButtonText": "<i class='fa fa-cloud-download'></i>",
-					"aButtons":    [ "csv", "xls", "pdf", "copy"]
-				}
-			]
-		},
-		"sPaginationType": "bootstrap",
-		 "aoColumnDefs": [
-          { 'bSortable': false, 'aTargets': [ 0 ] }
+		"data": dataSet,
+		"columns": [
+			{ "title": "Name" },
+			{ "title": "Position" },
+			{ "title": "Office" },
+			{ "title": "Extn." },
+			{ "title": "Start date" },
+			{ "title": "Salary" }
 		],
-		"aaSorting": [[ 1, "asc" ]],
-		"oLanguage": {
-			"sLengthMenu": "_MENU_ ",
-			"sInfo": "Showing <b>_START_ to _END_</b> of _TOTAL_ entries"
+		"fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+
+				$(nRow).css('color', 'white');
+
 		},
-		 bAutoWidth     : false,
-        fnPreDrawCallback: function () {
-            // Initialize the responsive datatables helper once.
-            if (!responsiveHelper) {
-                responsiveHelper = new ResponsiveDatatablesHelper(tableElement, breakpointDefinition);
-            }
-        },
-        fnRowCallback  : function (nRow) {
-            responsiveHelper.createExpandIcon(nRow);
-        },
-        fnDrawCallback : function (oSettings) {
-            responsiveHelper.respond();
-        }
 	});
-	$('#example th').click(function(e) { 
-			$('#example .animate-progress-bar').each(function () {
-				$(this).removeClass('progress-bar');
-				$(this).css('width','0%');
-       			$(this).css('width', $(this).attr("data-percentage"));
-				$(this).addClass('progress-bar');
-  		    });
-	});
+
 	$('#example_wrapper .dataTables_filter input').addClass("input-medium "); // modify table search input
-    $('#example_wrapper .dataTables_length select').addClass("select2-wrapper span12"); // modify table per page dropdown
 
-	
-	
-	$('#example input').click( function() {
-        $(this).parent().parent().parent().toggleClass('row_selected');
-    });
-	
-	
-	$('#quick-access .btn-cancel').click( function() {
-		$("#quick-access").css("bottom","-115px");
-    });
-	$('#quick-access .btn-add').click( function() {
-		fnClickAddRow();
-		$("#quick-access").css("bottom","-115px");
-    });
-	
-    /*
-     * Insert a 'details' column to the table
-     */
-    var nCloneTh = document.createElement( 'th' );
-    var nCloneTd = document.createElement( 'td' );
-    nCloneTd.innerHTML = '<i class="fa fa-plus-circle"></i>';
-    nCloneTd.className = "center";
-     
-    $('#example2 thead tr').each( function () {
-        this.insertBefore( nCloneTh, this.childNodes[0] );
-    } );
-     
-    $('#example2 tbody tr').each( function () {
-        this.insertBefore(  nCloneTd.cloneNode( true ), this.childNodes[0] );
-    } );
-     
-    /*
-     * Initialse DataTables, with no sorting on the 'details' column
-     */
-    var oTable = $('#example2').dataTable( {
-	   "sDom": "<'row'<'col-md-6'l><'col-md-6'f>r>t<'row'<'col-md-12'p i>>",
-       "aaSorting": [],
-				"oLanguage": {
-			"sLengthMenu": "_MENU_ ",
-			"sInfo": "Showing <b>_START_ to _END_</b> of _TOTAL_ entries"
-		},
-    });
-	 var oTable3 = $('#example3').dataTable( {
-	   "sDom": "<'row'<'col-md-6'l <'toolbar'>><'col-md-6'f>r>t<'row'<'col-md-12'p i>>",
-        			"oTableTools": {
-			"aButtons": [
-				{
-					"sExtends":    "collection",
-					"sButtonText": "<i class='fa fa-cloud-download'></i>",
-					"aButtons":    [ "csv", "xls", "pdf", "copy"]
-				}
-			]
-		},
-        "aoColumnDefs": [
-            { "bSortable": false, "aTargets": [ 0 ] }
-        ],
-        "aaSorting": [[ 3, "desc" ]],
-				"oLanguage": {
-			"sLengthMenu": "_MENU_ ",
-			"sInfo": "Showing <b>_START_ to _END_</b> of _TOTAL_ entries"
-		},
-    });
-	$("div.toolbar").html('<div class="table-tools-actions"><button class="btn btn-primary" style="margin-left:12px" id="test2">Add</button></div>');
-	
-	$('#test2').on( "click",function() {
-		$("#quick-access").css("bottom","0px");
-    });
-	
-	$('#example2_wrapper .dataTables_filter input').addClass("input-medium ");
-    $('#example2_wrapper .dataTables_length select').addClass("select2-wrapper span12"); 
-	
-	$('#example3_wrapper .dataTables_filter input').addClass("input-medium ");
-    $('#example3_wrapper .dataTables_length select').addClass("select2-wrapper span12"); 
-	
-	
-    /* Add event listener for opening and closing details
-     * Note that the indicator for showing which row is open is not controlled by DataTables,
-     * rather it is done here
-     */
-    $('#example2 tbody td i').live('click', function () {
-        var nTr = $(this).parents('tr')[0];
-        if ( oTable.fnIsOpen(nTr) )
-        {
-            /* This row is already open - close it */
-			this.removeClass = "fa fa-plus-circle";
-            this.addClass = "fa fa-minus-circle";     
-            oTable.fnClose( nTr );
-        }
-        else
-        {
-            /* Open this row */
-            this.removeClass = "fa fa-minus-circle";
-            this.addClass = "fa fa-plus-circle";  
-            oTable.fnOpen( nTr, fnFormatDetails(oTable, nTr), 'details' );
-        }
-    });
-	
-		$(".select2-wrapper").select2({minimumResultsForSearch: -1});
-
-	function fnClickAddRow() {
-    $('#example3').dataTable().fnAddData( [
-        $("#val1 option:selected").text(),
-        $("#val2 option:selected").text(),
-        "Windows",
-        "789.","A" ] );     
-	}	
 });
 
 
-/* Formating function for row details */
-function fnFormatDetails ( oTable, nTr )
-{
-    var aData = oTable.fnGetData( nTr );
-    var sOut = '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;" class="inner-table">';
-    sOut += '<tr><td>Rendering engine:</td><td>'+aData[1]+' '+aData[4]+'</td></tr>';
-    sOut += '<tr><td>Link to source:</td><td>Could provide a link here</td></tr>';
-    sOut += '<tr><td>Extra info:</td><td>And any further details here (images etc)</td></tr>';
-    sOut += '</table>';
-     
-    return sOut;
-}

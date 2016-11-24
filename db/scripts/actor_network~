@@ -1,0 +1,97 @@
+[
+  {
+    "$match": {
+      "$and": [
+        {
+          "DATEADDED": {
+            "$lte": 20161019100000
+          }
+        },
+        {
+          "DATEADDED": {
+            "$gt": 20161019000000
+          }
+        },
+        {
+          "Actor1CountryCode": {
+            "$ne": ""
+          }
+        },
+        {
+          "Actor2CountryCode": {
+            "$ne": ""
+          }
+        },
+        {
+          "Actor1Geo_FullName": {
+            "$ne": ""
+          }
+        },
+        {
+          "Actor2Geo_FullName": {
+            "$ne": ""
+          }
+        },
+        {
+          "Actor1Code": {
+            "$ne": ""
+          }
+        },
+        {
+          "Actor2Code": {
+            "$ne": ""
+          }
+        },
+        {
+          "Actor1Name": {
+            "$ne": ""
+          }
+        },
+        {
+          "Actor2Name": {
+            "$ne": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "$project": {
+      "GLOBALEVENTID": 1,
+      "DATEADDED": 1,
+      "Actor1Geo_CountryCode": 1,
+      "Actor2Geo_CountryCode": 1,
+      "Actor1Geo_FullName": 1,
+      "Actor2Geo_FullName": 1,
+      "Actor1Code": 1,
+      "Actor2Code": 1,
+      "Actor1Name": 1,
+      "Actor2Name": 1
+    }
+  },
+  {
+    "$group": {
+      "_id": {
+        "Actor1Geo_CountryCode": "$Actor1Geo_CountryCode",
+        "Actor2Geo_CountryCode": "$Actor2Geo_CountryCode",
+        "Actor1Geo_FullName": "$Actor1Geo_FullName",
+        "Actor2Geo_FullName": "$Actor2Geo_FullName",
+        "Actor1Code": "$Actor1Code",
+        "Actor2Code": "$Actor2Code",
+        "Actor1Name": "$Actor1Name",
+        "Actor2Name": "$Actor2Name"
+      },
+      "count": {
+        "$sum": 1
+      }
+    }
+  },
+  {
+    "$sort": {
+      "count": -1
+    }
+  },
+  {
+    "$limit": 10
+  }
+]

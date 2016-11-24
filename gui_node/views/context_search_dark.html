@@ -1,0 +1,139 @@
+<!-- BEGIN SIDEBAR -->
+
+    <a href="#" class="scrollup">Scroll</a>
+
+    <!-- END SIDEBAR -->
+    <!-- BEGIN PAGE CONTAINER-->
+    <div class="page-content" style="background-color: #1C1C1C">
+        <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+        <div class="content" style="padding-top: 50px;background-color: #1C1C1C;">
+
+            <div class="row" id="id_wp_hie">
+                <div class="col-md-12" >
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="grid simple ">
+                                <div class="grid-title no-border" style="background-color: #1C1C1C">
+
+                                </div>
+                                <div class="grid-body no-border" style="padding: 0px; background-color: #1C1C1C">
+                                    <h3 class="text-white">Search <span class="semi-bold">All Events</span> </h3>
+                                    <p style="margin-right: 20px;" class="muted">Browse through all the events in the GDELT database. Filter your query using the filter menu on the right. Access the filter menu using the filter button on the top right corner.</p>
+                                    <br>
+                                    <div class="clearfix"></div>
+                                    <div class="row" id="id_cont_gim" style=" background-color: #000; color: #fff;">
+                                        <div class="grid-body" style="border: 0px; background-color: #1C1C1C; color: #fff;">
+                                            <table id="example" class="table no-more-tables" style="width: 100%" >
+                                                <thead>
+                                                <tr>
+                                                    <th>Event Id</th>
+                                                    <th>Date</th>
+                                                    <th>Actor 1 Name</th>
+                                                    <th>Actor 1 Geo</th>
+                                                    <th>Actor 2 Name</th>
+                                                    <th>Actor 2 Geo</th>
+                                                    <th>Action Geo</th>
+                                                    <th>Goldstein Scale</th>
+                                                    <th>Num of Mentions</th>
+                                                    <th>Avg Tone</th>
+                                                    <th>Source</th>
+                                                    <th>Details</th>
+                                                </tr>
+                                                </thead>
+                                                <tfoot>
+                                                <tr>
+                                                    <th>Event Id</th>
+                                                    <th>Date</th>
+                                                    <th>Actor 1 Name</th>
+                                                    <th>Actor 1 Geo</th>
+                                                    <th>Actor 2 Name</th>
+                                                    <th>Actor 2 Geo</th>
+                                                    <th>Action Geo</th>
+                                                    <th>Goldstein Scale</th>
+                                                    <th>Num of Mentions</th>
+                                                    <th>Avg Tone</th>
+                                                    <th>Source</th>
+                                                    <th>Details</th>
+                                                </tr>
+                                                </tfoot>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+<!-- BEGIN CHAT -->
+<div class="chat-window-wrapper">
+    <div id="main-chat-wrapper" class="inner-content">
+        <div class="chat-window-wrapper scroller scrollbar-dynamic" id="chat-users" >
+
+            <div class="side-widget">
+                <div class="side-widget-title" style="font-size: 12px;color: white;">Start Date</div>
+                <div class="side-widget-content">
+                    <div >
+
+                            <div id="idStartDate" class="input-append success date col-md-10 col-lg-6 no-padding" style="width: 70%;margin-left: 12px;margin-top: 10px;margin-bottom: 10px;">
+                                <input type="text" class="form-control" style="background-color: white;">
+                                <span class="add-on" style="background: #9900FF;"><span class="arrow"></span><i class="fa fa-th"></i></span> </div>
+
+                            <br>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="side-widget">
+                <div class="side-widget-title" style="float: left;font-size: 12px;color: white;">End Date</div>
+                <div class="side-widget-content">
+                    <div >
+
+                        <div id="idEndDate" class="input-append success date col-md-10 col-lg-6 no-padding" style="width: 70%;margin-left: 12px;margin-top: 10px;margin-bottom: 10px;">
+                            <input type="text" class="form-control" style="background-color: white;">
+                            <span class="add-on" style="background: #9900FF;"><span class="arrow"></span><i class="fa fa-th"></i></span> </div>
+                        <br>
+                    </div>
+                </div>
+            </div>
+
+            <div class="side-widget">
+                <div class="side-widget-title" style="float: left;font-size: 12px;color: white;">Goldstein Scale Range</div>
+                <div class="side-widget-content">
+                    <div >
+
+                        <div class="slider primary" style="margin-left: 12px;">
+                            <input type="text" id="idgsslider" class="element" data-slider-min="-10"  data-slider-max="10" data-slider-step="1" data-slider-value="[-5,5]" data-slider-orientation="horizontal" data-slider-selection="after">
+                        </div>
+                        <br>
+                    </div>
+                </div>
+            </div>
+
+            <div class="side-widget">
+                <div class="side-widget-title" style="float: left;font-size: 12px;color: white;">Average Tone Range</div>
+                <div class="side-widget-content">
+                    <div >
+
+                        <div class="slider primary" style="margin-left: 12px;">
+                            <input type="text" id="idatslider" class="element" data-slider-min="-100"  data-slider-max="100" data-slider-step="1" data-slider-value="[-30,30]" data-slider-orientation="horizontal" data-slider-selection="after">
+                        </div>
+                        <br>
+                    </div>
+                </div>
+            </div>
+
+            <div class="side-widget">
+                <button id="idFilterButton" class="btn btn-block btn-primary" type="button" style="background-color: #0aa699;width: 80%;margin-left: 15px;"><i class="fa fa-filter"></i>&nbsp;&nbsp;Filter Results&nbsp;&nbsp;<span class="hide" id="idFilterLoader"><i class="fa fa-spinner fa fa-spin"></i></span></button>
+            </div>
+
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+<!-- END CHAT -->
+
