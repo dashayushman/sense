@@ -15,7 +15,7 @@ logger = None
 
 def initialize(mongo_host, mongo_port, mongo_pool_size, log_dir):
 	print("initializing logger")
-	# util.initialize_logger(const.log_dir)
+	util.initialize_logger(const.log_dir)
 
 	print("initializing data access layer")
 	db_init_status = util.initialize_dal(mongo_host,

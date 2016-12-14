@@ -95,6 +95,7 @@ class Utility:
 			self.logger.setLevel(logging.DEBUG)
 
 			# create a file handler
+
 			log_path = os.path.join(log_path, "app.utils.log")
 			handler = logging.handlers.RotatingFileHandler(log_path, maxBytes=5000,
 				backupCount=5)
