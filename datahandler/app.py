@@ -161,7 +161,7 @@ def main(argv):
 
 	initialize(const.mongo_host, const.mongo_port, const.mongo_pool_size,
 		const.log_dir)
-	'''
+	
 	download_insert_new_files(const.url,
 							  const.db_name,
 							  const.working_dir,
@@ -169,7 +169,7 @@ def main(argv):
 							  const.mentions_import_command,
 							  const.download_limit,
 							  const.download_sort)
-'''
+
 	download_insert_new_files(const.url2,
 							  const.db_name,
 							  const.working_dir,
