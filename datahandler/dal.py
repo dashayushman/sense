@@ -27,7 +27,7 @@ class Dal:
 		'''
 		self.client = MongoClient(host, port, maxPoolSize=pool_size)
 		self.util = util
-		# self.initialize_logger(log_dir)
+		self.initialize_logger(log_dir)
 		return
 
 	def initialize_logger(self, log_path):
