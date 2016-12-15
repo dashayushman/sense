@@ -3,3 +3,9 @@ GDELT2.0/events_data
 extra_plugins
 datahandler/globe_viz
 .idea/workspace.xml
+gui_node/node_modules/
+*.pyc
+*~
+datahandler/*.pyc
+db/scripts/*~
+logs/*

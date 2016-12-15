@@ -686,7 +686,7 @@ class Dal:
 
 		except:
 			self.log_error(
-				"Exception occurred getting linked locations from the DB\n" +
+				"Exception occurred getting High impact regions from the DB\n" +
 				"Exception stacktrace: \n" +
 				traceback.format_exc())
 			return None

@@ -19,7 +19,7 @@ class Constants:
   download_sort=True
 
   #directory to store the log files
-  log_dir="app.log"
+  log_dir="../logs"
 
   #path to the property file
   prop_file="app.properties"

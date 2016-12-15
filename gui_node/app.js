@@ -104,8 +104,8 @@ app.use(function (err, req, res, next) {
     });
 });
 
-app.listen(4000, function () {
-    console.log('Example app listening on port 4000!');
+app.listen(6000, function () {
+    console.log('Example app listening on port 6000!');
 });
 
 module.exports = app;
